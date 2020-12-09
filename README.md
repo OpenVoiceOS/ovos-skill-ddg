@@ -9,10 +9,9 @@ NOTE: this is meant a better alternative to the official duck duck go skill, it 
 
 ## Examples
 
-* "ask the duck about George Washington"
+* "when was stephen hawking born"
+* "ask the duck about the big bang"
 * "tell me more"
-* "ask the duck about plasma"
-* "ask the duck about Madonna"
 * "who is elon musk"
 * "continue"
 * "tell me more"
