@@ -100,11 +100,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
     @intent_handler(IntentBuilder("DuckMore").require("More").
                     require("DuckKnows"))
     def handle_tell_more(self, message):
-        """ Follow up query handler, "tell me more".
-
-            If a "spoken_lines" entry exists in the active contexts
-            this can be triggered.
-        """
+        """ Follow up query handler, "tell me more"."""
         self.speak_result()
 
     def CQS_match_query_phrase(self, utt):
@@ -116,16 +112,16 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.log.debug("Extracted keywords: " + str(keywords))
         # TODO better selection / merging of top keywords with same
         #  confidence??
-        query = keywords[0][0]
-        self.log.debug("Selected keyword: " + query)
+        for kw in keywords:
+            query = kw[0]
+            self.log.debug("Selected keyword: " + query)
 
-        summary = self.ask_the_duck(query, translate=False)
-
-        if summary:
-            self.idx += 1
-            return (utt, CQSMatchLevel.GENERAL, self.results[0],
-                    {'query': query, 'answer': self.results[0],
-                     "keywords": keywords, "image": self.image})
+            summary = self.ask_the_duck(query, translate=False)
+            if summary:
+                self.idx += 1
+                return (utt, CQSMatchLevel.GENERAL, self.results[0],
+                        {'query': query, 'answer': self.results[0],
+                         "keywords": keywords, "image": self.image})
 
     def CQS_action(self, phrase, data):
         """ If selected show gui """
@@ -146,13 +142,15 @@ class DuckDuckGoSkill(CommonQuerySkill):
         data = self.duck_cache[query]
 
         # info
-        related_topics = [t["Text"] for t in data.get("RelatedTopics") or []]
+        related_topics = [t.get("Text") for t in
+                          data.get("RelatedTopics", [])]
         infobox = {}
         infodict = data.get("Infobox") or {}
         for entry in infodict.get("content", []):
             infobox[entry["label"]] = entry["value"]
 
         # GUI
+        self.gui.clear()  # clear previous answer just in case
         title = data.get("Heading")
         self.image = data.get("Image", "")
 
@@ -160,7 +158,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = data.get("AbstractText")
 
         if not summary:
-            return None, None
+            return None
 
         self.log.debug("DuckDuckGo answer: " + summary)
 
