@@ -135,6 +135,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.log.debug("DuckDuckGo answer: " + summary)
         self.gui['summary'] = summary
         self.gui['imgLink'] = duck_img(image)
+        # TODO this needs to be moved because of common query
         self.gui.show_page("DuckDelegate.qml", override_idle=60)
 
         # context for follow up questions
