@@ -104,7 +104,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         else:
             answer, _, _ = self.parse_subintents(query)
             if answer:
-                self.speakr(answer)
+                self.speak(answer)
             else:
                 self.speak_dialog("no_answer")
 
@@ -162,6 +162,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             data["image"] = self.image
         if not answer:
             level = CQSMatchLevel.GENERAL
+        answer = self.translate(answer)
         return answer, level, data
 
     def CQS_match_query_phrase(self, utt):
@@ -226,6 +227,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # TODO intents for this, with this context intents can look up all data
         self.set_context("DuckKnows", query)
         self.idx = 0
+        summary = self.translate(summary)
         self.results = summary.split(". ")
         return summary
 
