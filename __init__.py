@@ -38,7 +38,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.blacklist_default_skill()
 
     def blacklist_default_skill(self):
-        return
         # load the current list of already blacklisted skills
         blacklist = self.config_core["skills"]["blacklisted_skills"]
 
