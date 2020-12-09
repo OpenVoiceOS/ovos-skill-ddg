@@ -19,6 +19,10 @@ from adapt.intent import IntentBuilder
 from google_trans_new import google_translator
 from RAKEkeywords import Rake
 import logging
+from tempfile import gettempdir
+from os.path import join, isfile, expanduser
+from padatious import IntentContainer
+
 logging.getLogger("urllib3.connectionpool").setLevel("INFO")
 
 
@@ -29,12 +33,35 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.tx_cache = {}  # avoid translating twice
         self.duck_cache = {}
         self.rake = Rake()  # only english for now
-        # for usage in tell me more
+
+        # for usage in tell me more / follow up questions
         self.idx = 0
         self.results = []
         self.image = None
 
+        # subparser, intents just for this skill
+        # not part of main intent service
+        intent_cache = expanduser(self.config_core['padatious']['intent_cache'])
+        self.intents = IntentContainer(intent_cache)
+
     def initialize(self):
+        self.load_intents()
+        # check for conflicting skills just in case
+        # done after all skills loaded to ensure proper shutdown
+        self.add_event("mycroft.skills.initialized",
+                       self.blacklist_default_skill)
+
+    def load_intents(self):
+        # TODO intents for other infobox fields
+        for intent in ["who", "birthdate"]:
+            path = self.find_resource(intent + '.intent', "locale")
+            if path:
+                self.intents.load_intent(intent, path)
+
+        self.intents.train(single_thread=True)
+
+    def get_intro_message(self):
+        # blacklist conflicting skills on install
         self.blacklist_default_skill()
 
     def blacklist_default_skill(self):
@@ -64,30 +91,10 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # this should avoid the need to restart
         self.bus.emit(Message("detach_skill", {"skill_id": skill_id}))
 
-    def translate(self, utterance, lang_tgt=None, lang_src="en"):
-        lang_tgt = lang_tgt or self.lang
+    def stop(self):
+        self.gui.release()
 
-        # if langs are the same do nothing
-        if not lang_tgt.startswith(lang_src):
-            if lang_tgt not in self.tx_cache:
-                self.tx_cache[lang_tgt] = {}
-            # if translated before, dont translate again
-            if utterance in self.tx_cache[lang_tgt]:
-                # get previous translated value
-                translated_utt = self.tx_cache[lang_tgt][utterance]
-            else:
-                # translate this utterance
-                translated_utt = self.translator.translate(utterance,
-                                                           lang_tgt=lang_tgt,
-                                                           lang_src=lang_src).strip()
-                # save the translation if we need it again
-                self.tx_cache[lang_tgt][utterance] = translated_utt
-            self.log.debug("translated {src} -- {tgt}".format(src=utterance,
-                                                              tgt=translated_utt))
-        else:
-            translated_utt = utterance.strip()
-        return translated_utt
-
+    # intents
     @intent_handler("search_duck.intent")
     def handle_search(self, message):
         query = message.data["query"]
@@ -95,20 +102,80 @@ class DuckDuckGoSkill(CommonQuerySkill):
         if summary:
             self.speak_result()
         else:
-            self.speak_dialog("no_answer")
+            answer, _, _ = self.parse_subintents(query)
+            if answer:
+                self.speakr(answer)
+            else:
+                self.speak_dialog("no_answer")
 
     @intent_handler(IntentBuilder("DuckMore").require("More").
                     require("DuckKnows"))
     def handle_tell_more(self, message):
         """ Follow up query handler, "tell me more"."""
+        query = message.data["DuckKnows"]
+        data, related_queries = self.get_infobox(query)
+        # TODO maybe do something with the infobox data ?
         self.speak_result()
+
+    # common query
+    def parse_subintents(self, utt):
+        # Get response from intents, this is a subparser that will handle
+        # queries about the infobox returned by duckduckgo
+        # eg. when was {person} born
+
+        match = self.intents.calc_intent(utt)
+        level = CQSMatchLevel.CATEGORY
+        data = match.matches
+        intent = match.name
+        score = match.conf
+        data["intent"] = intent
+        data["score"] = score
+        query = utt
+
+        if score > 0.8:
+            level = CQSMatchLevel.EXACT
+        elif score > 0.5:
+            level = CQSMatchLevel.CATEGORY
+        elif score > 0.3:
+            level = CQSMatchLevel.GENERAL
+        else:
+            intent = None
+
+        self.log.debug("DuckDuckGo Intent: " + str(intent))
+        if "person" in data:
+            query = data["person"]
+
+        summary = self.ask_the_duck(query)
+        answer = summary
+        if summary:
+            answer = self.results[0]
+            infobox, related_queries = self.get_infobox(query)
+            self.log.debug("DuckDuckGo infobox: " + str(infobox))
+            data["infobox"] = infobox
+            data["related_queries"] = related_queries
+
+            if intent == "birthdate":
+                answer = infobox.get("born")
+
+            data["query"] = query
+            data["answer"] = answer
+            data["image"] = self.image
+        if not answer:
+            level = CQSMatchLevel.GENERAL
+        return answer, level, data
 
     def CQS_match_query_phrase(self, utt):
         self.log.debug("DuckDuckGo query: " + utt)
-        # Automatic translation to English
-        utt = self.translate(utt, "en", self.lang)
+
+        answer, match, data = self.parse_subintents(utt)
+        if answer:
+            self.idx += 1
+            return (utt, match, answer, data)
+
         # extract most relevant keyword
+        utt = self.translate(utt, "en", self.lang)
         keywords = self.rake.extract_keywords(utt)
+
         self.log.debug("Extracted keywords: " + str(keywords))
         # TODO better selection / merging of top keywords with same
         #  confidence??
@@ -127,6 +194,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         """ If selected show gui """
         self.display_ddg(data["answer"], data["image"])
 
+    # duck duck go api
     def ask_the_duck(self, query, translate=True):
         if translate:
             # Automatic translation to English
@@ -140,14 +208,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
                                                   params={"format": "json",
                                                           "q": utt}).json()
         data = self.duck_cache[query]
-
-        # info
-        related_topics = [t.get("Text") for t in
-                          data.get("RelatedTopics", [])]
-        infobox = {}
-        infodict = data.get("Infobox") or {}
-        for entry in infodict.get("content", []):
-            infobox[entry["label"]] = entry["value"]
 
         # GUI
         self.gui.clear()  # clear previous answer just in case
@@ -178,6 +238,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     def speak_result(self):
         if self.idx + 1 > len(self.results):
+            # TODO ask user if he wants to hear about related topics
             self.speak_dialog("thats all")
             self.remove_context("ddg")
             self.idx = 0
@@ -187,8 +248,42 @@ class DuckDuckGoSkill(CommonQuerySkill):
             self.speak(self.results[self.idx])
             self.idx += 1
 
-    def stop(self):
-        self.gui.release()
+    def get_infobox(self, query):
+        if query not in self.duck_cache:
+            self.ask_the_duck(query)
+        data = self.duck_cache[query]
+        # info
+        related_topics = [t.get("Text") for t in data.get("RelatedTopics", [])]
+        infobox = {}
+        infodict = data.get("Infobox") or {}
+        for entry in infodict.get("content", []):
+            k = entry["label"].lower().strip()
+            infobox[k] = entry["value"]
+        return infobox, related_topics
+
+    def translate(self, utterance, lang_tgt=None, lang_src="en"):
+        lang_tgt = lang_tgt or self.lang
+
+        # if langs are the same do nothing
+        if not lang_tgt.startswith(lang_src):
+            if lang_tgt not in self.tx_cache:
+                self.tx_cache[lang_tgt] = {}
+            # if translated before, dont translate again
+            if utterance in self.tx_cache[lang_tgt]:
+                # get previous translated value
+                translated_utt = self.tx_cache[lang_tgt][utterance]
+            else:
+                # translate this utterance
+                translated_utt = self.translator.translate(utterance,
+                                                           lang_tgt=lang_tgt,
+                                                           lang_src=lang_src).strip()
+                # save the translation if we need it again
+                self.tx_cache[lang_tgt][utterance] = translated_utt
+            self.log.debug("translated {src} -- {tgt}".format(src=utterance,
+                                                              tgt=translated_utt))
+        else:
+            translated_utt = utterance.strip()
+        return translated_utt
 
 
 def create_skill():
