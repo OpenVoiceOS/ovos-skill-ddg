@@ -6,11 +6,16 @@ Use DuckDuckGo to answer questions
 Uses the [DuckDuckGo API](https://duckduckgo.com/api) to provide information. 
 
 NOTE: this is meant a better alternative to the official duck duck go skill, it will be blacklisted
+
 ## Examples
 
 * "ask the duck about George Washington"
+* "tell me more"
 * "ask the duck about plasma"
 * "ask the duck about Madonna"
+* "who is elon musk"
+* "continue"
+* "tell me more"
 
 ## Category
 **Information**

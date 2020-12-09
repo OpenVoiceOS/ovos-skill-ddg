@@ -15,7 +15,9 @@ from mycroft.messagebus.message import Message
 from mycroft.skills.core import intent_handler
 from mycroft.configuration import LocalConf, USER_CONFIG
 from mycroft.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
+from adapt.intent import IntentBuilder
 from google_trans_new import google_translator
+from RAKEkeywords import Rake
 import logging
 logging.getLogger("urllib3.connectionpool").setLevel("INFO")
 
@@ -26,11 +28,17 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.translator = google_translator()
         self.tx_cache = {}  # avoid translating twice
         self.duck_cache = {}
+        self.rake = Rake()  # only english for now
+        # for usage in tell me more
+        self.idx = 0
+        self.results = []
+        self.image = None
 
     def initialize(self):
         self.blacklist_default_skill()
 
     def blacklist_default_skill(self):
+        return
         # load the current list of already blacklisted skills
         blacklist = self.config_core["skills"]["blacklisted_skills"]
 
@@ -84,24 +92,52 @@ class DuckDuckGoSkill(CommonQuerySkill):
     @intent_handler("search_duck.intent")
     def handle_search(self, message):
         query = message.data["query"]
-        response = self.ask_the_duck(query)
-        if response:
-            self.speak(response)
+        summary = self.ask_the_duck(query)
+        if summary:
+            self.speak_result()
         else:
             self.speak_dialog("no_answer")
 
+    @intent_handler(IntentBuilder("DuckMore").require("More").
+                    require("DuckKnows"))
+    def handle_tell_more(self, message):
+        """ Follow up query handler, "tell me more".
+
+            If a "spoken_lines" entry exists in the active contexts
+            this can be triggered.
+        """
+        self.speak_result()
+
     def CQS_match_query_phrase(self, utt):
         self.log.debug("DuckDuckGo query: " + utt)
-        # TODO extract queries, the full utterance will never trigger right
-        # maybe use little_questions package?
-        response = self.ask_the_duck(utt)
-        if response:
-            return (utt, CQSMatchLevel.GENERAL, response,
-                    {'query': utt, 'answer': response})
-
-    def ask_the_duck(self, query):
         # Automatic translation to English
-        utt = self.translate(query, "en", self.lang)
+        utt = self.translate(utt, "en", self.lang)
+        # extract most relevant keyword
+        keywords = self.rake.extract_keywords(utt)
+        self.log.debug("Extracted keywords: " + str(keywords))
+        # TODO better selection / merging of top keywords with same
+        #  confidence??
+        query = keywords[0][0]
+        self.log.debug("Selected keyword: " + query)
+
+        summary = self.ask_the_duck(query, translate=False)
+
+        if summary:
+            self.idx += 1
+            return (utt, CQSMatchLevel.GENERAL, self.results[0],
+                    {'query': query, 'answer': self.results[0],
+                     "keywords": keywords, "image": self.image})
+
+    def CQS_action(self, phrase, data):
+        """ If selected show gui """
+        self.display_ddg(data["answer"], data["image"])
+
+    def ask_the_duck(self, query, translate=True):
+        if translate:
+            # Automatic translation to English
+            utt = self.translate(query, "en", self.lang)
+        else:
+            utt = query
 
         # cache so we dont hit the api twice for the same query
         if query not in self.duck_cache:
@@ -109,7 +145,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
                                                   params={"format": "json",
                                                           "q": utt}).json()
         data = self.duck_cache[query]
-        self.log.debug("DuckDuckGo data: " + str(data))
 
         # info
         related_topics = [t["Text"] for t in data.get("RelatedTopics") or []]
@@ -120,28 +155,40 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
         # GUI
         title = data.get("Heading")
-        image = data.get("Image", "")
+        self.image = data.get("Image", "")
 
         # summary
         summary = data.get("AbstractText")
 
         if not summary:
-            return None
-
-        def duck_img(img_id):
-            # get url from imgid
-            return "https://duckduckgo.com" + img_id
+            return None, None
 
         self.log.debug("DuckDuckGo answer: " + summary)
-        self.gui['summary'] = summary
-        self.gui['imgLink'] = duck_img(image)
-        # TODO this needs to be moved because of common query
-        self.gui.show_page("DuckDelegate.qml", override_idle=60)
 
         # context for follow up questions
         # TODO intents for this, with this context intents can look up all data
         self.set_context("DuckKnows", query)
+        self.idx = 0
+        self.results = summary.split(". ")
         return summary
+
+    def display_ddg(self, summary, image):
+        if image.startswith("/"):
+            image = "https://duckduckgo.com" + image
+        self.gui['summary'] = summary
+        self.gui['imgLink'] = image
+        self.gui.show_page("DuckDelegate.qml", override_idle=60)
+
+    def speak_result(self):
+        if self.idx + 1 > len(self.results):
+            self.speak_dialog("thats all")
+            self.remove_context("ddg")
+            self.idx = 0
+        else:
+            if self.image:
+                self.display_ddg(self.results[self.idx], self.image)
+            self.speak(self.results[self.idx])
+            self.idx += 1
 
     def stop(self):
         self.gui.release()
