@@ -1,1 +1,2 @@
 requests
+google_trans_new
