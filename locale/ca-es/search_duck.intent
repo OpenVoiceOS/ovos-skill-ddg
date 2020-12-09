@@ -1,0 +1,6 @@
+(cerca|busca|consulta|demana) a (volfram alfa|wolfram alpha|al llop|el llop) {query}
+(cerca|busca|consulta|demana) {query} a (volfram alfa|wolfram alpha|al llop|el llop)
+(cercar|buscar|consultar|demanar) a (volfram alfa|wolfram alpha|al llop|el llop) {query}
+(cercar|buscar|consultar|demanar) {query} a (volfram alfa|wolfram alpha|al llop|el llop)
+què diu (volfram alfa|wolfram alpha|el llop|al llop) (sobre|de) {query}
+què posa (a volfram alfa|a wolfram alpha|al llop|el llop) (sobre|de) {query}
