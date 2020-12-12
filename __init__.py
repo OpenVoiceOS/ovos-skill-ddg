@@ -43,6 +43,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # not part of main intent service
         intent_cache = expanduser(self.config_core['padatious']['intent_cache'])
         self.intents = IntentContainer(intent_cache)
+        self.min_conf = 0.6
 
     def initialize(self):
         self.load_intents()
@@ -124,12 +125,17 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # eg. when was {person} born
 
         match = self.intents.calc_intent(utt)
+
+        score = match.conf
+        if score < self.min_conf:
+            return None, None, None
         level = CQSMatchLevel.CATEGORY
         data = match.matches
         intent = match.name
-        score = match.conf
         data["intent"] = intent
         data["score"] = score
+        data["answer"] = None
+        data["image"] = None
         query = utt
 
         if score > 0.8:
@@ -161,7 +167,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             data["answer"] = answer
             data["image"] = self.image
         if not answer:
-            level = CQSMatchLevel.GENERAL
+            return None, None, None
         answer = self.translate(answer)
         return answer, level, data
 
@@ -193,6 +199,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     def CQS_action(self, phrase, data):
         """ If selected show gui """
+        print(data)
         self.display_ddg(data["answer"], data["image"])
 
     # duck duck go api
@@ -231,10 +238,13 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.results = summary.split(". ")
         return summary
 
-    def display_ddg(self, summary, image):
+    def display_ddg(self, summary=None, image=None):
+        if not image:
+            # TODO duckduckgo logo
+            return
         if image.startswith("/"):
             image = "https://duckduckgo.com" + image
-        self.gui['summary'] = summary
+        self.gui['summary'] = summary or ""
         self.gui['imgLink'] = image
         self.gui.show_page("DuckDelegate.qml", override_idle=60)
 
