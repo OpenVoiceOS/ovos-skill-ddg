@@ -1,3 +1,2 @@
 requests
-google_trans_new
-RAKEkeywords
+git+https://github.com/NeonGeckoCom/neon_solver_ddg_plugin
