@@ -51,6 +51,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = self.ask_the_duck(utt)
         if summary:
             self.idx += 1
+            self.get_image(utt)
             return (utt, CQSMatchLevel.GENERAL, self.results[0],
                     {'query': utt,
                      'answer': self.results[0],
@@ -58,9 +59,11 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     def CQS_action(self, phrase, data):
         """ If selected show gui """
-        data = self.duck.get_data(data["query"], {})
-        self.image = data.get("Image") or self.image
         self.display_ddg(data["answer"])
+
+    def get_image(self, query):
+        data = self.duck.get_data(query, {})
+        self.image = data.get("Image") or self.image
 
     # duck duck go api
     def ask_the_duck(self, query):
