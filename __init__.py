@@ -47,34 +47,26 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     # common query
     def CQS_match_query_phrase(self, utt):
-        self.log.debug("DuckDuckGo query: " + utt)
         summary = self.ask_the_duck(utt)
         if summary:
-            self.idx += 1
-            self.get_image(utt)
-            return (utt, CQSMatchLevel.GENERAL, self.results[0],
+            self.idx += 1  # spoken by common query
+            image = self.duck.get_image(utt) or self.image
+            return (utt, CQSMatchLevel.GENERAL, summary,
                     {'query': utt,
-                     'answer': self.results[0],
-                     "image": self.image})
+                     'image': image,
+                     'answer': summary})
 
     def CQS_action(self, phrase, data):
         """ If selected show gui """
-        self.display_ddg(data["answer"])
-
-    def get_image(self, query):
-        data = self.duck.get_data(query, {})
-        self.image = data.get("Image") or self.image
+        self.display_ddg(data["answer"], data["image"])
 
     # duck duck go api
     def ask_the_duck(self, query):
         # context for follow up questions
         self.set_context("DuckKnows", query)
-
         self.idx = 0
-        summary = self.duck.get_spoken_answer(query, {})
-        self.image = self.duck.get_image(query)
-        self.results = sentence_tokenize(summary)
-        return summary
+        self.results = self.duck.spoken_answers(query)
+        return self.results[0]
 
     def display_ddg(self, summary=None, image=None):
         image = image or \
