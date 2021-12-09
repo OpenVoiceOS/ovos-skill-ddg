@@ -66,7 +66,8 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.idx = 0
         self.results = self.duck.spoken_answers(query)
         self.image = self.duck.get_image(query)
-        return self.results[0]
+        if self.results:
+            return self.results[0]
 
     def display_ddg(self, summary=None, image=None):
         image = image or \
