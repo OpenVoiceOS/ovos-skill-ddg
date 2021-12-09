@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+from quebra_frases import sentence_tokenize
 from adapt.intent import IntentBuilder
 from mycroft.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
 from mycroft.skills.core import intent_handler
@@ -69,10 +69,11 @@ class DuckDuckGoSkill(CommonQuerySkill):
     def ask_the_duck(self, query):
         # context for follow up questions
         self.set_context("DuckKnows", query)
-        self.image = None
+
         self.idx = 0
         summary = self.duck.get_spoken_answer(query, {})
-        self.results = summary.split(". ")
+        self.image = self.duck.get_image(query)
+        self.results = sentence_tokenize(summary)
         return summary
 
     def display_ddg(self, summary=None, image=None):
