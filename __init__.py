@@ -50,10 +50,9 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = self.ask_the_duck(utt)
         if summary:
             self.idx += 1  # spoken by common query
-            image = self.duck.get_image(utt) or self.image
             return (utt, CQSMatchLevel.GENERAL, summary,
                     {'query': utt,
-                     'image': image,
+                     'image': self.image,
                      'answer': summary})
 
     def CQS_action(self, phrase, data):
@@ -66,6 +65,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.set_context("DuckKnows", query)
         self.idx = 0
         self.results = self.duck.spoken_answers(query)
+        self.image = self.duck.get_image(query)
         return self.results[0]
 
     def display_ddg(self, summary=None, image=None):
@@ -85,8 +85,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             self.remove_context("ddg")
             self.idx = 0
         else:
-            if self.image:
-                self.display_ddg(self.results[self.idx])
+            self.display_ddg(self.results[self.idx])
             self.speak(self.results[self.idx])
             self.idx += 1
 
