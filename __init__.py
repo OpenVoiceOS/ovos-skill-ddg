@@ -83,7 +83,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         if self.idx + 1 > len(self.results):
             # TODO ask user if he wants to hear about related topics
             self.speak_dialog("thats all")
-            self.remove_context("ddg")
+            self.remove_context("DuckKnows")
             self.idx = 0
         else:
             self.display_ddg(self.results[self.idx])
