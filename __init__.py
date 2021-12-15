@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from quebra_frases import sentence_tokenize
+from ovos_utils.gui import can_use_gui
 from adapt.intent import IntentBuilder
 from mycroft.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
 from mycroft.skills.core import intent_handler
@@ -70,6 +70,8 @@ class DuckDuckGoSkill(CommonQuerySkill):
             return self.results[0]
 
     def display_ddg(self, summary=None, image=None):
+        if not can_use_gui(self.bus):
+            return
         image = image or \
                 self.image or \
                 "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
