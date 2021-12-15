@@ -64,7 +64,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # context for follow up questions
         self.set_context("DuckKnows", query)
         self.idx = 0
-        self.results = self.duck.spoken_answers(query)
+        self.results = self.duck.long_answer(query)
         self.image = self.duck.get_image(query)
         if self.results:
             return self.results[0]
@@ -83,7 +83,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     def speak_result(self):
         if self.idx + 1 > len(self.results):
-            # TODO ask user if he wants to hear about related topics
             self.speak_dialog("thats all")
             self.remove_context("DuckKnows")
             self.idx = 0
