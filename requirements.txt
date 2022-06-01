@@ -1,3 +1,2 @@
-requests
-google_trans_new
-RAKEkeywords
+neon-solver-ddg-plugin
+neon-solvers
