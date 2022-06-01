@@ -64,10 +64,10 @@ class DuckDuckGoSkill(CommonQuerySkill):
         # context for follow up questions
         self.set_context("DuckKnows", query)
         self.idx = 0
-        self.results = self.duck.long_answer(query)
+        self.results = self.duck.long_answer(query, lang=self.lang)
         self.image = self.duck.get_image(query)
         if self.results:
-            return self.results[0]
+            return self.results[0]["summary"]
 
     def display_ddg(self, summary=None, image=None):
         if not can_use_gui(self.bus):
@@ -87,8 +87,9 @@ class DuckDuckGoSkill(CommonQuerySkill):
             self.remove_context("DuckKnows")
             self.idx = 0
         else:
-            self.display_ddg(self.results[self.idx])
-            self.speak(self.results[self.idx])
+            self.display_ddg(self.results[self.idx]["summary"],
+                             self.results[self.idx]["img"])
+            self.speak(self.results[self.idx]["summary"])
             self.idx += 1
 
 

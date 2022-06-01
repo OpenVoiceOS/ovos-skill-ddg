@@ -1,7 +1,2 @@
-requests
-quebra_frases
-RAKEkeywords~=0.2.0
-neon-lang-plugin-libretranslate
-simplematch
-git+https://github.com/NeonGeckoCom/neon_solver_ddg_plugin
-git+https://github.com/NeonGeckoCom/neon_utterance_RAKE_plugin
+neon-solver-ddg-plugin
+neon-solvers
