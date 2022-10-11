@@ -2,7 +2,7 @@ import json
 import unittest
 
 from ovos_utils.messagebus import FakeBus
-from skill_ddg import DuckDuckGoSkill
+from skill_ovos_ddg import DuckDuckGoSkill
 from mycroft.skills import CommonQuerySkill
 
 

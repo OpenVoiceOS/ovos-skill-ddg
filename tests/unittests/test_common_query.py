@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from mycroft.skills import FallbackSkill
 from ovos_skill_common_query import QuestionsAnswersSkill
 from ovos_utils.messagebus import FakeBus, Message
-from skill_ddg import DuckDuckGoSkill
+from skill_ovos_ddg import DuckDuckGoSkill
 
 
 class TestCommonQuery(unittest.TestCase):

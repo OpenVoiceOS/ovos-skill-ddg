@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import Mock
 
 from ovos_utils.messagebus import FakeBus, Message
-from skill_ddg import DuckDuckGoSkill
+from skill_ovos_ddg import DuckDuckGoSkill
 from time import sleep
 
 
