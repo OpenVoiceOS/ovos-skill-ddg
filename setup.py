@@ -1,25 +1,73 @@
 #!/usr/bin/env python3
 from setuptools import setup
+from os import path, walk
 
+
+URL = "https://github.com/OpenVoiceOS/skill-ovos-ddg"
+SKILL_CLAZZ = "DuckDuckGoSkill"  # needs to match __init__.py class name
+PYPI_NAME = "skill-ddg"  # pip install PYPI_NAME
+
+
+# below derived from github url to ensure standard skill_id
+SKILL_AUTHOR, SKILL_NAME = URL.split(".com/")[-1].split("/")
+SKILL_PKG = SKILL_NAME.lower().replace('-', '_')
+PLUGIN_ENTRY_POINT = f'{SKILL_NAME.lower()}.{SKILL_AUTHOR.lower()}={SKILL_PKG}:{SKILL_CLAZZ}'
 # skill_id=package_name:SkillClass
-PLUGIN_ENTRY_POINT = 'skill-ddg.jarbasai=skill_ddg:DuckDuckGoSkill'
-# in this case the skill_id is defined to purposefully replace the mycroft version of the skill,
-# or rather to be replaced by it in case it is present. all skill directories take precedence over plugin skills
+
+
+def get_requirements(requirements_filename: str):
+    requirements_file = path.join(path.abspath(path.dirname(__file__)),
+                                  requirements_filename)
+    with open(requirements_file, 'r', encoding='utf-8') as r:
+        requirements = r.readlines()
+    requirements = [r.strip() for r in requirements if r.strip()
+                    and not r.strip().startswith("#")]
+    if 'MYCROFT_LOOSE_REQUIREMENTS' in os.environ:
+        print('USING LOOSE REQUIREMENTS!')
+        requirements = [r.replace('==', '>=').replace('~=', '>=') for r in requirements]
+    return requirements
+
+
+def find_resource_files():
+    resource_base_dirs = ("locale", "ui", "vocab", "dialog", "regex", "skill")
+    base_dir = path.dirname(__file__)
+    package_data = ["*.json"]
+    for res in resource_base_dirs:
+        if path.isdir(path.join(base_dir, res)):
+            for (directory, _, files) in walk(path.join(base_dir, res)):
+                if files:
+                    package_data.append(
+                        path.join(directory.replace(base_dir, "").lstrip('/'),
+                                  '*'))
+    return package_data
+
+
+with open("README.md", "r") as f:
+    long_description = f.read()
+
+with open("./version.py", "r", encoding="utf-8") as v:
+    for line in v.readlines():
+        if line.startswith("__version__"):
+            if '"' in line:
+                version = line.split('"')[1]
+            else:
+                version = line.split("'")[1]
+
 
 setup(
-    # this is the package name that goes on pip
-    name='skill-ddg',
-    version='0.0.1',
+    name=PYPI_NAME,
+    version=version,
     description='mycroft/ovos duck duck go skill plugin',
-    url='https://github.com/JarbasSkills/skill-ddg',
+    long_description=long_description,
+    url=URL,
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
-    package_dir={"skill_ddg": ""},
-    package_data={'skill_ddg': ['locale/*', 'vocab/*', "dialog/*"]},
-    packages=['skill_ddg'],
+    package_dir={SKILL_PKG: ""},
+    package_data={SKILL_PKG: find_resource_files()},
+    packages=[SKILL_PKG],
     include_package_data=True,
-    install_requires=["neon-solver-ddg-plugin", "neon-solvers"],
+    install_requires=get_requirements("requirements.txt"),
     keywords='ovos skill plugin',
     entry_points={'ovos.plugin.skill': PLUGIN_ENTRY_POINT}
 )
