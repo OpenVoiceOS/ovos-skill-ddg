@@ -46,21 +46,20 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt install python3-dev
+          sudo apt install python3-dev libfann-dev
           python -m pip install build wheel
+      - name: Install ovos components
+        run: |
+          pip install ovos-plugin-manager ovos-core[skills_lgpl]>=0.0.5a28
+          pip install git+https://github.com/NeonGeckoCom/neon-solver-plugin-ddg
+          pip install git+https://github.com/OpenVoiceOS/skill-ovos-common-query
+          pip install git+https://github.com/MycroftAI/mycroft-messagebus-client
       - name: Install core repo
         run: |
           pip install .
       - name: Install test dependencies
         run: |
           pip install pytest pytest-timeout pytest-cov
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt install libfann-dev
-      - name: Install ovos dependencies
-        run: |
-          pip install ovos-plugin-manager ovos-core[skills_lgpl]>=0.0.5a28
       - name: Run unittests
         run: |
           pytest --cov=ovos_skill_ddg --cov-report xml test/unittests
