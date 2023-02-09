@@ -15,6 +15,8 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
 from mycroft.skills.core import intent_handler
 from neon_solver_ddg_plugin import DDGSolver
+from ovos_utils.process_utils import RuntimeRequirements
+from ovos_utils import classproperty
 
 
 class DuckDuckGoSkill(CommonQuerySkill):
@@ -25,6 +27,18 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.idx = 0
         self.results = []
         self.image = None
+
+    @classproperty
+    def runtime_requirements(self):
+        return RuntimeRequirements(internet_before_load=True,
+                                   network_before_load=True,
+                                   gui_before_load=False,
+                                   requires_internet=True,
+                                   requires_network=True,
+                                   requires_gui=False,
+                                   no_internet_fallback=False,
+                                   no_network_fallback=False,
+                                   no_gui_fallback=True)
 
     # intents
     @intent_handler("search_duck.intent")
