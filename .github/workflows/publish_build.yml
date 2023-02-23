@@ -83,4 +83,4 @@ jobs:
           token: ${{ secrets.MATRIX_TOKEN }}
           channel: '!WjxEKjjINpyBRPFgxl:krbel.duckdns.org'
           message: |
-            New skill-ovos-fallback-unknown release! ${{ steps.version.outputs.version }}
+            New skill-ovos-ddg release! ${{ steps.version.outputs.version }}
