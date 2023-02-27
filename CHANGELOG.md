@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/v0.1.0...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.1a1...HEAD)
+
+**Merged pull requests:**
+
+- translated into italian [\#15](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/15) ([denics](https://github.com/denics))
+
+## [V0.0.1a1](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.1a1) (2023-02-23)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/v0.1.0...V0.0.1a1)
 
 **Implemented enhancements:**
 
