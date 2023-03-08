@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
+## [V0.0.1a3](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.1a3) (2023-03-03)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.1a2...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.1a2...V0.0.1a3)
 
 **Merged pull requests:**
 
