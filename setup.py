@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
-from setuptools import setup
 import os
 from os import walk, path
 
+from setuptools import setup
 
 URL = "https://github.com/OpenVoiceOS/skill-ovos-ddg"
 SKILL_CLAZZ = "DuckDuckGoSkill"  # needs to match __init__.py class name
 PYPI_NAME = "skill-ddg"  # pip install PYPI_NAME
-
 
 # below derived from github url to ensure standard skill_id
 SKILL_AUTHOR, SKILL_NAME = URL.split(".com/")[-1].split("/")
 SKILL_PKG = SKILL_NAME.lower().replace('-', '_')
 PLUGIN_ENTRY_POINT = f'{SKILL_NAME.lower()}.{SKILL_AUTHOR.lower()}={SKILL_PKG}:{SKILL_CLAZZ}'
 # skill_id=package_name:SkillClass
+
+
+SOLVER_ENTRY_POINT = f'ovos-solver-plugin-ddg={SKILL_PKG}:DuckDuckGoSolver'
 
 
 def get_requirements(requirements_filename: str):
@@ -46,6 +48,7 @@ def find_resource_files():
 with open("README.md", "r") as f:
     long_description = f.read()
 
+
 def get_version():
     """ Find the version of this skill"""
     version_file = path.join(path.dirname(__file__), 'version.py')
@@ -73,7 +76,7 @@ def get_version():
 setup(
     name=PYPI_NAME,
     version=get_version(),
-    description='mycroft/ovos duck duck go skill plugin',
+    description='ovos duck duck go skill plugin',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=URL,
@@ -86,5 +89,6 @@ setup(
     include_package_data=True,
     install_requires=get_requirements("requirements.txt"),
     keywords='ovos skill plugin',
-    entry_points={'ovos.plugin.skill': PLUGIN_ENTRY_POINT}
+    entry_points={'ovos.plugin.skill': PLUGIN_ENTRY_POINT,
+                  'neon.plugin.solver': SOLVER_ENTRY_POINT}
 )
