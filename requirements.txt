@@ -4,3 +4,4 @@ ovos_workshop~=0.0, >=0.0.11
 ovos-classifiers
 ovos-translate-server-plugin
 ovos-config>=0.0.11a10
+neon-solver-ddg-plugin>=0.0.2a1
