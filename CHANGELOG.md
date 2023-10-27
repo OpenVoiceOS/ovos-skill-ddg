@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a2...HEAD)
+
+**Merged pull requests:**
+
+- Update ovos-config to stable spec [\#19](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/19) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [V0.0.2a2](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a2) (2023-09-09)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a1...V0.0.2a2)
+
 ## [V0.0.2a1](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a1) (2023-08-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.1...V0.0.2a1)
