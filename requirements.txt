@@ -1,6 +1,6 @@
 requests
 ovos-utils~=0.0, >=0.0.35
-ovos_workshop~=0.0, >=0.0.11
+ovos_workshop~=0.0, >=0.0.15
 ovos-classifiers
 ovos-translate-server-plugin
 ovos-config~=0.0, >=0.0.11
