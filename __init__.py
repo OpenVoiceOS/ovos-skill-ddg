@@ -17,7 +17,6 @@ from ovos_classifiers.heuristics.keyword_extraction import HeuristicExtractor
 from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_utils import classproperty
 from ovos_utils.gui import can_use_gui
-from ovos_utils.intents import IntentBuilder
 from ovos_utils.process_utils import RuntimeRequirements
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
@@ -150,14 +149,13 @@ class DuckDuckGoSolver(QuestionSolver):
         query assured to be in self.default_lang
         return a single sentence text response
         """
-        query, context, lang = self._tx_query(query, context)
 
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
-        selected, key = DDGIntents.match(query, lang)
+        selected, key = DDGIntents.match(query, self.default_lang)
 
         if key:
-            selected = self.extract_keyword(selected, lang)
+            selected = self.extract_keyword(selected, self.default_lang)
             infobox = self.get_infobox(selected, context)[0] or {}
             answer = infobox.get(key)
             if answer:
@@ -200,10 +198,6 @@ class DuckDuckGoSolver(QuestionSolver):
 class DuckDuckGoSkill(CommonQuerySkill):
     def initialize(self):
         self.duck = DuckDuckGoSolver()
-        # for usage in tell me more / follow up questions
-        self.idx = 0
-        self.results = []
-        self.image = None
 
     @classproperty
     def runtime_requirements(self):
@@ -221,29 +215,21 @@ class DuckDuckGoSkill(CommonQuerySkill):
     @intent_handler("search_duck.intent")
     def handle_search(self, message):
         query = message.data["query"]
-        summary = self.ask_the_duck(query)
+        summary, image = self.ask_the_duck(query, self.lang)
         if summary:
-            self.speak_result()
+            self.speak(summary)
+            self.display_ddg(summary, query)
         else:
             self.speak_dialog("no_answer")
 
-    @intent_handler(IntentBuilder("DuckMore").require("More").
-                    require("DuckKnows"))
-    def handle_tell_more(self, message):
-        """ Follow up query handler, "tell me more"."""
-        # query = message.data["DuckKnows"]
-        # data, related_queries = self.duck.get_infobox(query)
-        # TODO maybe do something with the infobox data ?
-        self.speak_result()
-
     # common query
     def CQS_match_query_phrase(self, utt):
-        summary = self.ask_the_duck(utt)
+        summary, image = self.ask_the_duck(utt, self.lang)
         if summary:
-            self.idx += 1  # spoken by common query
+            self.log.info(f"DDG answer: {summary}")
             return (utt, CQSMatchLevel.GENERAL, summary,
                     {'query': utt,
-                     'image': self.image,
+                     'image': image,
                      'answer': summary})
 
     def CQS_action(self, phrase, data):
@@ -251,37 +237,31 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.display_ddg(data["answer"], data["image"])
 
     # duck duck go api
-    def ask_the_duck(self, query):
-        # context for follow up questions
-        self.set_context("DuckKnows", query)
-        self.idx = 0
-        self.results = self.duck.long_answer(query, lang=self.lang)
-        self.image = self.duck.get_image(query)
-        if self.results:
-            return self.results[0]["summary"]
+    def ask_the_duck(self, query, lang: str):
+        if lang.startswith("en"):
+            self.log.debug(f"skipping auto translation for DuckDuckGo, "
+                           f"{lang} is supported")
+            DuckDuckGoSolver.enable_tx = False
+        else:
+            self.log.info(f"enabling auto translation for DuckDuckGo, "
+                          f"{lang} is not supported internally")
+            DuckDuckGoSolver.enable_tx = True
 
-    def display_ddg(self, summary=None, image=None):
+        ans = self.duck.spoken_answer(query, lang=lang)
+        image = self.duck.get_image(query)
+        if ans:
+            return ans, image
+        return None, None
+
+    def display_ddg(self, summary, image):
         if not can_use_gui(self.bus):
             return
-        image = image or \
-                self.image or \
-                "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
+        image = image or "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
         if image.startswith("/"):
             image = "https://duckduckgo.com" + image
         self.gui['summary'] = summary or ""
         self.gui['imgLink'] = image
-        self.gui.show_page("DuckDelegate.qml", override_idle=60)
-
-    def speak_result(self):
-        if self.idx + 1 > len(self.results):
-            self.speak_dialog("thats all")
-            self.remove_context("DuckKnows")
-            self.idx = 0
-        else:
-            self.display_ddg(self.results[self.idx]["summary"],
-                             self.results[self.idx]["img"])
-            self.speak(self.results[self.idx]["summary"])
-            self.idx += 1
+        self.gui.show_page("DuckDelegate", override_idle=60)
 
 
 if __name__ == "__main__":
