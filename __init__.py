@@ -15,10 +15,11 @@ import requests
 import simplematch
 from ovos_bus_client.session import Session, SessionManager
 from ovos_classifiers.heuristics.keyword_extraction import HeuristicExtractor
-from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_utils import classproperty
 from ovos_utils.gui import can_use_gui
 from ovos_utils.process_utils import RuntimeRequirements
+
+from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.intents import IntentBuilder
 from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
@@ -231,7 +232,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = self.ask_the_duck(query, self.lang)
         if summary:
             self.speak_result(sess)
-            self.display_ddg()
         else:
             self.speak_dialog("no_answer")
 
@@ -247,7 +247,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         self.speak_result(sess)
 
     # common query
-    def CQS_match_query_phrase(self, utt):
+    def CQS_match_query_phrase(self, phrase):
         sess = SessionManager.get()
         self.session_results[sess.session_id] = {
             "query": phrase,
@@ -260,8 +260,8 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = self.ask_the_duck(sess)
         if summary:
             self.log.info(f"DDG answer: {summary}")
-            return (utt, CQSMatchLevel.GENERAL, summary,
-                    {'query': utt,
+            return (phrase, CQSMatchLevel.GENERAL, summary,
+                    {'query': phrase,
                      'answer': summary})
 
     def CQS_action(self, phrase, data):
@@ -269,7 +269,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         sess = SessionManager.get()
         if sess in self.session_results:
             self.display_wiki_entry()
-        self.display_ddg()
+        self.display_ddg(sess)
 
     # duck duck go api
     def ask_the_duck(self, sess):
@@ -285,19 +285,24 @@ class DuckDuckGoSkill(CommonQuerySkill):
         query = self.session_results[sess.session_id]["query"]
         results = self.duck.long_answer(query, lang=sess.lang)
         self.session_results[sess.session_id]["results"] = results
-        return results[0]
+        return results[0]["summary"]
 
-    def display_ddg(self):
+    def display_ddg(self, sess: Session):
         if not can_use_gui(self.bus):
             return
-        image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query)
-        title = self.session_results[sess.session_id].get("title") or "DuckDuckGo"
-        image = image or "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
-        if image.startswith("/"):
-            image = "https://duckduckgo.com" + image
-        self.gui['summary'] = summary or ""
-        self.gui['imgLink'] = image
-        self.gui.show_page("DuckDelegate", override_idle=60)
+        if sess.session_id in self.session_results:
+            idx = self.session_results[sess.session_id]["idx"]
+            query = self.session_results[sess.session_id].get("query")
+            results = self.session_results[sess.session_id]["results"]
+            summary = results[idx]["summary"]
+            image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query)
+            title = self.session_results[sess.session_id].get("title") or "DuckDuckGo"
+            image = image or "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
+            if image.startswith("/"):
+                image = "https://duckduckgo.com" + image
+            self.gui['summary'] = summary or ""
+            self.gui['imgLink'] = image
+            self.gui.show_page("DuckDelegate", override_idle=60)
 
     def speak_result(self, sess: Session):
 
@@ -314,7 +319,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             else:
                 self.speak(results[idx]["summary"])
                 self.set_context("DuckKnows", "DuckDuckGo")
-                self.display_wiki_entry(title)
+                self.display_ddg(sess)
                 self.session_results[sess.session_id]["idx"] += 1
         else:
             self.speak_dialog("thats all")
