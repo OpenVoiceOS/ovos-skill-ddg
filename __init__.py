@@ -283,6 +283,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             DuckDuckGoSolver.enable_tx = True
 
         query = self.session_results[sess.session_id]["query"]
+        self.set_context("DuckKnows", query)
         results = self.duck.long_answer(query, lang=sess.lang)
         self.session_results[sess.session_id]["results"] = results
         return results[0]["summary"]
