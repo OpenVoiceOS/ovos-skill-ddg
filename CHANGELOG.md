@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a2...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a3...HEAD)
+
+**Merged pull requests:**
+
+- refactor/common\_query\_speedup [\#22](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/22) ([JarbasAl](https://github.com/JarbasAl))
+
+## [V0.0.2a3](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a3) (2023-10-27)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a2...V0.0.2a3)
 
 **Merged pull requests:**
 
