@@ -260,7 +260,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
         summary = self.ask_the_duck(sess)
         if summary:
             self.log.info(f"DDG answer: {summary}")
-            return (phrase, CQSMatchLevel.GENERAL, summary,
+            return (phrase, CQSMatchLevel.CATEGORY, summary,
                     {'query': phrase,
                      'answer': summary})
 
@@ -283,10 +283,11 @@ class DuckDuckGoSkill(CommonQuerySkill):
             DuckDuckGoSolver.enable_tx = True
 
         query = self.session_results[sess.session_id]["query"]
-        self.set_context("DuckKnows", query)
         results = self.duck.long_answer(query, lang=sess.lang)
         self.session_results[sess.session_id]["results"] = results
-        return results[0]["summary"]
+        if results:
+            self.set_context("DuckKnows", query)
+            return results[0]["summary"]
 
     def display_ddg(self, sess: Session):
         if not can_use_gui(self.bus):
