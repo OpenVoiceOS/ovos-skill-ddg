@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a3...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a4...HEAD)
+
+**Implemented enhancements:**
+
+- refactor/adjust scores [\#23](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/23) ([JarbasAl](https://github.com/JarbasAl))
+
+## [V0.0.2a4](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a4) (2024-01-12)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a3...V0.0.2a4)
 
 **Merged pull requests:**
 
