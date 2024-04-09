@@ -1,7 +1,7 @@
 # <img src='./res/icon/ddg.png' card_color='#de5833' width='50' height='50' style='vertical-align:bottom'/> DuckDuckGo
 Use DuckDuckGo to answer questions
 
-![](./ui/logo.png)
+![](res/logo.png)
 
 
 ## About
