@@ -95,7 +95,10 @@ class DuckDuckGoSolver(QuestionSolver):
             "died.intent",
             "children.intent",
             "alma_mater.intent",
-            "age_at_death.intent"
+            "age_at_death.intent",
+            "education.intent",
+            "fields.intent",
+            "thesis.intent"
         ]
         for lang in os.listdir(f"{os.path.dirname(__file__)}/locale"):
             for fn in files:
