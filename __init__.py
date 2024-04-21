@@ -10,89 +10,111 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os.path
 
 import requests
-import simplematch
 from ovos_bus_client.session import Session, SessionManager
-from ovos_classifiers.heuristics.keyword_extraction import HeuristicExtractor
+from ovos_config import Configuration
+from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_utils import classproperty
 from ovos_utils.gui import can_use_gui
+from ovos_utils.log import LOG
 from ovos_utils.process_utils import RuntimeRequirements
-
-from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.intents import IntentBuilder
 from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
-
-
-class DDGIntents:
-
-    # TODO use padacioso and allow localization with .intent files
-
-    @staticmethod
-    def match(query, lang):
-        if not lang.startswith("en"):
-            return None, None
-
-        query = query.lower()
-
-        # known for
-        match = simplematch.match("what is {query} known for", query) or \
-                simplematch.match("what is {query} famous for", query)
-        if match:
-            return match["query"], "known for"
-
-        # resting place
-        match = simplematch.match("where is {query} resting place*", query) or \
-                simplematch.match("where is {query} resting buried*", query)
-        if match:
-            return match["query"], "resting place"
-
-        # birthday
-        match = simplematch.match("when was {query} born*", query) or \
-                simplematch.match("when is {query} birth*", query)
-        if match:
-            return match["query"], "born"
-
-        # death
-        match = simplematch.match("when was {query} death*", query) or \
-                simplematch.match("when did {query} die*", query) or \
-                simplematch.match("what was {query} *death", query) or \
-                simplematch.match("what is {query} *death", query)
-
-        if match:
-            return match["query"], "died"
-
-        # children
-        match = simplematch.match("how many children did {query} have*",
-                                  query) or \
-                simplematch.match("how many children does {query} have*",
-                                  query)
-        if match:
-            return match["query"], "children"
-
-        # alma mater
-        match = simplematch.match("what is {query} alma mater", query) or \
-                simplematch.match("where did {query} study*", query)
-        if match:
-            return match["query"], "alma mater"
-
-        return None, None
+from padacioso import IntentContainer
+from padacioso.bracket_expansion import expand_parentheses
+from quebra_frases import sentence_tokenize
 
 
 class DuckDuckGoSolver(QuestionSolver):
-    enable_tx = True
     priority = 75
+    enable_tx = True
+    kw_matchers = {}
 
     def __init__(self, config=None):
         config = config or {}
         config["lang"] = "en"  # only supports english
         super().__init__(config)
+        self.register_from_file()
 
-    def extract_keyword(self, query, lang="en"):
-        # TODO - from mycroft.conf
-        keyword_extractor = HeuristicExtractor()
-        return keyword_extractor.extract_subject(query, lang)
+    # utils to extract keyword from text
+    @classmethod
+    def register_kw_extractors(cls, samples: list, lang: str):
+        lang = lang.split("-")[0]
+        if lang not in cls.kw_matchers:
+            cls.kw_matchers[lang] = IntentContainer()
+        cls.kw_matchers[lang].add_intent("question", samples)
+
+    @classmethod
+    def extract_keyword(cls, utterance: str, lang: str):
+        lang = lang.split("-")[0]
+        if lang not in cls.kw_matchers:
+            return None
+        matcher: IntentContainer = cls.kw_matchers[lang]
+        match = matcher.calc_intent(utterance)
+        kw = match.get("entities", {}).get("keyword")
+        if kw:
+            LOG.debug(f"DDG Keyword: {kw} - Confidence: {match['conf']}")
+        else:
+            LOG.debug(f"Could not extract search keyword for '{lang}' from '{utterance}'")
+        return kw or utterance
+
+    @classmethod
+    def register_infobox_intent(cls, key: str, samples: list, lang: str):
+        lang = lang.split("-")[0]
+        if lang not in cls.kw_matchers:
+            cls.kw_matchers[lang] = IntentContainer()
+        cls.kw_matchers[lang].add_intent(key, samples)
+
+    @classmethod
+    def match_infobox_intent(cls, utterance: str, lang: str):
+        lang = lang.split("-")[0]
+        if lang not in cls.kw_matchers:
+            return None, utterance
+        matcher: IntentContainer = cls.kw_matchers[lang]
+        match = matcher.calc_intent(utterance)
+        kw = match.get("entities", {}).get("keyword")
+        intent = None
+        if kw:
+            intent = match["name"]
+            LOG.debug(f"DDG Intent: {intent} Keyword: {kw} - Confidence: {match['conf']}")
+        else:
+            LOG.debug(f"Could not match intent for '{lang}' from '{utterance}'")
+        return intent, kw or utterance
+
+    @classmethod
+    def register_from_file(cls):
+        """internal padacioso intents for kw extraction"""
+        files = [
+            "query.intent",
+            "known_for.intent",
+            "resting_place.intent",
+            "born.intent",
+            "died.intent",
+            "children.intent",
+            "alma_mater.intent"
+        ]
+        for lang in os.listdir(f"{os.path.dirname(__file__)}/locale"):
+            for fn in files:
+                filename = f"{os.path.dirname(__file__)}/locale/{lang}/{fn}"
+                if not os.path.isfile(filename):
+                    LOG.warning(f"{filename} not found for '{lang}'")
+                    continue
+                samples = []
+                with open(filename) as f:
+                    for l in f.read().split("\n"):
+                        if not l.strip() or l.startswith("#"):
+                            continue
+                        if "(" in l:
+                            samples += expand_parentheses(l)
+                        else:
+                            samples.append(l)
+                if fn == "query.intent":
+                    cls.register_kw_extractors(samples, lang)
+                else:
+                    cls.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
     def get_infobox(self, query, context=None):
         data = self.extract_and_search(query, context)  # handles translation
@@ -109,23 +131,21 @@ class DuckDuckGoSolver(QuestionSolver):
         """
         extract search term from query and perform search
         """
-        query, context, lang = self._tx_query(query, context)
-
         # match the full query
         data = self.get_data(query, context)
         if data:
             return data
 
         # extract the best keyword with some regexes or fallback to RAKE
+        lang = context.get("lang", "en-us")
         kw = self.extract_keyword(query, lang)
         return self.get_data(kw, context)
 
     # officially exported Solver methods
-    def get_data(self, query, context):
-        """
-        query assured to be in self.default_lang
-        return a dict response
-        """
+    def get_data(self, query: str, context: dict):
+        context = context or {}
+        # TODO - support units config, manual conversion (?)
+        units = context.get("units") or Configuration().get("system_unit", "metric")
         # duck duck go api request
         try:
             data = requests.get("https://api.duckduckgo.com",
@@ -136,31 +156,22 @@ class DuckDuckGoSolver(QuestionSolver):
         return data
 
     def get_image(self, query, context=None):
-        """
-        query assured to be in self.default_lang
-        return path/url to a single image to acompany spoken_answer
-        """
         data = self.extract_and_search(query, context)
-        image = data.get("Image") or \
-                "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
+        image = data.get("Image") or f"{os.path.dirname(__file__)}/logo.png"
         if image.startswith("/"):
             image = "https://duckduckgo.com" + image
         return image
 
     def get_spoken_answer(self, query, context=None):
-        """
-        query assured to be in self.default_lang
-        return a single sentence text response
-        """
-
+        context = context or {}
+        lang = context.get("lang", "en-us")
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
-        selected, key = DDGIntents.match(query, self.default_lang)
+        intent, query = self.match_infobox_intent(query, lang)
 
-        if key:
-            selected = self.extract_keyword(selected, self.default_lang)
-            infobox = self.get_infobox(selected, context)[0] or {}
-            answer = infobox.get(key)
+        if intent not in ["question"]:
+            infobox = self.get_infobox(query, context)[0] or {}
+            answer = infobox.get(intent)
             if answer:
                 return answer
 
@@ -186,7 +197,7 @@ class DuckDuckGoSolver(QuestionSolver):
             "title": query,
             "summary": s,
             "img": img
-        } for s in self.sentence_split(data.get("AbstractText", ""), -1) if s]
+        } for s in sentence_tokenize(data.get("AbstractText", "")) if s]
 
         infobox, _ = self.get_infobox(query)
         steps += [{"title": k,
@@ -205,6 +216,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
     @classproperty
     def runtime_requirements(self):
+        """this skill requires internet"""
         return RuntimeRequirements(internet_before_load=True,
                                    network_before_load=True,
                                    gui_before_load=False,
@@ -229,7 +241,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             "image": None,
         }
 
-        summary = self.ask_the_duck(query, self.lang)
+        summary = self.ask_the_duck(sess)
         if summary:
             self.speak_result(sess)
         else:
@@ -267,8 +279,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
     def CQS_action(self, phrase, data):
         """ If selected show gui """
         sess = SessionManager.get()
-        if sess in self.session_results:
-            self.display_wiki_entry()
         self.display_ddg(sess)
 
     # duck duck go api
@@ -283,7 +293,8 @@ class DuckDuckGoSkill(CommonQuerySkill):
             DuckDuckGoSolver.enable_tx = True
 
         query = self.session_results[sess.session_id]["query"]
-        results = self.duck.long_answer(query, lang=sess.lang)
+        results = self.duck.long_answer(query, context={"lang": sess.lang,
+                                                        "units": self.system_unit})
         self.session_results[sess.session_id]["results"] = results
         if results:
             self.set_context("DuckKnows", query)
@@ -297,9 +308,12 @@ class DuckDuckGoSkill(CommonQuerySkill):
             query = self.session_results[sess.session_id].get("query")
             results = self.session_results[sess.session_id]["results"]
             summary = results[idx]["summary"]
-            image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query)
+            image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query,
+                                                                                              context={
+                                                                                                  "lang": sess.lang,
+                                                                                                  "units": self.system_unit})
             title = self.session_results[sess.session_id].get("title") or "DuckDuckGo"
-            image = image or "https://github.com/JarbasSkills/skill-ddg/raw/master/ui/logo.png"
+            image = image or f"{os.path.dirname(__file__)}/logo.png"
             if image.startswith("/"):
                 image = "https://duckduckgo.com" + image
             self.gui['summary'] = summary or ""

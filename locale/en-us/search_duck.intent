@@ -1,8 +1,8 @@
-search duck duck go for {query}
-search duck duck for {query}
-ask the duck duck about {query}
-ask the duck duck go about {query}
-what does duck duck go say about {query}
-what does duck duck say about {query}
-search the duck for {query}
-what does the duck say about {query}
+search duck duck go for {keyword}
+search duck duck for {keyword}
+ask the duck duck about {keyword}
+ask the duck duck go about {keyword}
+what does duck duck go say about {keyword}
+what does duck duck say about {keyword}
+search the duck for {keyword}
+what does the duck say about {keyword}
