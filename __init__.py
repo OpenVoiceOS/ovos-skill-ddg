@@ -66,7 +66,7 @@ class DuckDuckGoSolver(QuestionSolver):
         lang = lang.split("-")[0]
         if lang not in cls.kw_matchers:
             cls.kw_matchers[lang] = IntentContainer()
-        cls.kw_matchers[lang].add_intent(key, samples)
+        cls.kw_matchers[lang].add_intent(key.split(".intent")[0], samples)
 
     @classmethod
     def match_infobox_intent(cls, utterance: str, lang: str):
@@ -86,7 +86,7 @@ class DuckDuckGoSolver(QuestionSolver):
 
     @classmethod
     def register_from_file(cls):
-        """internal padacioso intents for kw extraction"""
+        """internal padacioso intents for ddg"""
         files = [
             "query.intent",
             "known_for.intent",
@@ -94,7 +94,8 @@ class DuckDuckGoSolver(QuestionSolver):
             "born.intent",
             "died.intent",
             "children.intent",
-            "alma_mater.intent"
+            "alma_mater.intent",
+            "age_at_death.intent"
         ]
         for lang in os.listdir(f"{os.path.dirname(__file__)}/locale"):
             for fn in files:
@@ -117,6 +118,7 @@ class DuckDuckGoSolver(QuestionSolver):
                     cls.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
     def get_infobox(self, query, context=None):
+        time_keys = ["died", "born"]
         data = self.extract_and_search(query, context)  # handles translation
         # parse infobox
         related_topics = [t.get("Text") for t in data.get("RelatedTopics", [])]
@@ -124,7 +126,11 @@ class DuckDuckGoSolver(QuestionSolver):
         infodict = data.get("Infobox") or {}
         for entry in infodict.get("content", []):
             k = entry["label"].lower().strip()
-            infobox[k] = entry["value"]
+            v = entry["value"]
+            if k in time_keys:
+                infobox[k] = v["time"]  # TODO - datetime object
+            else:
+                infobox[k] = v
         return infobox, related_topics
 
     def extract_and_search(self, query, context=None):
@@ -386,7 +392,47 @@ if __name__ == "__main__":
         # https://duckduckgo.com/i/ea7be744.jpg
 
     # bidirectional auto translate by passing lang context
-    sentence = d.spoken_answer("Quem é Isaac Newton",
-                               context={"lang": "pt"})
-    print(sentence)
+    #sentence = d.spoken_answer("Quem é Stephen Hawking",
+    #                           context={"lang": "pt"})
+   # print(sentence)
     # Sir Isaac Newton foi um matemático inglês, físico, astrônomo, alquimista, teólogo e autor amplamente reconhecido como um dos maiores matemáticos e físicos de todos os tempos e entre os cientistas mais influentes. Ele era uma figura chave na revolução filosófica conhecida como o Iluminismo. Seu livro Philosophiæ Naturalis Principia Mathematica, publicado pela primeira vez em 1687, estabeleceu a mecânica clássica. Newton também fez contribuições seminais para a óptica, e compartilha crédito com o matemático alemão Gottfried Wilhelm Leibniz para desenvolver cálculo infinitesimal. No Principia, Newton formulou as leis do movimento e da gravitação universal que formaram o ponto de vista científico dominante até ser superado pela teoria da relatividade
+
+    info = d.get_infobox("Stephen Hawking")[0]
+    from pprint import pprint
+    pprint(info)
+    # {'age at death': '76 years',
+    #  'born': {'after': 0,
+    #           'before': 0,
+    #           'calendarmodel': 'http://www.wikidata.org/entity/Q1985727',
+    #           'precision': 11,
+    #           'time': '+1942-01-08T00:00:00Z',
+    #           'timezone': 0},
+    #  'children': '3, including Lucy',
+    #  'died': {'after': 0,
+    #           'before': 0,
+    #           'calendarmodel': 'http://www.wikidata.org/entity/Q1985727',
+    #           'precision': 11,
+    #           'time': '+2018-03-14T00:00:00Z',
+    #           'timezone': 0},
+    #  'education': 'University College, Oxford (BA), Trinity Hall, Cambridge (PhD)',
+    #  'facebook profile': 'stephenhawking',
+    #  'fields': 'General relativity, quantum gravity',
+    #  'imdb id': 'nm0370071',
+    #  'instance of': {'entity-type': 'item', 'id': 'Q5', 'numeric-id': 5},
+    #  'institutions': 'University of Cambridge, California Institute of Technology, '
+    #                  'Perimeter Institute for Theoretical Physics',
+    #  'official website': 'https://hawking.org.uk',
+    #  'other academic advisors': 'Robert Berman',
+    #  'resting place': 'Westminster Abbey',
+    #  'rotten tomatoes id': 'celebrity/stephen_hawking',
+    #  'thesis': 'Properties of Expanding Universes (1966)',
+    #  'wikidata aliases': ['Stephen Hawking',
+    #                       'Hawking',
+    #                       'Stephen William Hawking',
+    #                       'S. W. Hawking',
+    #                       'stephen'],
+    #  'wikidata description': 'British theoretical physicist, cosmologist and '
+    #                          'author (1942–2018)',
+    #  'wikidata id': 'Q17714',
+    #  'wikidata label': 'Stephen Hawking',
+    #  'youtube channel': 'UCPyd4mR0p8zHd8Z0HvHc0fw'}
