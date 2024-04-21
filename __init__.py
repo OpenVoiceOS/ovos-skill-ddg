@@ -98,7 +98,8 @@ class DuckDuckGoSolver(QuestionSolver):
             "age_at_death.intent",
             "education.intent",
             "fields.intent",
-            "thesis.intent"
+            "thesis.intent",
+            "official_website.intent"
         ]
         for lang in os.listdir(f"{os.path.dirname(__file__)}/locale"):
             for fn in files:
@@ -239,7 +240,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
     # intents
     @intent_handler("search_duck.intent")
     def handle_search(self, message):
-        query = message.data["query"]
+        query = message.data["keyword"]
 
         sess = SessionManager.get(message)
         self.session_results[sess.session_id] = {
