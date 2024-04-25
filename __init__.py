@@ -12,6 +12,7 @@
 #
 import os.path
 
+import datetime
 import requests
 from ovos_bus_client.session import Session, SessionManager
 from ovos_config import Configuration
@@ -26,6 +27,7 @@ from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLe
 from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
 from quebra_frases import sentence_tokenize
+from lingua_franca.format import nice_date
 
 
 class DuckDuckGoSolver(QuestionSolver):
@@ -131,10 +133,14 @@ class DuckDuckGoSolver(QuestionSolver):
         for entry in infodict.get("content", []):
             k = entry["label"].lower().strip()
             v = entry["value"]
-            if k in time_keys:
-                infobox[k] = v["time"]  # TODO - datetime object
-            else:
-                infobox[k] = v
+            try:
+                if k in time_keys and "time" in v:
+                    dt = datetime.datetime.strptime(v["time"], "+%Y-%m-%dT%H:%M:%SZ")
+                    infobox[k] = nice_date(dt, lang=self.default_lang)
+                else:
+                    infobox[k] = v
+            except:  # probably a LF error
+                continue
         return infobox, related_topics
 
     def extract_and_search(self, query, context=None):
@@ -359,6 +365,11 @@ class DuckDuckGoSkill(CommonQuerySkill):
 
 
 if __name__ == "__main__":
+    from ovos_utils.fakebus import FakeBus
+    from ovos_config.locale import setup_locale
+    setup_locale()
+    s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
+    s.CQS_match_query_phrase("who is Stephen Hawking")
 
     d = DuckDuckGoSolver()
 
