@@ -207,8 +207,24 @@ class DuckDuckGoSolver(QuestionSolver):
         }
         :return:
         """
-        data = self.get_data(query, context)
         img = self.get_image(query, context)
+
+        context = context or {}
+        lang = context.get("lang", "en-us")
+        # match an infobox field with some basic regexes
+        # (primitive intent parsing)
+        intent, query = self.match_infobox_intent(query, lang)
+        if intent not in ["question"]:
+            infobox = self.get_infobox(query, context)[0] or {}
+            answer = infobox.get(intent)
+            if answer:
+                return [{
+                    "title": query,
+                    "summary": answer,
+                    "img": img
+                }]
+
+        data = self.get_data(query, context)
         steps = [{
             "title": query,
             "summary": s,
@@ -369,8 +385,8 @@ if __name__ == "__main__":
     from ovos_config.locale import setup_locale
     setup_locale()
     s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
-    s.CQS_match_query_phrase("who is Stephen Hawking")
-
+    s.CQS_match_query_phrase("when was Stephen Hawking born")
+    exit()
     d = DuckDuckGoSolver()
 
     query = "who is Isaac Newton"
