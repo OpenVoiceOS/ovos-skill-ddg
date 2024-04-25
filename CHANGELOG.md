@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a4...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a5...HEAD)
+
+**Implemented enhancements:**
+
+- feat/infobox\_intents [\#24](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/24) ([JarbasAl](https://github.com/JarbasAl))
+
+## [V0.0.2a5](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a5) (2024-01-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a4...V0.0.2a5)
 
 **Implemented enhancements:**
 
