@@ -1,0 +1,19 @@
+{
+    "search_duck.intent": [
+        "(cerca|busca|consulta|demana) a (duck duck go|ddg|de de ge|l'\u00e0nec) {query}",
+        "(cerca|busca|consulta|demana) {query} a (duck duck go|ddg|de de ge|l'\u00e0nec)",
+        "(cercar|buscar|consultar|demanar) a (duck duck go|ddg|de de ge|l'\u00e0nec) {query}",
+        "(cercar|buscar|consultar|demanar) {query} a (duck duck go|ddg|de de ge|l'\u00e0nec)",
+        "qu\u00e8 diu (duck duck go|ddg|de de ge|l'\u00e0nec) (sobre|de) {query}",
+        "qu\u00e8 posa a (duck duck go|ddg|de de ge|l'\u00e0nec) (sobre|de) {query}"
+    ],
+    "who.intent": [
+        "qui \u00e9s {person}"
+    ],
+    "birthdate.intent": [
+        "quan va n\u00e9ixer {person}",
+        "quan va n\u00e0ixer {person}",
+        "(quan|quin) \u00e9s l'aniversari (de |d'){person}",
+        "quina \u00e9s la data de naixement (de |d'){person}"
+    ]
+}

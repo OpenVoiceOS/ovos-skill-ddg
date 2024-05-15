@@ -1,0 +1,23 @@
+{
+    "search_duck.intent": [
+        "Procurar pato para {query}",
+        "o que pato pato vai dizer sobre {query}",
+        "o que o pato diz sobre {query}",
+        "perguntar ao pato sobre {query}",
+        "procurar pato pato ir para {query}",
+        "perguntar ao pato ir sobre {query}",
+        "Procurar o pato para {query}"
+    ],
+    "who.intent": [
+        "Quem \u00e9 que \u00e9"
+    ],
+    "birthdate.intent": [
+        "o que \u00e9 {pessoa} data de nascimento",
+        "quando foi nascido",
+        "o que \u00e9 {pessoa} anivers\u00e1rio",
+        "quando nasceu {person}"
+    ],
+    "search_wolfie.intent": [
+        "pergunta ao pato {query}"
+    ]
+}

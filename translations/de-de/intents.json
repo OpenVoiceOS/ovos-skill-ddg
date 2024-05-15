@@ -1,0 +1,21 @@
+{
+    "search_duck.intent": [
+        "Suche Ente Ente Ente f\u00fcr {query}",
+        "fragen Sie die Enten Ente gehen \u00fcber {query}",
+        "was macht Enten Ente sagen \u00fcber {query}",
+        "was sagt die Ente \u00fcber {query}",
+        "was sagt Enten Ente \u00fcber {query}",
+        "Suche nach {query}",
+        "Suche Enten Ente gehen nach {query}",
+        "fragen Sie die Enten Ente \u00fcber {query}"
+    ],
+    "who.intent": [
+        "wer ist {person}"
+    ],
+    "birthdate.intent": [
+        "als {person} geboren wurde",
+        "was ist {person} Geburtstag",
+        "als geboren wurde {person}",
+        "was ist {person} Geburtsdatum"
+    ]
+}

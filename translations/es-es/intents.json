@@ -1,0 +1,20 @@
+{
+    "search_duck.intent": [
+        "Preg\u00fantale al pato sobre {query}",
+        "b\u00fasqueda de pato para {query}",
+        "buscar el pato para {query}",
+        "\u00bfQu\u00e9 dice el pato del pato sobre {query}",
+        "\u00bfQu\u00e9 dice el pato sobre {query}",
+        "buscar pato de pato ir por {query}",
+        "Preg\u00fantale al pato de pato"
+    ],
+    "who.intent": [
+        "que es {persona}"
+    ],
+    "birthdate.intent": [
+        "\u00bfQu\u00e9 es el cumplea\u00f1os?",
+        "cuando naci\u00f3 {persona}",
+        "lo que es {persona} fecha de nacimiento",
+        "cuando naci\u00f3"
+    ]
+}

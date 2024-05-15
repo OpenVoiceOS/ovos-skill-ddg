@@ -1,0 +1,15 @@
+{
+    "search_duck.intent": [
+        "cerca sul web (per|) {query}",
+        "chiedi a duckduckgo {query}",
+        "che cosa dice il web su {query}"
+    ],
+    "who.intent": [
+        "chi \u00e8 {persona}"
+    ],
+    "birthdate.intent": [
+        "quando \u00e9 il compleanno di {persona}",
+        "qual'\u00e9 la data di nascita di {persona}",
+        "quando \u00e8 nat(a|o) {persona}"
+    ]
+}

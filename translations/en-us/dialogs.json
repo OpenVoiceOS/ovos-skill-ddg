@@ -1,0 +1,9 @@
+{
+    "thats all.dialog": [
+        "That's all I know",
+        "That's all I can find"
+    ],
+    "no_answer.dialog": [
+        "the duck does not know the answer"
+    ]
+}

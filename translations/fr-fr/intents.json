@@ -1,0 +1,20 @@
+{
+    "search_duck.intent": [
+        "cherche sur duck duck go au sujet de {query}",
+        "cherche sur duck duck au sujet de {query}",
+        "demande \u00e0 duck duck \u00e0 propos de {query}",
+        "demande \u00e0 duck duck go \u00e0 propos de {query}",
+        "que dit duck duck go \u00e0 propos de {query}",
+        "que dit duck duck \u00e0 propos de {query}",
+        "cherche sur duck au sujet de {query}",
+        "que dit duck \u00e0 propos de {query}"
+    ],
+    "who.intent": [
+        "qui est {person}"
+    ],
+    "birthdate.intent": [
+        "quand est n\u00e9 {person}",
+        "quelle est la date de naissance de {person}",
+        "quand {person} est n\u00e9"
+    ]
+}
