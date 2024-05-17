@@ -1,23 +1,77 @@
 {
-    "search_duck.intent": [
-        "Procurar pato para {query}",
-        "o que pato pato vai dizer sobre {query}",
-        "o que o pato diz sobre {query}",
-        "perguntar ao pato sobre {query}",
-        "procurar pato pato ir para {query}",
-        "perguntar ao pato ir sobre {query}",
-        "Procurar o pato para {query}"
-    ],
-    "who.intent": [
-        "Quem \u00e9 que \u00e9"
-    ],
-    "birthdate.intent": [
-        "o que \u00e9 {pessoa} data de nascimento",
-        "quando foi nascido",
-        "o que \u00e9 {pessoa} anivers\u00e1rio",
-        "quando nasceu {person}"
-    ],
-    "search_wolfie.intent": [
-        "pergunta ao pato {query}"
-    ]
+  "search_duck.intent": [
+    "Procura no pato {keyword}",
+    "o que diz o (duck duck go|pato) sobre {keyword}",
+    "pergunta ao pato {keyword}",
+    "(procura no|pergunta ao) (duck duck go|pato) sobre {keyword}",
+    "[UNUSED]",
+    "[UNUSED]",
+    "(procura|pesquisa) no duck duck go {keyword}",
+    "[UNUSED]"
+  ],
+  "born.intent": [
+    null,
+    null,
+    null
+  ],
+  "fields.intent": [
+    null
+  ],
+  "official_website.intent": [
+    null
+  ],
+  "resting_place.intent": [
+    null,
+    null
+  ],
+  "alma_mater.intent": [
+    null
+  ],
+  "who.intent": [
+    "Quem é (que é|) {person}"
+  ],
+  "known_for.intent": [
+    "pelo que é {keyword} (conhecida|conhecido)",
+    null
+  ],
+  "birthdate.intent": [
+    "quando nasceu {person}",
+    "quando é o aniversário (da|do|de) {person}",
+    "quando é que {person} faz anos",
+    "quando nasceu {person}"
+  ],
+  "died.intent": [
+    "quando foi a morte de {keyword}",
+    "quando morreu (o|a|) {keyword}",
+    "(dia|data) da morte (do|da|de) {keyword}"
+  ],
+  "query.intent": [
+    "(diz-me|conta-me|fala-me) sobre {keyword}",
+    "o que é {keyword}",
+    "quem (é|era|foi) {keyword}",
+    "o que sabes sobre {keyword}",
+    "(quero|procuro|dá-me) (informações|informação) sobre {keyword}",
+    "Estou curioso sobre {keyword}",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "children.intent": [
+    "quantos filhos (tinha|teve|tem) {keyword}"
+  ],
+  "age_at_death.intent": [
+    "quantos anos tinha {keyword} (quando morreu|na sua morte|a data da morte)",
+    null,
+    "quantos anos tinha {keyword} no dia em que morreu"
+  ],
+  "thesis.intent": [
+    null
+  ],
+  "education.intent": [
+    "onde estudou {keyword}",
+    "onde obteve {keyword} a (sua|) educação"
+  ]
 }
