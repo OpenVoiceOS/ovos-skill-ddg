@@ -124,6 +124,7 @@ class DuckDuckGoSolver(QuestionSolver):
                     cls.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
     def get_infobox(self, query, context=None):
+        context = context or {}
         time_keys = ["died", "born"]
         data = self.extract_and_search(query, context)  # handles translation
         # parse infobox
@@ -147,12 +148,14 @@ class DuckDuckGoSolver(QuestionSolver):
         """
         extract search term from query and perform search
         """
+        context = context or {}
+        
         # match the full query
         data = self.get_data(query, context)
         if data:
             return data
 
-        # extract the best keyword with some regexes or fallback to RAKE
+        # extract the best keyword
         lang = context.get("lang", "en-us")
         kw = self.extract_keyword(query, lang)
         return self.get_data(kw, context)
@@ -172,6 +175,7 @@ class DuckDuckGoSolver(QuestionSolver):
         return data
 
     def get_image(self, query, context=None):
+        context = context or {}
         data = self.extract_and_search(query, context)
         image = data.get("Image") or f"{os.path.dirname(__file__)}/logo.png"
         if image.startswith("/"):
