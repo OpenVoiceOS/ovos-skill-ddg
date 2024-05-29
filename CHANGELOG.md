@@ -2,7 +2,23 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a5...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a6...HEAD)
+
+**Fixed bugs:**
+
+- fix/none\_type [\#27](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/27) ([JarbasAl](https://github.com/JarbasAl))
+
+**Closed issues:**
+
+- AttributeError: 'NoneType' object has no attribute 'get' [\#26](https://github.com/OpenVoiceOS/skill-ovos-ddg/issues/26)
+
+**Merged pull requests:**
+
+- pt-pt/translate [\#25](https://github.com/OpenVoiceOS/skill-ovos-ddg/pull/25) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
+## [V0.0.2a6](https://github.com/OpenVoiceOS/skill-ovos-ddg/tree/V0.0.2a6) (2024-04-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-ddg/compare/V0.0.2a5...V0.0.2a6)
 
 **Implemented enhancements:**
 
