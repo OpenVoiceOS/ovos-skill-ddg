@@ -10,10 +10,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os.path
-
 import datetime
+import os.path
+from typing import Optional, List, Tuple, Dict, Any
+
 import requests
+from lingua_franca.format import nice_date
 from ovos_bus_client.session import Session, SessionManager
 from ovos_config import Configuration
 from ovos_plugin_manager.templates.solvers import QuestionSolver
@@ -27,30 +29,44 @@ from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLe
 from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
 from quebra_frases import sentence_tokenize
-from lingua_franca.format import nice_date
 
 
 class DuckDuckGoSolver(QuestionSolver):
     priority = 75
     enable_tx = True
-    kw_matchers = {}
+    kw_matchers: Dict[str, IntentContainer] = {}
 
-    def __init__(self, config=None):
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
         config = config or {}
-        config["lang"] = "en"  # only supports english
+        config["lang"] = "en"  # only supports English
         super().__init__(config)
         self.register_from_file()
 
     # utils to extract keyword from text
     @classmethod
-    def register_kw_extractors(cls, samples: list, lang: str):
+    def register_kw_extractors(cls, samples: List[str], lang: str) -> None:
+        """Register keyword extractors for a given language.
+
+        Args:
+            samples: A list of keyword extraction samples.
+            lang: Language code.
+        """
         lang = lang.split("-")[0]
         if lang not in cls.kw_matchers:
             cls.kw_matchers[lang] = IntentContainer()
         cls.kw_matchers[lang].add_intent("question", samples)
 
     @classmethod
-    def extract_keyword(cls, utterance: str, lang: str):
+    def extract_keyword(cls, utterance: str, lang: str) -> Optional[str]:
+        """Extract keywords from an utterance in a given language.
+
+        Args:
+            utterance: The utterance from which to extract keywords.
+            lang: Language code.
+
+        Returns:
+            The extracted keyword, or the original utterance if no keyword is found.
+        """
         lang = lang.split("-")[0]
         if lang not in cls.kw_matchers:
             return None
@@ -64,14 +80,30 @@ class DuckDuckGoSolver(QuestionSolver):
         return kw or utterance
 
     @classmethod
-    def register_infobox_intent(cls, key: str, samples: list, lang: str):
+    def register_infobox_intent(cls, key: str, samples: List[str], lang: str) -> None:
+        """Register infobox intents for a given language.
+
+        Args:
+            key: The key identifying the intent.
+            samples: A list of intent samples.
+            lang: Language code.
+        """
         lang = lang.split("-")[0]
         if lang not in cls.kw_matchers:
             cls.kw_matchers[lang] = IntentContainer()
         cls.kw_matchers[lang].add_intent(key.split(".intent")[0], samples)
 
     @classmethod
-    def match_infobox_intent(cls, utterance: str, lang: str):
+    def match_infobox_intent(cls, utterance: str, lang: str) -> Tuple[Optional[str], str]:
+        """Match infobox intents in an utterance.
+
+        Args:
+            utterance: The utterance to match intents from.
+            lang: Language code.
+
+        Returns:
+            A tuple of the matched intent and the extracted keyword or original utterance.
+        """
         lang = lang.split("-")[0]
         if lang not in cls.kw_matchers:
             return None, utterance
@@ -87,8 +119,8 @@ class DuckDuckGoSolver(QuestionSolver):
         return intent, kw or utterance
 
     @classmethod
-    def register_from_file(cls):
-        """internal padacioso intents for ddg"""
+    def register_from_file(cls) -> None:
+        """Register internal Padacioso intents for DuckDuckGo."""
         files = [
             "query.intent",
             "known_for.intent",
@@ -123,10 +155,21 @@ class DuckDuckGoSolver(QuestionSolver):
                 else:
                     cls.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
-    def get_infobox(self, query, context=None):
-        context = context or {}
+    def get_infobox(self, query: str,
+                    lang: Optional[str] = None,
+                    units: Optional[str] = None) -> Tuple[Dict[str, Any], List[str]]:
+        """Retrieve infobox information and related topics for a query.
+
+        Args:
+            query: The search query.
+            lang: Language code.
+            units: Unit system (e.g., 'metric').
+
+        Returns:
+            A tuple of infobox data and related topics.
+        """
         time_keys = ["died", "born"]
-        data = self.extract_and_search(query, context)  # handles translation
+        data = self.extract_and_search(query, lang=lang, units=units)  # handles translation
         # parse infobox
         related_topics = [t.get("Text") for t in data.get("RelatedTopics", [])]
         infobox = {}
@@ -144,27 +187,42 @@ class DuckDuckGoSolver(QuestionSolver):
                 continue
         return infobox, related_topics
 
-    def extract_and_search(self, query, context=None):
+    def extract_and_search(self, query: str,
+                           lang: Optional[str] = None,
+                           units: Optional[str] = None) -> Dict[str, Any]:
+        """Extract search term from query and perform search.
+
+        Args:
+            query: The search query.
+            lang: Language code.
+            units: Unit system (e.g., 'metric').
+
+        Returns:
+            The search result data.
         """
-        extract search term from query and perform search
-        """
-        context = context or {}
-        
         # match the full query
-        data = self.get_data(query, context)
+        data = self.get_data(query, lang, units)
         if data:
             return data
 
         # extract the best keyword
-        lang = context.get("lang", "en-us")
-        kw = self.extract_keyword(query, lang)
-        return self.get_data(kw, context)
+        kw = self.extract_keyword(query, lang=lang)
+        return self.get_data(kw, lang=lang, units=units)
 
-    # officially exported Solver methods
-    def get_data(self, query: str, context: dict):
-        context = context or {}
-        # TODO - support units config, manual conversion (?)
-        units = context.get("units") or Configuration().get("system_unit", "metric")
+    def get_data(self, query: str,
+                 lang: Optional[str] = None,
+                 units: Optional[str] = None) -> Dict[str, Any]:
+        """Retrieve data from DuckDuckGo API.
+
+        Args:
+            query: The search query.
+            lang: Language code.
+            units: Unit system (e.g., 'metric').
+
+        Returns:
+            The search result data.
+        """
+        units = units or Configuration().get("system_unit", "metric")
         # duck duck go api request
         try:
             data = requests.get("https://api.duckduckgo.com",
@@ -174,32 +232,56 @@ class DuckDuckGoSolver(QuestionSolver):
             return {}
         return data
 
-    def get_image(self, query, context=None):
-        context = context or {}
-        data = self.extract_and_search(query, context)
+    def get_image(self, query: str,
+                  lang: Optional[str] = None,
+                  units: Optional[str] = None) -> str:
+        """Retrieve image URL for a query.
+
+        Args:
+            query: The search query.
+            lang: Language code.
+            units: Unit system (e.g., 'metric').
+
+        Returns:
+            The image URL.
+        """
+        data = self.extract_and_search(query, lang, units)
         image = data.get("Image") or f"{os.path.dirname(__file__)}/logo.png"
         if image.startswith("/"):
             image = "https://duckduckgo.com" + image
         return image
 
-    def get_spoken_answer(self, query, context=None):
-        context = context or {}
-        lang = context.get("lang", "en-us")
+    def get_spoken_answer(self, query: str,
+                          lang: Optional[str] = None,
+                          units: Optional[str] = None) -> str:
+        """Retrieve spoken answer for a query.
+
+        Args:
+            query: The search query.
+            lang: Language code.
+            units: Unit system (e.g., 'metric').
+
+        Returns:
+            The spoken answer.
+        """
+        lang = lang or Configuration().get("lang", "en-us")
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
-        intent, query = self.match_infobox_intent(query, lang)
+        intent, query = self.match_infobox_intent(query, lang=lang)
 
         if intent not in ["question"]:
-            infobox = self.get_infobox(query, context)[0] or {}
+            infobox = self.get_infobox(query, lang=lang, units=units)[0] or {}
             answer = infobox.get(intent)
             if answer:
                 return answer
 
         # return summary
-        data = self.extract_and_search(query, context)
+        data = self.extract_and_search(query, lang=lang, units=units)
         return data.get("AbstractText")
 
-    def get_expanded_answer(self, query, context=None):
+    def get_expanded_answer(self, query: str,
+                            lang: Optional[str] = None,
+                            units: Optional[str] = None) -> List[Dict[str, str]]:
         """
         query assured to be in self.default_lang
         return a list of ordered steps to expand the answer, eg, "tell me more"
@@ -211,15 +293,13 @@ class DuckDuckGoSolver(QuestionSolver):
         }
         :return:
         """
-        img = self.get_image(query, context)
-
-        context = context or {}
-        lang = context.get("lang", "en-us")
+        img = self.get_image(query, lang=lang, units=units)
+        lang = lang or Configuration().get("lang", "en-us")
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
         intent, query = self.match_infobox_intent(query, lang)
         if intent not in ["question"]:
-            infobox = self.get_infobox(query, context)[0] or {}
+            infobox = self.get_infobox(query, lang=lang, units=units)[0] or {}
             answer = infobox.get(intent)
             if answer:
                 return [{
@@ -228,7 +308,7 @@ class DuckDuckGoSolver(QuestionSolver):
                     "img": img
                 }]
 
-        data = self.get_data(query, context)
+        data = self.get_data(query, lang=lang, units=units)
         steps = [{
             "title": query,
             "summary": s,
@@ -329,8 +409,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
             DuckDuckGoSolver.enable_tx = True
 
         query = self.session_results[sess.session_id]["query"]
-        results = self.duck.long_answer(query, context={"lang": sess.lang,
-                                                        "units": self.system_unit})
+        results = self.duck.long_answer(query, lang=sess.lang, units=sess.system_unit)
         self.session_results[sess.session_id]["results"] = results
         if results:
             self.set_context("DuckKnows", query)
@@ -345,9 +424,8 @@ class DuckDuckGoSkill(CommonQuerySkill):
             results = self.session_results[sess.session_id]["results"]
             summary = results[idx]["summary"]
             image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query,
-                                                                                              context={
-                                                                                                  "lang": sess.lang,
-                                                                                                  "units": self.system_unit})
+                                                                                              lang=sess.lang,
+                                                                                              units=sess.system_unit)
             title = self.session_results[sess.session_id].get("title") or "DuckDuckGo"
             image = image or f"{os.path.dirname(__file__)}/logo.png"
             if image.startswith("/"):
@@ -387,6 +465,7 @@ class DuckDuckGoSkill(CommonQuerySkill):
 if __name__ == "__main__":
     from ovos_utils.fakebus import FakeBus
     from ovos_config.locale import setup_locale
+
     setup_locale()
     s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
     s.CQS_match_query_phrase("when was Stephen Hawking born")
@@ -427,13 +506,14 @@ if __name__ == "__main__":
         # https://duckduckgo.com/i/ea7be744.jpg
 
     # bidirectional auto translate by passing lang context
-    #sentence = d.spoken_answer("Quem é Stephen Hawking",
+    # sentence = d.spoken_answer("Quem é Stephen Hawking",
     #                           context={"lang": "pt"})
-   # print(sentence)
+    # print(sentence)
     # Sir Isaac Newton foi um matemático inglês, físico, astrônomo, alquimista, teólogo e autor amplamente reconhecido como um dos maiores matemáticos e físicos de todos os tempos e entre os cientistas mais influentes. Ele era uma figura chave na revolução filosófica conhecida como o Iluminismo. Seu livro Philosophiæ Naturalis Principia Mathematica, publicado pela primeira vez em 1687, estabeleceu a mecânica clássica. Newton também fez contribuições seminais para a óptica, e compartilha crédito com o matemático alemão Gottfried Wilhelm Leibniz para desenvolver cálculo infinitesimal. No Principia, Newton formulou as leis do movimento e da gravitação universal que formaram o ponto de vista científico dominante até ser superado pela teoria da relatividade
 
     info = d.get_infobox("Stephen Hawking")[0]
     from pprint import pprint
+
     pprint(info)
     # {'age at death': '76 years',
     #  'born': {'after': 0,
