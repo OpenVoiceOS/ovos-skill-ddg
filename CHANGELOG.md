@@ -1,11 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/HEAD)
+## [0.1.0a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.0a2) (2024-10-07)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/V0.0.2...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/V0.0.2...0.1.0a2)
 
 **Merged pull requests:**
 
+- Add Catalan translation [\#31](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/31) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 - chore:automations [\#30](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/30) ([JarbasAl](https://github.com/JarbasAl))
 - it-it/vocs\_translation [\#29](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/29) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 
