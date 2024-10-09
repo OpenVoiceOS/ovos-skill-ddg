@@ -1,5 +1,3 @@
-# auto translated from en-us to ca-es
-{keyword} dia de la mort
-quan va morir {keyword}
-{keyword} data de la mort
-la mort
+quan (va morir|morí) {keyword}
+quan (va ser|fou) la mort de {keyword}
+{keyword} (dia|data) de la mort
