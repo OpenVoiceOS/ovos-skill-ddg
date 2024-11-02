@@ -1,77 +1,77 @@
 {
   "search_duck.intent": [
     "søg duck duck go efter {keyword}",
-    null,
+    "søg duck duck efter {keyword}",
     "spørg duck duck om {keyword}",
-    null,
-    null,
-    null,
+    "spørg duck duck om {keyword}",
+    "hvad siger duck duck go om {keyword}",
+    "hvad siger duck duck om {keyword}",
     "søg i duck duck efter {keyword}",
     "hvad siger duck duck om {keyword}"
   ],
   "born.intent": [
-    null,
-    null,
-    null
+    "hvornår blev {keyword} født",
+    "hvornår er {keyword} (fødselsdag|fødselsdag|fødselsdag)",
+    "{keyword} (dag|dato) for fødsel"
   ],
   "fields.intent": [
-    null
+    "hvad er {keyword} ekspertiseområde"
   ],
   "official_website.intent": [
-    null
+    "hvad er {keyword} officielle hjemmeside"
   ],
   "resting_place.intent": [
-    null,
+    "hvor er {keyword} hvilested",
     "hvor ligger {keyword} begravet"
   ],
   "alma_mater.intent": [
-    null
+    "hvad er {keyword} alma mater"
   ],
   "who.intent": [
-    null
+    "hvem er {person}"
   ],
   "known_for.intent": [
-    null,
-    null
+    "hvad er {keyword} kendt for",
+    "hvad er {keyword} berømt for"
   ],
   "birthdate.intent": [
-    null,
-    null,
-    null,
+    "hvornår blev {person} født",
+    "hvad er {person} fødselsdag",
+    "hvad er {person} fødselsdato",
     "hvornår blev {person} født"
   ],
   "died.intent": [
-    null,
-    null,
-    null
+    "hvornår var {keyword} død",
+    "hvornår døde {keyword}",
+    "{keyword} (dag|dato) for død"
   ],
   "query.intent": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "fortæl mig om {keyword}",
+    "hvad er {keyword}",
+    "hvem (er|var) {søgeord}",
+    "Hvad ved du om {keyword}",
+    "Giv mig oplysninger om {keyword}",
+    "Jeg er nysgerrig efter {keyword}",
+    "Jeg vil gerne vide mere om {keyword}",
+    "Jeg vil gerne vide mere om {keyword}",
+    "Kan du forklare, hvad {keyword} er",
+    "Kan du oplyse mig om {keyword}",
+    "Jeg søger detaljer om {keyword}",
+    "Kan du give detaljer om {keyword}"
   ],
   "children.intent": [
-    null
+    "hvor mange børn (har|har) {keyword} har"
   ],
   "age_at_death.intent": [
-    null,
-    null,
-    null
+    "hvor gammel var {keyword}, ​​da (han|hun) døde",
+    "hvor gammel var {keyword} ved hans død",
+    "hvor gammel var {keyword} den dag (han|hun) døde"
   ],
   "thesis.intent": [
-    null
+    "hvad er {keyword} specialeemne"
   ],
   "education.intent": [
-    null,
-    null
+    "hvor studerede {keyword}",
+    "hvor fik {keyword} (sin|hendes) uddannelse"
   ]
 }
