@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.4a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.4a1) (2024-11-02)
+## [0.1.5a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.5a1) (2024-11-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.3...0.1.4a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.4...0.1.5a1)
 
 **Merged pull requests:**
 
-- da-dk/translate [\#39](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/39) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- fix: gui resources path [\#41](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/41) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
