@@ -1,0 +1,16 @@
+{
+  "skill_id": "skill-ovos-ddg.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/skill-ovos-ddg",
+  "name": "DuckDuckGo",
+  "description": "Use DuckDuckGo to answer questions.",
+  "examples": [
+    "when was stephen hawking born",
+    "ask the duck about the big bang",
+    "who is elon musk"
+  ],
+  "tags": [
+    "duckduckgo",
+    "query",
+    "search-engine"
+  ]
+}

@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.5a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.5a1) (2024-11-04)
+## [0.1.6a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.6a1) (2024-11-15)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.4...0.1.5a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.5...0.1.6a1)
 
 **Merged pull requests:**
 
-- fix: gui resources path [\#41](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/41) ([JarbasAl](https://github.com/JarbasAl))
+- fix: add missing skill.json [\#43](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/43) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
