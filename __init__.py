@@ -426,13 +426,14 @@ class DuckDuckGoSkill(CommonQuerySkill):
             image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query,
                                                                                               lang=sess.lang,
                                                                                               units=sess.system_unit)
-            title = self.session_results[sess.session_id].get("title") or "DuckDuckGo"
-            image = image or f"{os.path.dirname(__file__)}/logo.png"
-            if image.startswith("/"):
-                image = "https://duckduckgo.com" + image
-            self.gui['summary'] = summary or ""
-            self.gui['imgLink'] = image
-            self.gui.show_page("DuckDelegate", override_idle=60)
+            if not image:
+                self.gui.show_image("logo.png")
+            else:
+                if image.startswith("/"):
+                    image = "https://duckduckgo.com" + image
+                self.gui['summary'] = summary or ""
+                self.gui['imgLink'] = image
+                self.gui.show_page("DuckDelegate", override_idle=60)
 
     def speak_result(self, sess: Session):
 
