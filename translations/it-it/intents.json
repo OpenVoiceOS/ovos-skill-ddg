@@ -1,77 +1,77 @@
 {
   "search_duck.intent": [
     "cerca {keyword} (su|con) duck duck (go|)",
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "cerca (su|con) duck duck (go|) {keyword}",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "born.intent": [
     "(quando è|quand'è) (nato|nata) {keyword}",
-    null,
-    null
+    "(quand'è|quando è) il compleanno di {keyword}",
+    "[UNUSED]"
   ],
   "fields.intent": [
-    null
+    "[UNUSED]"
   ],
   "official_website.intent": [
     "qual è il sito (ufficiale|) di {keyword}"
   ],
   "resting_place.intent": [
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "alma_mater.intent": [
-    null
+    "[UNUSED]"
   ],
   "who.intent": [
     "chi è {person}"
   ],
   "known_for.intent": [
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "birthdate.intent": [
-    null,
-    null,
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "died.intent": [
-    null,
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "query.intent": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "children.intent": [
-    null
+    "[UNUSED]"
   ],
   "age_at_death.intent": [
-    null,
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
   ],
   "thesis.intent": [
-    null
+    "[UNUSED]"
   ],
   "education.intent": [
-    null,
-    null
+    "[UNUSED]",
+    "[UNUSED]"
   ]
 }
