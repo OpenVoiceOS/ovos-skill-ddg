@@ -429,7 +429,6 @@ class DuckDuckGoSkill(CommonQuerySkill):
             if not image:
                 self.gui.show_image("logo.png")
             else:
-                image = image or f"{os.path.dirname(__file__)}/logo.png"
                 if image.startswith("/"):
                     image = "https://duckduckgo.com" + image
                 self.gui['summary'] = summary or ""
