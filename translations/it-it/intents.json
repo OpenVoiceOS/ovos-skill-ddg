@@ -1,15 +1,77 @@
 {
-    "search_duck.intent": [
-        "cerca sul web (per|) {query}",
-        "chiedi a duckduckgo {query}",
-        "che cosa dice il web su {query}"
-    ],
-    "who.intent": [
-        "chi \u00e8 {persona}"
-    ],
-    "birthdate.intent": [
-        "quando \u00e9 il compleanno di {persona}",
-        "qual'\u00e9 la data di nascita di {persona}",
-        "quando \u00e8 nat(a|o) {persona}"
-    ]
+  "search_duck.intent": [
+    "cerca {keyword} (su|con) duck duck (go|)",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "born.intent": [
+    "(quando è|quand'è) (nato|nata) {keyword}",
+    null,
+    null
+  ],
+  "fields.intent": [
+    null
+  ],
+  "official_website.intent": [
+    "qual è il sito (ufficiale|) di {keyword}"
+  ],
+  "resting_place.intent": [
+    null,
+    null
+  ],
+  "alma_mater.intent": [
+    null
+  ],
+  "who.intent": [
+    "chi è {person}"
+  ],
+  "known_for.intent": [
+    null,
+    null
+  ],
+  "birthdate.intent": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "died.intent": [
+    null,
+    null,
+    null
+  ],
+  "query.intent": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "children.intent": [
+    null
+  ],
+  "age_at_death.intent": [
+    null,
+    null,
+    null
+  ],
+  "thesis.intent": [
+    null
+  ],
+  "education.intent": [
+    null,
+    null
+  ]
 }
