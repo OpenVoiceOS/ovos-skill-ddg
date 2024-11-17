@@ -1,15 +1,77 @@
 {
-    "search_duck.intent": [
-        "cerca sul web (per|) {query}",
-        "chiedi a duckduckgo {query}",
-        "che cosa dice il web su {query}"
-    ],
-    "who.intent": [
-        "chi \u00e8 {persona}"
-    ],
-    "birthdate.intent": [
-        "quando \u00e9 il compleanno di {persona}",
-        "qual'\u00e9 la data di nascita di {persona}",
-        "quando \u00e8 nat(a|o) {persona}"
-    ]
+  "search_duck.intent": [
+    "cerca {keyword} (su|con) duck duck (go|)",
+    "cerca (su|con) duck duck (go|) {keyword}",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "born.intent": [
+    "(quando è|quand'è) (nato|nata) {keyword}",
+    "(quand'è|quando è) il compleanno di {keyword}",
+    "[UNUSED]"
+  ],
+  "fields.intent": [
+    "[UNUSED]"
+  ],
+  "official_website.intent": [
+    "qual è il sito (ufficiale|) di {keyword}"
+  ],
+  "resting_place.intent": [
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "alma_mater.intent": [
+    "[UNUSED]"
+  ],
+  "who.intent": [
+    "chi è {person}"
+  ],
+  "known_for.intent": [
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "birthdate.intent": [
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "died.intent": [
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "query.intent": [
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "children.intent": [
+    "[UNUSED]"
+  ],
+  "age_at_death.intent": [
+    "[UNUSED]",
+    "[UNUSED]",
+    "[UNUSED]"
+  ],
+  "thesis.intent": [
+    "[UNUSED]"
+  ],
+  "education.intent": [
+    "[UNUSED]",
+    "[UNUSED]"
+  ]
 }
