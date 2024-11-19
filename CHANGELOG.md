@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.7a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.7a1) (2024-11-17)
+## [0.1.8a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.8a1) (2024-11-17)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.6...0.1.7a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.7...0.1.8a1)
 
 **Merged pull requests:**
 
-- fix: add missing skill.json [\#45](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/45) ([JarbasAl](https://github.com/JarbasAl))
+- added italian [\#49](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/49) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 
 
 
