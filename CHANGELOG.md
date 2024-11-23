@@ -1,29 +1,12 @@
 # Changelog
 
-## [0.1.8a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.8a2) (2024-11-19)
+## [0.1.10a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.10a1) (2024-11-23)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.8a2...0.1.8a2)
-
-**Merged pull requests:**
-
-- fix:allow workshop 3.0.0 [\#51](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/51) ([JarbasAl](https://github.com/JarbasAl))
-- added italian [\#48](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/48) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
-
-## [0.1.8a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.8a2) (2024-11-17)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.8a1...0.1.8a2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.9...0.1.10a1)
 
 **Merged pull requests:**
 
-- added italian [\#47](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/47) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
-
-## [0.1.8a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.8a1) (2024-11-17)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.7...0.1.8a1)
-
-**Merged pull requests:**
-
-- added italian [\#49](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/49) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- Add Catalan translation [\#52](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/52) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 
 
 
