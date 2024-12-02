@@ -1,0 +1,77 @@
+{
+    "search_duck.intent": [
+        "bilatu duck duck bilatzailean {keyword}",
+        "bilatu duck duck go bilatzailean {keyword}",
+        "bilatu duck duck bilatzailean {keyword}",
+        "bilatu duck duck go bilatzailean {keyword}",
+        "bilatu the duck bilatzailean {keyword}",
+        "zer dio duck duck go bilatzaileak honi buruz: {keyword}?",
+        "zer dio duck duck bilatzaileak honi buruz: {keyword}?",
+        "zer dio the duck bilatzaileak honi buruz: {keyword}?"
+    ],
+    "born.intent": [
+        "noiz da {keyword}(r|)en (jaiotze-data|jaioteguna)",
+        "noiz jaio zen {keyword}",
+        "{keyword}(r|)en (jaiotze-data|jaioteguna)"
+    ],
+    "fields.intent": [
+        "zein da {keyword}(r|)en espezializaio-arloa"
+    ],
+    "official_website.intent": [
+        "zein da {keyword}(r|)en webgune ofiziala"
+    ],
+    "resting_place.intent": [
+        "non dago lurperatuta {keyword}",
+        "non datza {keyword}"
+    ],
+    "alma_mater.intent": [
+        "zer da {keyword} alma mater"
+    ],
+    "who.intent": [
+        "nor da {person}"
+    ],
+    "known_for.intent": [
+        "zergatik da ospetsu {keyword}",
+        "zergatik da ezagun {keyword}"
+    ],
+    "birthdate.intent": [
+        "zein da {person}(r|)en jaiotze-data",
+        "zein da {person}(r|)en jaioteguna",
+        "noiz jaio zen {person}",
+        "{person} noiz jaio zen"
+    ],
+    "died.intent": [
+        "noiz hil zen {keyword}",
+        "noiz zendu zen {keyword}",
+        "{keyword}(r|)en heriotza-(eguna|data)"
+    ],
+    "query.intent": [
+        "Emango al didazu azalpenik honi buruz: {keyword}?",
+        "Azal al dezakezu zer den {keyword}?",
+        "Adieraz al ditzakezu honi buruzko xehetasunak: {keyword}?",
+        "Emadazu informazioa honi buruz: {keyword}",
+        "Honi buruzko informazioa nahiko nuke: {keyword}",
+        "Honi buruzko informazio gehiago nahiko nuke: {keyword}",
+        "Gai honi buruzko datuak jakin nahi ditut: {keyword}",
+        "Gai honi buruzko xehetasunak bilatzen ari naiz: {keyword}",
+        "Zer jakin nahi duzu gai honi buruz: {keyword}?",
+        "kontadazu honi buruz: {keyword}",
+        "zer da {keyword}?",
+        "nor (da|zen) {keyword}?"
+    ],
+    "children.intent": [
+        "zenbat haur (izan|) ditu {keyword}(e|)k"
+    ],
+    "age_at_death.intent": [
+        "zenbat urte zituen {keyword}(e|)k hil zenean",
+        "zenbat urte zituen {keyword}(e|)k hil zen egunean",
+        "zenbat urte zituen {keyword}(e|)k hil zenean"
+    ],
+    "thesis.intent": [
+        "zein da {keyword} tesiaren gaia"
+    ],
+    "education.intent": [
+        "non egin zituen {keyword}(r|)ek ikasketak",
+        "non ikasi zuen {keyword}(r|)ek"
+    ]
+}
