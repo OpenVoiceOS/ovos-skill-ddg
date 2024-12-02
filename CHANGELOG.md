@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.12a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.12a1) (2024-11-30)
+## [0.1.13a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.13a1) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.11...0.1.12a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.12...0.1.13a1)
 
 **Merged pull requests:**
 
-- de-de/translate [\#56](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/56) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- import galician translations [\#59](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/59) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
