@@ -23,9 +23,9 @@ from ovos_utils import classproperty
 from ovos_utils.gui import can_use_gui
 from ovos_utils.log import LOG
 from ovos_utils.process_utils import RuntimeRequirements
-from ovos_workshop.decorators import intent_handler
+from ovos_workshop.decorators import intent_handler, common_query
 from ovos_workshop.intents import IntentBuilder
-from ovos_workshop.skills.common_query_skill import CommonQuerySkill, CQSMatchLevel
+from ovos_workshop.skills.ovos import OVOSSkill
 from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
 from quebra_frases import sentence_tokenize
@@ -325,7 +325,7 @@ class DuckDuckGoSolver(QuestionSolver):
         return steps
 
 
-class DuckDuckGoSkill(CommonQuerySkill):
+class DuckDuckGoSkill(OVOSSkill):
     def initialize(self):
         self.session_results = {}
         self.duck = DuckDuckGoSolver()
@@ -374,42 +374,41 @@ class DuckDuckGoSkill(CommonQuerySkill):
         sess = SessionManager.get(message)
         self.speak_result(sess)
 
-    # common query
-    def CQS_match_query_phrase(self, phrase):
+    def cq_callback(self, utterance: str, answer: str, lang: str):
+        """ If selected show gui """
+        sess = SessionManager.get()
+        self.display_ddg(sess)
+
+    @common_query(callback=cq_callback)
+    def match_common_query(self, phrase: str, lang: str) -> Tuple[str, float]:
         sess = SessionManager.get()
         self.session_results[sess.session_id] = {
             "query": phrase,
             "results": [],
             "idx": 0,
-            "lang": sess.lang,
+            "lang": lang,
             "title": phrase,
             "image": None
         }
         summary = self.ask_the_duck(sess)
         if summary:
             self.log.info(f"DDG answer: {summary}")
-            return (phrase, CQSMatchLevel.CATEGORY, summary,
-                    {'query': phrase,
-                     'answer': summary})
-
-    def CQS_action(self, phrase, data):
-        """ If selected show gui """
-        sess = SessionManager.get()
-        self.display_ddg(sess)
+            return summary, 0.6
 
     # duck duck go api
-    def ask_the_duck(self, sess):
-        if sess.lang.startswith("en"):
+    def ask_the_duck(self, sess: Session, lang: Optional[str] = None):
+        lang = lang or sess.lang
+        if lang.startswith("en"):
             self.log.debug(f"skipping auto translation for DuckDuckGo, "
-                           f"{sess.lang} is supported")
+                           f"{lang} is supported")
             DuckDuckGoSolver.enable_tx = False
         else:
             self.log.info(f"enabling auto translation for DuckDuckGo, "
-                          f"{sess.lang} is not supported internally")
+                          f"{lang} is not supported internally")
             DuckDuckGoSolver.enable_tx = True
 
         query = self.session_results[sess.session_id]["query"]
-        results = self.duck.long_answer(query, lang=sess.lang, units=sess.system_unit)
+        results = self.duck.long_answer(query, lang=lang, units=sess.system_unit)
         self.session_results[sess.session_id]["results"] = results
         if results:
             self.set_context("DuckKnows", query)
@@ -469,7 +468,7 @@ if __name__ == "__main__":
 
     setup_locale()
     s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
-    s.CQS_match_query_phrase("when was Stephen Hawking born")
+    s.CQS_match_query_phrase("when was Stephen Hawking born", "en")
     exit()
     d = DuckDuckGoSolver()
 
