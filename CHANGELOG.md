@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.14a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.14a1) (2024-12-02)
+## [0.1.15a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.15a1) (2025-01-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.13...0.1.14a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.14...0.1.15a1)
 
 **Merged pull requests:**
 
-- import galician and basque translations [\#61](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/61) ([JarbasAl](https://github.com/JarbasAl))
+- refactor: new common query decorators [\#63](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/63) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
