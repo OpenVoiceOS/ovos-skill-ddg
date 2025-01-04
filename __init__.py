@@ -15,7 +15,7 @@ import os.path
 from typing import Optional, List, Tuple, Dict, Any
 
 import requests
-from lingua_franca.format import nice_date
+from ovos_date_parser import nice_date
 from ovos_bus_client.session import Session, SessionManager
 from ovos_config import Configuration
 from ovos_plugin_manager.templates.solvers import QuestionSolver

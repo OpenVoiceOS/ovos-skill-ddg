@@ -4,3 +4,4 @@ ovos_workshop>=3.3.0,<4.0.0
 ovos-translate-server-plugin
 ovos-config>=0.0.11,<1.0.0
 ovos-plugin-manager>=0.0.26,<1.0.0
+ovos-date-parser
