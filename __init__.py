@@ -32,19 +32,14 @@ from quebra_frases import sentence_tokenize
 
 
 class DuckDuckGoSolver(QuestionSolver):
-    priority = 75
-    enable_tx = True
-    kw_matchers: Dict[str, IntentContainer] = {}
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
-        config = config or {}
-        config["lang"] = "en"  # only supports English
-        super().__init__(config)
+        super().__init__(config, internal_lang="en", enable_tx=True, priority=75)
+        self.kw_matchers: Dict[str, IntentContainer] = {}
         self.register_from_file()
 
     # utils to extract keyword from text
-    @classmethod
-    def register_kw_extractors(cls, samples: List[str], lang: str) -> None:
+    def register_kw_extractors(self, samples: List[str], lang: str) -> None:
         """Register keyword extractors for a given language.
 
         Args:
@@ -52,12 +47,11 @@ class DuckDuckGoSolver(QuestionSolver):
             lang: Language code.
         """
         lang = lang.split("-")[0]
-        if lang not in cls.kw_matchers:
-            cls.kw_matchers[lang] = IntentContainer()
-        cls.kw_matchers[lang].add_intent("question", samples)
+        if lang not in self.kw_matchers:
+            self.kw_matchers[lang] = IntentContainer()
+        self.kw_matchers[lang].add_intent("question", samples)
 
-    @classmethod
-    def extract_keyword(cls, utterance: str, lang: str) -> Optional[str]:
+    def extract_keyword(self, utterance: str, lang: str) -> Optional[str]:
         """Extract keywords from an utterance in a given language.
 
         Args:
@@ -68,9 +62,9 @@ class DuckDuckGoSolver(QuestionSolver):
             The extracted keyword, or the original utterance if no keyword is found.
         """
         lang = lang.split("-")[0]
-        if lang not in cls.kw_matchers:
+        if lang not in self.kw_matchers:
             return None
-        matcher: IntentContainer = cls.kw_matchers[lang]
+        matcher: IntentContainer = self.kw_matchers[lang]
         match = matcher.calc_intent(utterance)
         kw = match.get("entities", {}).get("keyword")
         if kw:
@@ -79,8 +73,7 @@ class DuckDuckGoSolver(QuestionSolver):
             LOG.debug(f"Could not extract search keyword for '{lang}' from '{utterance}'")
         return kw or utterance
 
-    @classmethod
-    def register_infobox_intent(cls, key: str, samples: List[str], lang: str) -> None:
+    def register_infobox_intent(self, key: str, samples: List[str], lang: str) -> None:
         """Register infobox intents for a given language.
 
         Args:
@@ -89,12 +82,11 @@ class DuckDuckGoSolver(QuestionSolver):
             lang: Language code.
         """
         lang = lang.split("-")[0]
-        if lang not in cls.kw_matchers:
-            cls.kw_matchers[lang] = IntentContainer()
-        cls.kw_matchers[lang].add_intent(key.split(".intent")[0], samples)
+        if lang not in self.kw_matchers:
+            self.kw_matchers[lang] = IntentContainer()
+        self.kw_matchers[lang].add_intent(key.split(".intent")[0], samples)
 
-    @classmethod
-    def match_infobox_intent(cls, utterance: str, lang: str) -> Tuple[Optional[str], str]:
+    def match_infobox_intent(self, utterance: str, lang: str) -> Tuple[Optional[str], str]:
         """Match infobox intents in an utterance.
 
         Args:
@@ -105,9 +97,9 @@ class DuckDuckGoSolver(QuestionSolver):
             A tuple of the matched intent and the extracted keyword or original utterance.
         """
         lang = lang.split("-")[0]
-        if lang not in cls.kw_matchers:
+        if lang not in self.kw_matchers:
             return None, utterance
-        matcher: IntentContainer = cls.kw_matchers[lang]
+        matcher: IntentContainer = self.kw_matchers[lang]
         match = matcher.calc_intent(utterance)
         kw = match.get("entities", {}).get("keyword")
         intent = None
@@ -118,8 +110,7 @@ class DuckDuckGoSolver(QuestionSolver):
             LOG.debug(f"Could not match intent for '{lang}' from '{utterance}'")
         return intent, kw or utterance
 
-    @classmethod
-    def register_from_file(cls) -> None:
+    def register_from_file(self) -> None:
         """Register internal Padacioso intents for DuckDuckGo."""
         files = [
             "query.intent",
@@ -151,9 +142,9 @@ class DuckDuckGoSolver(QuestionSolver):
                         else:
                             samples.append(l)
                 if fn == "query.intent":
-                    cls.register_kw_extractors(samples, lang)
+                    self.register_kw_extractors(samples, lang)
                 else:
-                    cls.register_infobox_intent(fn.split(".intent")[0], samples, lang)
+                    self.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
     def get_infobox(self, query: str,
                     lang: Optional[str] = None,
