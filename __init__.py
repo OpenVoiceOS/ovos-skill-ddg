@@ -30,11 +30,16 @@ from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
 from quebra_frases import sentence_tokenize
 
+from ovos_plugin_manager.templates.language import LanguageTranslator, LanguageDetector
+
 
 class DuckDuckGoSolver(QuestionSolver):
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
-        super().__init__(config, internal_lang="en", enable_tx=True, priority=75)
+    def __init__(self, config: Optional[Dict[str, Any]] = None,
+                 translator: Optional[LanguageTranslator] = None,
+                 detector: Optional[LanguageDetector] = None):
+        super().__init__(config, internal_lang="en", enable_tx=True, priority=75,
+                         detector=detector, translator=translator)
         self.kw_matchers: Dict[str, IntentContainer] = {}
         self.register_from_file()
 
@@ -319,7 +324,7 @@ class DuckDuckGoSolver(QuestionSolver):
 class DuckDuckGoSkill(OVOSSkill):
     def initialize(self):
         self.session_results = {}
-        self.duck = DuckDuckGoSolver()
+        self.duck = DuckDuckGoSolver(translator=self.translator, detector=self.lang_detector)
 
     @classproperty
     def runtime_requirements(self):
