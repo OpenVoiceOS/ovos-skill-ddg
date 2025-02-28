@@ -1,4 +1,4 @@
-(quan|quin) és l'aniversari (de |d'){person}
+(quan|quin) és l'aniversari (de|d') {person}
 quan va nàixer {person}
 quan va néixer {person}
-quina és la data de naixement (de |d'){person}
+quina és la data de naixement (de|d') {person}
