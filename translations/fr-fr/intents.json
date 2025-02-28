@@ -1,20 +1,85 @@
 {
+    "query.intent": [
+        "Donne-moi des informations sur {keyword}",
+        "J'aimerais en savoir plus sur {keyword}",
+        "J'aimerais être au courant {keyword}",
+        "Je cherche des détails sur {keyword}",
+        "Je suis curieux de parler de {keyword}",
+        "Pouvez-vous donner des détails sur {keyword}",
+        "Pouvez-vous expliquer ce que c'est {keyword}",
+        "Pouvez-vous m'éclairer sur {keyword}",
+        "Qu'est-ce que tu en sais sur {keyword}",
+        "c'est quoi {keyword}",
+        "c'était qui {keyword}",
+        "parlez-moi de {keyword}",
+        "qui est le {keyword}"
+    ],
     "search_duck.intent": [
-        "cherche sur duck duck go au sujet de {query}",
-        "cherche sur duck duck au sujet de {query}",
-        "demande \u00e0 duck duck \u00e0 propos de {query}",
-        "demande \u00e0 duck duck go \u00e0 propos de {query}",
-        "que dit duck duck go \u00e0 propos de {query}",
-        "que dit duck duck \u00e0 propos de {query}",
         "cherche sur duck au sujet de {query}",
-        "que dit duck \u00e0 propos de {query}"
+        "cherche sur duck duck au sujet de {query}",
+        "cherche sur duck duck go au sujet de {query}",
+        "demande à duck duck go à propos de {query}",
+        "demande à duck duck à propos de {query}",
+        "que dit duck duck go à propos de {query}",
+        "que dit duck duck à propos de {query}",
+        "que dit duck à propos de {query}"
+    ],
+    "alma_mater.intent": [
+        "c'est quoi alma mater"
+    ],
+    "birthdate.intent": [
+        "quand est né {person}",
+        "quand {person} est né",
+        "quelle est la date de naissance de {person}"
     ],
     "who.intent": [
         "qui est {person}"
     ],
-    "birthdate.intent": [
-        "quand est n\u00e9 {person}",
-        "quelle est la date de naissance de {person}",
-        "quand {person} est n\u00e9"
+    "children.intent": [
+        "combien d'enfants ont",
+        "combien d'enfants ont fait"
+    ],
+    "died.intent": [
+        "date de la mort",
+        "jour de la mort",
+        "quand est-ce qu'il est mort",
+        "quand était la mort"
+    ],
+    "resting_place.intent": [
+        "où est enterré le mot-clé",
+        "où est le lieu de repos"
+    ],
+    "thesis.intent": [
+        "c'est quoi sujet de thèse"
+    ],
+    "known_for.intent": [
+        "c'est quoi connue pour",
+        "ce qui est célèbre pour"
+    ],
+    "education.intent": [
+        "où a obtenu son éducation",
+        "où elle a eu l'éducation",
+        "où l'a fait étude"
+    ],
+    "official_website.intent": [
+        "quel est le site officiel {keyword}"
+    ],
+    "age_at_death.intent": [
+        "le jour où elle est morte",
+        "le jour où il est mort",
+        "quand elle est morte",
+        "quand il est mort",
+        "quel âge avait le mot-clé sur sa mort"
+    ],
+    "born.intent": [
+        "date de naissance",
+        "jour de naissance",
+        "le jour de naissance",
+        "quand est la naissance",
+        "quand est-ce que c'est anniversaire",
+        "quand était né"
+    ],
+    "fields.intent": [
+        "ce qui est {keyword} domaine d'expertise"
     ]
 }

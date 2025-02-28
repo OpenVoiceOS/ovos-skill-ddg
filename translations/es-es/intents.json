@@ -1,20 +1,82 @@
 {
+    "query.intent": [
+        "Dame información sobre {keyword}",
+        "Estoy buscando detalles sobre {keyword}",
+        "Me gustaría saber más sobre {keyword}",
+        "Me gustaría saber sobre {keyword}",
+        "Puede explicar lo que es {keyword}",
+        "Puede proporcionar detalles en {keyword}",
+        "Puedes iluminarme sobre {keyword}",
+        "Qué sabes acerca de {keyword}",
+        "Tengo curiosidad sobre {keyword}",
+        "háblame de {keyword}",
+        "quién era {keyword}",
+        "quién es {keyword}",
+        "qué es {keyword}"
+    ],
     "search_duck.intent": [
-        "Preg\u00fantale al pato sobre {query}",
-        "b\u00fasqueda de pato para {query}",
+        "Pregúntale al pato de pato",
+        "Pregúntale al pato sobre {query}",
+        "Qué dice el pato del pato sobre {query}",
+        "Qué dice el pato sobre {query}",
         "buscar el pato para {query}",
-        "\u00bfQu\u00e9 dice el pato del pato sobre {query}",
-        "\u00bfQu\u00e9 dice el pato sobre {query}",
         "buscar pato de pato ir por {query}",
-        "Preg\u00fantale al pato de pato"
+        "búsqueda de pato para {query}"
+    ],
+    "alma_mater.intent": [
+        "qué es alma mater"
+    ],
+    "birthdate.intent": [
+        "Qué es el cumpleaños",
+        "cuando nació",
+        "cuando nació {persona}",
+        "lo que es {persona} fecha de nacimiento"
     ],
     "who.intent": [
         "que es {persona}"
     ],
-    "birthdate.intent": [
-        "\u00bfQu\u00e9 es el cumplea\u00f1os?",
-        "cuando naci\u00f3 {persona}",
-        "lo que es {persona} fecha de nacimiento",
-        "cuando naci\u00f3"
+    "children.intent": [
+        "cuántos niños tenían",
+        "cuántos niños tienen"
+    ],
+    "died.intent": [
+        "cuando fue la muerte",
+        "cuando murió",
+        "día de la muerte",
+        "fecha de la muerte"
+    ],
+    "resting_place.intent": [
+        "donde está descansando enterrado",
+        "donde está {keyword} lugar de descanso"
+    ],
+    "thesis.intent": [
+        "qué es tema de la tesis"
+    ],
+    "known_for.intent": [
+        "lo que es famoso por",
+        "qué es conocido"
+    ],
+    "education.intent": [
+        "donde consiguió su educación",
+        "dónde lo hizo estudio"
+    ],
+    "official_website.intent": [
+        "lo que es {keyword} sitio oficial"
+    ],
+    "age_at_death.intent": [
+        "cuando murió",
+        "que edad tenía en su muerte",
+        "qué edad tenía el día que murió"
+    ],
+    "born.intent": [
+        "cuando es el día de nacimiento",
+        "cuando es el nacimiento",
+        "cuando es {keyword} cumpleaños",
+        "cuando nació",
+        "día de nacimiento",
+        "fecha de nacimiento"
+    ],
+    "fields.intent": [
+        "lo que es {keyword} campo de experiencia"
     ]
 }
