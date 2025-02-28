@@ -1,77 +1,77 @@
 {
+    "query.intent": [
+        "Can you enlighten me about {keyword}",
+        "Can you explain what {keyword} is",
+        "Can you provide details on {keyword}",
+        "Give me information about {keyword}",
+        "I'd like to know about {keyword}",
+        "I'd like to know more about {keyword}",
+        "I'm curious about {keyword}",
+        "I'm seeking details about {keyword}",
+        "What do you know about {keyword}",
+        "tell me about {keyword}",
+        "what is {keyword}",
+        "who (is|was) {keyword}"
+    ],
     "search_duck.intent": [
-        "search duck duck go for {keyword}",
-        "search duck duck for {keyword}",
         "ask the duck duck about {keyword}",
         "ask the duck duck go about {keyword}",
+        "search duck duck for {keyword}",
+        "search duck duck go for {keyword}",
+        "search the duck for {keyword}",
         "what does duck duck go say about {keyword}",
         "what does duck duck say about {keyword}",
-        "search the duck for {keyword}",
         "what does the duck say about {keyword}"
-    ],
-    "born.intent": [
-        "when was {keyword} born",
-        "when is {keyword} (birth|birthday|day of birth)",
-        "{keyword} (day|date) of birth"
-    ],
-    "fields.intent": [
-        "what is {keyword} field of expertise"
-    ],
-    "official_website.intent": [
-        "what is {keyword} official website"
-    ],
-    "resting_place.intent": [
-        "where is {keyword} resting place",
-        "where is {keyword} resting buried"
     ],
     "alma_mater.intent": [
         "what is {keyword} alma mater"
     ],
+    "birthdate.intent": [
+        "what is {person} birth date",
+        "what is {person} birthday",
+        "when was born {person}",
+        "when was {person} born"
+    ],
     "who.intent": [
         "who is {person}"
-    ],
-    "known_for.intent": [
-        "what is {keyword} known for",
-        "what is {keyword} famous for"
-    ],
-    "birthdate.intent": [
-        "when was {person} born",
-        "what is {person} birthday",
-        "what is {person} birth date",
-        "when was born {person}"
-    ],
-    "died.intent": [
-        "when was {keyword} death",
-        "when did {keyword} die",
-        "{keyword} (day|date) of death"
-    ],
-    "query.intent": [
-        "tell me about {keyword}",
-        "what is {keyword}",
-        "who (is|was) {keyword}",
-        "What do you know about {keyword}",
-        "Give me information about {keyword}",
-        "I'm curious about {keyword}",
-        "I'd like to know about {keyword}",
-        "I'd like to know more about {keyword}",
-        "Can you explain what {keyword} is",
-        "Can you enlighten me about {keyword}",
-        "I'm seeking details about {keyword}",
-        "Can you provide details on {keyword}"
     ],
     "children.intent": [
         "how many children (did|does) {keyword} have"
     ],
-    "age_at_death.intent": [
-        "how old was {keyword} when (he|she) died",
-        "how old was {keyword} on his death",
-        "how old was {keyword} on the day (he|she) died"
+    "died.intent": [
+        "when did {keyword} die",
+        "when was {keyword} death",
+        "{keyword} (day|date) of death"
+    ],
+    "resting_place.intent": [
+        "where is {keyword} resting buried",
+        "where is {keyword} resting place"
     ],
     "thesis.intent": [
         "what is {keyword} thesis subject"
     ],
+    "known_for.intent": [
+        "what is {keyword} famous for",
+        "what is {keyword} known for"
+    ],
     "education.intent": [
-        "where did {keyword} study",
-        "where did {keyword} get (his|her) education"
+        "where did {keyword} get (his|her) education",
+        "where did {keyword} study"
+    ],
+    "official_website.intent": [
+        "what is {keyword} official website"
+    ],
+    "age_at_death.intent": [
+        "how old was {keyword} on his death",
+        "how old was {keyword} on the day (he|she) died",
+        "how old was {keyword} when (he|she) died"
+    ],
+    "born.intent": [
+        "when is {keyword} (birth|birthday|day of birth)",
+        "when was {keyword} born",
+        "{keyword} (day|date) of birth"
+    ],
+    "fields.intent": [
+        "what is {keyword} field of expertise"
     ]
 }

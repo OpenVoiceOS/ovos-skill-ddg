@@ -1,77 +1,76 @@
 {
+    "query.intent": [
+        "Dáme información sobre {keyword}",
+        "Estou á procura de pormenores sobre {keyword}",
+        "Interésame o tema de {keyword}",
+        "Podes aclararme que é {keyword}",
+        "Podes explicar o que é {keyword}",
+        "Podes fornecer pormenores sobre {keyword}",
+        "Que sabes sobre {keyword}",
+        "Quixera informarme sobre {keyword}",
+        "Quixera saber máis sobre {keyword}",
+        "fálame de {keyword}",
+        "o que é {keyword}",
+        "quen (é|foi) {keyword}"
+    ],
     "search_duck.intent": [
-        "preguntar a duck duck sobre {keyword}",
         "preguntar a duck duck go por {keyword}",
-        "procurar en duck duck {keyword}",
+        "preguntar a duck duck sobre {keyword}",
         "procurar en duck duck go {keyword}",
+        "procurar en duck duck {keyword}",
         "procurar en duck {keyword}",
         "que di duck duck go sobre {keyword}",
         "que di duck duck sobre {keyword}",
         "que di duck sobre {keyword}"
     ],
-    "born.intent": [
-        "(cando é o aniversario de) (que día fai anos) {keyword}",
-        "cando naceu {keyword}",
-        "(día|data) de nacemento de {keyword}"
-    ],
-    "fields.intent": [
-        "cal é o eido de especialización de {keyword}"
-    ],
-    "official_website.intent": [
-        "cal é o sitio web oficial de {keyword}"
-    ],
-    "resting_place.intent": [
-        "onde está enterrado {keyword}",
-        "onde descansan os restos de {keyword}"
-    ],
     "alma_mater.intent": [
         "onde estudou {keyword}"
-    ],
-    "who.intent": [
-        "quen é {person}"
-    ],
-    "known_for.intent": [
-        "por que ten fama {keyword}",
-        "por que se coñece {keyword}"
     ],
     "birthdate.intent": [
         "cal é a data de nacemento de {person}",
         "cando fai anos {person}",
-        "cando naceu {person}",
         "cando naceu {person}"
     ],
-    "died.intent": [
-        "cando morreu {keyword}",
-        "cando finou {keyword}",
-        "(día|data) da morte de {keyword}"
-    ],
-    "query.intent": [
-        "Podes aclararme que é {keyword}",
-        "Podes explicar o que é {keyword}?",
-        "Podes fornecer pormenores sobre {keyword}?",
-        "Dáme información sobre {keyword}",
-        "Quixera informarme sobre {keyword}",
-        "Quixera saber máis sobre {keyword}",
-        "Interésame o tema de {keyword}",
-        "Estou á procura de pormenores sobre {keyword}",
-        "Que sabes sobre {keyword}",
-        "fálame de {keyword}",
-        "o que é {keyword}",
-        "quen (é|foi) {keyword}"
+    "who.intent": [
+        "quen é {person}"
     ],
     "children.intent": [
         "cantos fillos (tivo|ten) {keyword}"
     ],
-    "age_at_death.intent": [
-        "a que anos morreu {keyword}",
-        "cantos anos tiña {keyword} o día que morreu",
-        "cantos anos tiña {keyword} cando morreu"
+    "died.intent": [
+        "(día|data) da morte de {keyword}",
+        "cando finou {keyword}",
+        "cando morreu {keyword}"
+    ],
+    "resting_place.intent": [
+        "onde descansan os restos de {keyword}",
+        "onde está enterrado {keyword}"
     ],
     "thesis.intent": [
         "que é o tema da tese {keyword}"
     ],
+    "known_for.intent": [
+        "por que se coñece {keyword}",
+        "por que ten fama {keyword}"
+    ],
     "education.intent": [
-        "onde se formou {keyword}",
-        "onde estudou {keyword}"
+        "onde estudou {keyword}",
+        "onde se formou {keyword}"
+    ],
+    "official_website.intent": [
+        "cal é o sitio web oficial de {keyword}"
+    ],
+    "age_at_death.intent": [
+        "a que anos morreu {keyword}",
+        "cantos anos tiña {keyword} cando morreu",
+        "cantos anos tiña {keyword} o día que morreu"
+    ],
+    "born.intent": [
+        "(cando é o aniversario de) (que día fai anos) {keyword}",
+        "(día|data) de nacemento de {keyword}",
+        "cando naceu {keyword}"
+    ],
+    "fields.intent": [
+        "cal é o eido de especialización de {keyword}"
     ]
 }
