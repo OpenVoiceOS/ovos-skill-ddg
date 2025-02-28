@@ -1,20 +1,12 @@
 # Changelog
 
-## [0.1.16a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.16a2) (2025-02-02)
+## [0.1.17a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.17a1) (2025-02-28)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.16a1...0.1.16a2)
-
-**Merged pull requests:**
-
-- refactor: modernize solver class [\#67](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/67) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.1.16a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.1.16a1) (2025-01-25)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.15...0.1.16a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.16...0.1.17a1)
 
 **Merged pull requests:**
 
-- fix automations [\#65](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/65) ([JarbasAl](https://github.com/JarbasAl))
+- Translations update [\#69](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/69) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
