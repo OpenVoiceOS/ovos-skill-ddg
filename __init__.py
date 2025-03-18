@@ -66,7 +66,7 @@ class DuckDuckGoSolver(QuestionSolver):
 
         kw = self.kword_extractors[lang].extract_keyword(utterance)
         if kw:
-            LOG.debug(f"DDG Keyword: {kw}")
+            LOG.debug(f"DDG search term: {kw}")
         else:
             LOG.debug(f"Could not extract search keyword for '{lang}' from '{utterance}'")
         return kw or utterance
