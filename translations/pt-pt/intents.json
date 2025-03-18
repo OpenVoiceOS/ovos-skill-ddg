@@ -7,7 +7,7 @@
         "pergunta ao pato {keyword}"
     ],
     "search_wolfie.intent": [
-        "pergunta ao pato {query}"
+        "pergunta ao pato {keyword}"
     ],
     "alma_mater.intent": [],
     "birthdate.intent": [
