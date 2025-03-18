@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.2.0a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.0a1) (2025-03-18)
+## [0.2.1a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.1a1) (2025-03-18)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.1.18...0.2.0a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.0...0.2.1a1)
 
 **Merged pull requests:**
 
-- feat: new\_kw\_extractor [\#75](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/75) ([JarbasAl](https://github.com/JarbasAl))
+- fix: translations errors [\#77](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/77) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
