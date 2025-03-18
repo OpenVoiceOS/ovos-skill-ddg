@@ -1,18 +1,4 @@
 {
-  "query.intent": [
-    "Gib mir Informationen zu {keyword}",
-    "Ich bin neugierig auf {keyword}",
-    "Ich möchte mehr über {keyword} (erfahren|wissen)",
-    "Ich möchte mehr über {keyword} erfahren",
-    "Ich suche Details zu {keyword}",
-    "Kannst Du Einzelheiten zu {keyword} angeben",
-    "Kannst Du erklären was {keyword} ist",
-    "Kannst Du mich über {keyword} aufklären",
-    "Was wissen Sie über {keyword}",
-    "erzähl mir von {keyword}",
-    "was ist {keyword}",
-    "wer (ist|war) {keyword}"
-  ],
   "search_duck.intent": [
     "Frage duck duck go nach {query}",
     "Frage duck duck nach {query}",

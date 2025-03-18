@@ -1,18 +1,4 @@
 {
-  "query.intent": [
-    "(Estic buscant|Busco) detalls sobre {keyword}",
-    "Dona'm informació sobre {keyword}",
-    "Em pots il·lustrar sobre {keyword}",
-    "M'agradaria saber més sobre {keyword}",
-    "M'agradaria saber sobre {keyword}",
-    "Pots explicar(-me|) què és {keyword}",
-    "Pots proporcionar(-me|) informació sobre {keyword}",
-    "Què (en|) saps sobre {keyword}",
-    "Tinc curiositat (per|sobre) {keyword}",
-    "parla'm de {keyword}",
-    "qui (és|era|va ser|fou) {keyword}",
-    "què és {keyword}"
-  ],
   "search_duck.intent": [
     "(cerca|busca|consulta|demana) (a|al) (duck duck go|ddg|de de ge|l'ànec) {query}",
     "(cerca|busca|consulta|demana) a (duck duck go|ddg|de de ge|l'ànec) {query}",
