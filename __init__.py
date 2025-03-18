@@ -33,14 +33,29 @@ from ovos_workshop.intents import IntentBuilder
 from ovos_workshop.skills.ovos import OVOSSkill
 from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
+from langcodes import closest_match
 
 
 class DuckDuckGoSolver(QuestionSolver):
-
+    # DDG is weird and has lang-codes lang/region "backwards"
+    LOCALE_MAPPING = {'ar-XA': 'xa-ar', 'en-XA': 'xa-en', 'es-AR': 'ar-es', 'en-AU': 'au-en', 'de-AT': 'at-de',
+                      'fr-BE': 'be-fr', 'nl-BE': 'be-nl', 'pt-BR': 'br-pt', 'bg-BG': 'bg-bg', 'en-CA': 'ca-en',
+                      'fr-CA': 'ca-fr', 'ca-KI': 'ct-ca', 'es-CL': 'cl-es', 'zh-CN': 'cn-zh', 'es-CO': 'co-es',
+                      'hr-HR': 'hr-hr', 'cs-CZ': 'cz-cs', 'da-DK': 'dk-da', 'et-EE': 'ee-et', 'fi-FI': 'fi-fi',
+                      'fr-FR': 'fr-fr', 'de-DE': 'de-de', 'el-GR': 'gr-el', 'tzh-HK': 'hk-tzh', 'hu-HU': 'hu-hu',
+                      'en-IN': 'in-en', 'id-ID': 'id-id', 'en-ID': 'id-en', 'en-IE': 'ie-en', 'he-IL': 'il-he',
+                      'it-IT': 'it-it', 'jp-JP': 'jp-jp', 'kr-KR': 'kr-kr', 'lv-LV': 'lv-lv', 'lt-LT': 'lt-lt',
+                      'es-XL': 'xl-es', 'ms-MY': 'my-ms', 'en-MY': 'my-en', 'es-MX': 'mx-es', 'nl-NL': 'nl-nl',
+                      'en-NZ': 'nz-en', 'no-NO': 'no-no', 'es-PE': 'pe-es', 'en-PH': 'ph-en', 'fil-PH': 'ph-tl',
+                      'pl-PL': 'pl-pl', 'pt-PT': 'pt-pt', 'ro-RO': 'ro-ro', 'ru-RU': 'ru-ru', 'en-SG': 'sg-en',
+                      'sk-SK': 'sk-sk', 'sl-SL': 'sl-sl', 'en-ZA': 'za-en', 'es-ES': 'es-es', 'sv-SE': 'se-sv',
+                      'de-CH': 'ch-de', 'fr-CH': 'ch-fr', 'it-CH': 'ch-it', 'tzh-TW': 'tw-tzh', 'th-TH': 'th-th',
+                      'tr-TR': 'tr-tr', 'uk-UA': 'ua-uk', 'en-GB': 'uk-en', 'en-US': 'us-en', 'es-UE': 'ue-es',
+                      'es-VE': 've-es', 'vi-VN': 'vn-vi'}
     def __init__(self, config: Optional[Dict[str, Any]] = None,
                  translator: Optional[LanguageTranslator] = None,
                  detector: Optional[LanguageDetector] = None):
-        super().__init__(config, internal_lang="en-US", enable_tx=True, priority=75,
+        super().__init__(config, enable_tx=False, priority=75,
                          detector=detector, translator=translator)
         self.kword_extractors: Dict[str, SearchtermExtractorCRF] = {}
         self.intent_matchers: Dict[str, IntentContainer] = {}
@@ -211,10 +226,17 @@ class DuckDuckGoSolver(QuestionSolver):
             The search result data.
         """
         units = units or Configuration().get("system_unit", "metric")
+        lang = lang or Configuration().get("lang", "en-US")
+        best_lang, distance = closest_match(lang, self.LOCALE_MAPPING)
+        if distance > 10:
+            LOG.debug(f"Unsupported DDG locale: {lang}")
+            return {}
+
         # duck duck go api request
         try:
             data = requests.get("https://api.duckduckgo.com",
                                 params={"format": "json",
+                                        "kl": self.LOCALE_MAPPING[best_lang],
                                         "q": query}).json()
         except:
             return {}
@@ -453,7 +475,9 @@ if __name__ == "__main__":
     setup_locale()
     s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
     s.match_common_query("when was Stephen Hawking born", "en")
-    exit()
+
+    print(s.duck.get_data("Stephen Hawking", lang="pt-PT"))
+
     d = DuckDuckGoSolver()
 
     query = "who is Isaac Newton"
