@@ -1,5 +1,4 @@
 {
-    "query.intent": [],
     "search_duck.intent": [
         "cerca (su|con) duck duck (go|) {keyword}",
         "cerca {keyword} (su|con) duck duck (go|)"

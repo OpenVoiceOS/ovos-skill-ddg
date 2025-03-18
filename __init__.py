@@ -15,9 +15,13 @@ import os.path
 from typing import Optional, List, Tuple, Dict, Any
 
 import requests
-from ovos_date_parser import nice_date
-from ovos_bus_client.session import Session, SessionManager
+from crf_query_xtract import SearchtermExtractorCRF
 from ovos_config import Configuration
+from ovos_date_parser import nice_date
+from quebra_frases import sentence_tokenize
+
+from ovos_bus_client.session import Session, SessionManager
+from ovos_plugin_manager.templates.language import LanguageTranslator, LanguageDetector
 from ovos_plugin_manager.templates.solvers import QuestionSolver
 from ovos_utils import classproperty
 from ovos_utils.gui import can_use_gui
@@ -28,9 +32,6 @@ from ovos_workshop.intents import IntentBuilder
 from ovos_workshop.skills.ovos import OVOSSkill
 from padacioso import IntentContainer
 from padacioso.bracket_expansion import expand_parentheses
-from quebra_frases import sentence_tokenize
-
-from ovos_plugin_manager.templates.language import LanguageTranslator, LanguageDetector
 
 
 class DuckDuckGoSolver(QuestionSolver):
@@ -40,22 +41,11 @@ class DuckDuckGoSolver(QuestionSolver):
                  detector: Optional[LanguageDetector] = None):
         super().__init__(config, internal_lang="en", enable_tx=True, priority=75,
                          detector=detector, translator=translator)
+        self.kword_extractors: Dict[str, SearchtermExtractorCRF] = {}
         self.kw_matchers: Dict[str, IntentContainer] = {}
         self.register_from_file()
 
     # utils to extract keyword from text
-    def register_kw_extractors(self, samples: List[str], lang: str) -> None:
-        """Register keyword extractors for a given language.
-
-        Args:
-            samples: A list of keyword extraction samples.
-            lang: Language code.
-        """
-        lang = lang.split("-")[0]
-        if lang not in self.kw_matchers:
-            self.kw_matchers[lang] = IntentContainer()
-        self.kw_matchers[lang].add_intent("question", samples)
-
     def extract_keyword(self, utterance: str, lang: str) -> Optional[str]:
         """Extract keywords from an utterance in a given language.
 
@@ -67,13 +57,16 @@ class DuckDuckGoSolver(QuestionSolver):
             The extracted keyword, or the original utterance if no keyword is found.
         """
         lang = lang.split("-")[0]
-        if lang not in self.kw_matchers:
+        # langs supported by keyword extractor
+        if lang not in ["ca", "da", "de", "en", "eu", "fr", "gl", "it", "pt"]:
+            LOG.error(f"Keyword extractor does not support lang: '{lang}'")
             return None
-        matcher: IntentContainer = self.kw_matchers[lang]
-        match = matcher.calc_intent(utterance)
-        kw = match.get("entities", {}).get("keyword")
+        if lang not in self.kword_extractors:
+            self.kword_extractors[lang] = SearchtermExtractorCRF.from_pretrained(lang)
+
+        kw = self.kword_extractors[lang].extract_keyword(utterance)
         if kw:
-            LOG.debug(f"DDG Keyword: {kw} - Confidence: {match['conf']}")
+            LOG.debug(f"DDG Keyword: {kw}")
         else:
             LOG.debug(f"Could not extract search keyword for '{lang}' from '{utterance}'")
         return kw or utterance
@@ -118,7 +111,6 @@ class DuckDuckGoSolver(QuestionSolver):
     def register_from_file(self) -> None:
         """Register internal Padacioso intents for DuckDuckGo."""
         files = [
-            "query.intent",
             "known_for.intent",
             "resting_place.intent",
             "born.intent",
@@ -146,10 +138,7 @@ class DuckDuckGoSolver(QuestionSolver):
                             samples += expand_parentheses(l)
                         else:
                             samples.append(l)
-                if fn == "query.intent":
-                    self.register_kw_extractors(samples, lang)
-                else:
-                    self.register_infobox_intent(fn.split(".intent")[0], samples, lang)
+                self.register_infobox_intent(fn.split(".intent")[0], samples, lang)
 
     def get_infobox(self, query: str,
                     lang: Optional[str] = None,

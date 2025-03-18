@@ -1,12 +1,4 @@
 {
-    "query.intent": [
-        "(diz-me|conta-me|fala-me) sobre {keyword}",
-        "(quero|procuro|dá-me) (informações|informação) sobre {keyword}",
-        "Estou curioso sobre {keyword}",
-        "o que sabes sobre {keyword}",
-        "o que é {keyword}",
-        "quem (é|era|foi) {keyword}"
-    ],
     "search_duck.intent": [
         "(procura no|pergunta ao) (duck duck go|pato) sobre {keyword}",
         "(procura|pesquisa) no duck duck go {keyword}",

@@ -5,3 +5,5 @@ ovos-translate-server-plugin
 ovos-config>=0.0.11,<1.0.0
 ovos-plugin-manager>=0.0.26,<1.0.0
 ovos-date-parser
+crf_query_xtract
+brill_postagger

@@ -1,18 +1,4 @@
 {
-    "query.intent": [
-        "Dáme información sobre {keyword}",
-        "Estou á procura de pormenores sobre {keyword}",
-        "Interésame o tema de {keyword}",
-        "Podes aclararme que é {keyword}",
-        "Podes explicar o que é {keyword}",
-        "Podes fornecer pormenores sobre {keyword}",
-        "Que sabes sobre {keyword}",
-        "Quixera informarme sobre {keyword}",
-        "Quixera saber máis sobre {keyword}",
-        "fálame de {keyword}",
-        "o que é {keyword}",
-        "quen (é|foi) {keyword}"
-    ],
     "search_duck.intent": [
         "preguntar a duck duck go por {keyword}",
         "preguntar a duck duck sobre {keyword}",
