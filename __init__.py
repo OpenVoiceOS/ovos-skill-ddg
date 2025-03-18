@@ -12,6 +12,7 @@
 #
 import datetime
 import os.path
+from pprint import pformat
 from typing import Optional, List, Tuple, Dict, Any
 
 import requests
@@ -39,13 +40,13 @@ class DuckDuckGoSolver(QuestionSolver):
     def __init__(self, config: Optional[Dict[str, Any]] = None,
                  translator: Optional[LanguageTranslator] = None,
                  detector: Optional[LanguageDetector] = None):
-        super().__init__(config, internal_lang="en", enable_tx=True, priority=75,
+        super().__init__(config, internal_lang="en-US", enable_tx=True, priority=75,
                          detector=detector, translator=translator)
         self.kword_extractors: Dict[str, SearchtermExtractorCRF] = {}
-        self.kw_matchers: Dict[str, IntentContainer] = {}
+        self.intent_matchers: Dict[str, IntentContainer] = {}
         self.register_from_file()
 
-    # utils to extract keyword from text
+    # utils to extract keywords from text
     def extract_keyword(self, utterance: str, lang: str) -> Optional[str]:
         """Extract keywords from an utterance in a given language.
 
@@ -80,9 +81,9 @@ class DuckDuckGoSolver(QuestionSolver):
             lang: Language code.
         """
         lang = lang.split("-")[0]
-        if lang not in self.kw_matchers:
-            self.kw_matchers[lang] = IntentContainer()
-        self.kw_matchers[lang].add_intent(key.split(".intent")[0], samples)
+        if lang not in self.intent_matchers:
+            self.intent_matchers[lang] = IntentContainer()
+        self.intent_matchers[lang].add_intent(key.split(".intent")[0], samples)
 
     def match_infobox_intent(self, utterance: str, lang: str) -> Tuple[Optional[str], str]:
         """Match infobox intents in an utterance.
@@ -95,9 +96,9 @@ class DuckDuckGoSolver(QuestionSolver):
             A tuple of the matched intent and the extracted keyword or original utterance.
         """
         lang = lang.split("-")[0]
-        if lang not in self.kw_matchers:
+        if lang not in self.intent_matchers:
             return None, utterance
-        matcher: IntentContainer = self.kw_matchers[lang]
+        matcher: IntentContainer = self.intent_matchers[lang]
         match = matcher.calc_intent(utterance)
         kw = match.get("entities", {}).get("keyword")
         intent = None
@@ -185,15 +186,17 @@ class DuckDuckGoSolver(QuestionSolver):
         Returns:
             The search result data.
         """
-        # match the full query
-        data = self.get_data(query, lang, units)
-        if data:
+        data = self.get_data(query, lang=lang, units=units)
+        if data.get("AbstractText"):
+            # direct match without extracting sub-keyword
             return data
-
         # extract the best keyword
         kw = self.extract_keyword(query, lang=lang)
+        LOG.debug(f"DDG search: {kw}")
         return self.get_data(kw, lang=lang, units=units)
 
+    ########################################################
+    # abstract methods all solver plugins need to implement
     def get_data(self, query: str,
                  lang: Optional[str] = None,
                  units: Optional[str] = None) -> Dict[str, Any]:
@@ -253,9 +256,10 @@ class DuckDuckGoSolver(QuestionSolver):
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
         intent, query = self.match_infobox_intent(query, lang=lang)
-
+        LOG.info(f"DDG intent: {intent} keyword: {query}")
         if intent not in ["question"]:
             infobox = self.get_infobox(query, lang=lang, units=units)[0] or {}
+            LOG.debug(f"Parsing infobox: {infobox}")
             answer = infobox.get(intent)
             if answer:
                 return answer
@@ -283,8 +287,9 @@ class DuckDuckGoSolver(QuestionSolver):
         # match an infobox field with some basic regexes
         # (primitive intent parsing)
         intent, query = self.match_infobox_intent(query, lang)
-        if intent not in ["question"]:
+        if intent and intent not in ["question"]:
             infobox = self.get_infobox(query, lang=lang, units=units)[0] or {}
+            LOG.debug(pformat(infobox)) # pretty print infobox in debug logs
             answer = infobox.get(intent)
             if answer:
                 return [{
@@ -293,20 +298,13 @@ class DuckDuckGoSolver(QuestionSolver):
                     "img": img
                 }]
 
-        data = self.get_data(query, lang=lang, units=units)
+        LOG.debug(f"DDG couldn't match infobox section, using text summary")
+        data = self.extract_and_search(query, lang=lang, units=units)
         steps = [{
             "title": query,
             "summary": s,
             "img": img
         } for s in sentence_tokenize(data.get("AbstractText", "")) if s]
-
-        infobox, _ = self.get_infobox(query)
-        steps += [{"title": k,
-                   "summary": k + " - " + str(v),
-                   "img": img} for k, v in infobox.items()
-                  if not k.endswith(" id") and  # itunes id
-                  not k.endswith(" profile") and  # twitter profile
-                  k != "instance of"]  # spammy and sounds bad when spokem
         return steps
 
 
@@ -365,7 +363,7 @@ class DuckDuckGoSkill(OVOSSkill):
         self.display_ddg(sess)
 
     @common_query(callback=cq_callback)
-    def match_common_query(self, phrase: str, lang: str) -> Tuple[str, float]:
+    def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
         sess = SessionManager.get()
         self.session_results[sess.session_id] = {
             "query": phrase,
@@ -448,12 +446,13 @@ class DuckDuckGoSkill(OVOSSkill):
 
 
 if __name__ == "__main__":
+    LOG.set_level("DEBUG")
     from ovos_utils.fakebus import FakeBus
     from ovos_config.locale import setup_locale
 
     setup_locale()
     s = DuckDuckGoSkill(bus=FakeBus(), skill_id="fake.duck")
-    s.CQS_match_query_phrase("when was Stephen Hawking born", "en")
+    s.match_common_query("when was Stephen Hawking born", "en")
     exit()
     d = DuckDuckGoSolver()
 
