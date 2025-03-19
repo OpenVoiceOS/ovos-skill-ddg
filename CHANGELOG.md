@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.2.1a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.1a1) (2025-03-18)
+## [0.2.2a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.2a1) (2025-03-19)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.0...0.2.1a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.1...0.2.2a1)
 
 **Merged pull requests:**
 
-- fix: translations errors [\#77](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/77) ([JarbasAl](https://github.com/JarbasAl))
+- allow latest ovos-config [\#79](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/79) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
