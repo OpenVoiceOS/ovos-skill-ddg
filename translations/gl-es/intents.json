@@ -1,62 +1,63 @@
 {
-    "search_duck.intent": [
-        "preguntar a duck duck go por {keyword}",
-        "preguntar a duck duck sobre {keyword}",
-        "procurar en duck duck go {keyword}",
-        "procurar en duck duck {keyword}",
-        "procurar en duck {keyword}",
-        "que di duck duck go sobre {keyword}",
-        "que di duck duck sobre {keyword}",
-        "que di duck sobre {keyword}"
-    ],
-    "alma_mater.intent": [
-        "onde estudou {keyword}"
-    ],
-    "birthdate.intent": [
-        "cal é a data de nacemento de {person}",
-        "cando fai anos {person}",
-        "cando naceu {person}"
-    ],
-    "who.intent": [
-        "quen é {person}"
-    ],
-    "children.intent": [
-        "cantos fillos (tivo|ten) {keyword}"
-    ],
-    "died.intent": [
-        "(día|data) da morte de {keyword}",
-        "cando finou {keyword}",
-        "cando morreu {keyword}"
-    ],
-    "resting_place.intent": [
-        "onde descansan os restos de {keyword}",
-        "onde está enterrado {keyword}"
-    ],
-    "thesis.intent": [
-        "que é o tema da tese {keyword}"
-    ],
-    "known_for.intent": [
-        "por que se coñece {keyword}",
-        "por que ten fama {keyword}"
-    ],
-    "education.intent": [
-        "onde estudou {keyword}",
-        "onde se formou {keyword}"
-    ],
-    "official_website.intent": [
-        "cal é o sitio web oficial de {keyword}"
-    ],
-    "age_at_death.intent": [
-        "a que anos morreu {keyword}",
-        "cantos anos tiña {keyword} cando morreu",
-        "cantos anos tiña {keyword} o día que morreu"
-    ],
-    "born.intent": [
-        "(cando é o aniversario de) (que día fai anos) {keyword}",
-        "(día|data) de nacemento de {keyword}",
-        "cando naceu {keyword}"
-    ],
-    "fields.intent": [
-        "cal é o eido de especialización de {keyword}"
-    ]
+  "search_duck.intent": [
+    "preguntar a duck duck por {keyword}",
+    "preguntar a duck duck go sobre {keyword}",
+    "procurar en duck duck go {keyword}",
+    "procurar en duck duck {keyword}",
+    "procurar en duck {keyword}",
+    "que di duck duck go sobre {keyword}",
+    "que di duck duck sobre {keyword}",
+    "que di duck sobre {keyword}"
+  ],
+  "alma_mater.intent": [
+    "onde estudou {keyword}"
+  ],
+  "birthdate.intent": [
+    "cal é a data de nacemento de {person}",
+    "cando fai anos {person}",
+    "cando naceu {person}",
+    "cando naceu {person}"
+  ],
+  "who.intent": [
+    "quen é {person}"
+  ],
+  "children.intent": [
+    "cantos fillos (tivo|ten) {keyword}"
+  ],
+  "died.intent": [
+    "cando morreu {keyword}",
+    "cando finou {keyword} ",
+    "(día|data) da morte de {keyword}"
+  ],
+  "resting_place.intent": [
+    "onde descansan os restos de {keyword}",
+    "onde está enterrado {keyword}"
+  ],
+  "thesis.intent": [
+    "que é o tema da tese {keyword}"
+  ],
+  "known_for.intent": [
+    "por que se coñece {keyword}",
+    "por que ten fama {keyword}"
+  ],
+  "education.intent": [
+    "onde se formou {keyword}",
+    "onde estudou {keyword}"
+  ],
+  "official_website.intent": [
+    "cal é o sitio web oficial de {keyword}"
+  ],
+  "age_at_death.intent": [
+    "a que anos morreu {keyword}",
+    "cantos anos tiña {keyword} o día que morreu",
+    "cantos anos tiña {keyword} cando morreu"
+  ],
+  "born.intent": [
+    "(cando é o aniversario de) (que día fai anos) {keyword}",
+    "cando naceu {keyword}",
+    "(día|data) de nacemento de {keyword}"
+  ],
+  "fields.intent": [
+    "cal é o eido de especialización de {keyword}"
+  ]
 }
