@@ -1,9 +1,9 @@
 {
-    "thats all.dialog": [
-        "Iso é todo que atopo",
-        "Iso é todo o que sei"
-    ],
-    "no_answer.dialog": [
-        "duck non sabe a resposta"
-    ]
+  "thats all.dialog": [
+    "Iso é todo o que sei",
+    "Iso é todo que atopo"
+  ],
+  "no_answer.dialog": [
+    "duck non sabe a resposta"
+  ]
 }
