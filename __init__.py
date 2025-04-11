@@ -349,7 +349,8 @@ class DuckDuckGoSkill(OVOSSkill):
                                    no_gui_fallback=True)
 
     # intents
-    @intent_handler("search_duck.intent")
+    @intent_handler("search_duck.intent",
+                    voc_blacklist=["Weather", "Help"])
     def handle_search(self, message):
         query = message.data["keyword"]
 
@@ -386,6 +387,9 @@ class DuckDuckGoSkill(OVOSSkill):
 
     @common_query(callback=cq_callback)
     def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
+        if (self.voc_match(phrase, "Help") or
+                self.voc_match(phrase, "Weather")):
+            return None
         sess = SessionManager.get()
         self.session_results[sess.session_id] = {
             "query": phrase,
