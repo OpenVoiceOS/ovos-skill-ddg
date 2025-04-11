@@ -1,7 +1,7 @@
 requests
 langcodes
 ovos-utils>=0.0.35,<1.0.0
-ovos_workshop>=3.3.2,<4.0.0
+ovos_workshop>=3.4.0a1,<4.0.0
 ovos-translate-server-plugin
 ovos-config>=0.0.11,<2.0.0
 ovos-plugin-manager>=0.0.26,<1.0.0
