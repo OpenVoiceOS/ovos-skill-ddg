@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.4a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.4a2) (2025-04-11)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.4a1...0.2.4a2)
+
+**Merged pull requests:**
+
+- Blacklist2 [\#85](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/85) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.2.4a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.2.4a1) (2025-04-11)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.3...0.2.4a1)
