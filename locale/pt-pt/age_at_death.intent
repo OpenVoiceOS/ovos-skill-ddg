@@ -1,2 +1,2 @@
-quantos anos tinha {keyword} (quando morreu|na sua morte|a data da morte)
-quantos anos tinha {keyword} no dia em que morreu
+quantos anos tinha {query} (quando morreu|na sua morte|a data da morte)
+quantos anos tinha {query} no dia em que morreu
