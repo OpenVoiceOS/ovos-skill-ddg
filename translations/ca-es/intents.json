@@ -1,16 +1,16 @@
 {
   "search_duck.intent": [
-    "(cerca|busca|consulta|demana) (a|al) (duck duck go|ddg|de de ge|l'ànec) {keyword}",
-    "(cerca|busca|consulta|demana) a (duck duck go|ddg|de de ge|l'ànec) {keyword}",
-    "(cerca|busca|consulta|demana) {keyword} (a|al) (duck duck go|ddg|de de ge|l'ànec)",
-    "(cerca|busca|consulta|demana) {keyword} a (duck duck go|ddg|de de ge|l'ànec)",
-    "cerca a l'ànec {keyword}",
-    "què diu (el|es|) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {keyword}",
-    "què diu l'ànec sobre {keyword}",
-    "què posa (a|al) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {keyword}"
+    "(cerca|busca|consulta|demana) (a|al) (duck duck go|ddg|de de ge|l'ànec) {query}",
+    "(cerca|busca|consulta|demana) a (duck duck go|ddg|de de ge|l'ànec) {query}",
+    "(cerca|busca|consulta|demana) {query} (a|al) (duck duck go|ddg|de de ge|l'ànec)",
+    "(cerca|busca|consulta|demana) {query} a (duck duck go|ddg|de de ge|l'ànec)",
+    "cerca a l'ànec {query}",
+    "què diu (el|es|) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {query}",
+    "què diu l'ànec sobre {query}",
+    "què posa (a|al) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {query}"
   ],
   "alma_mater.intent": [
-    "quina és l'alma mater de {keyword}"
+    "quina és l'alma mater de {query}"
   ],
   "birthdate.intent": [
     "(quan|quin) és l'aniversari (de|d') {person}",
@@ -22,42 +22,42 @@
     "qui és {person}"
   ],
   "children.intent": [
-    "quants fills (té|te|va tenir|tingué) {keyword}"
+    "quants fills (té|te|va tenir|tingué) {query}"
   ],
   "died.intent": [
-    "quan (va morir|morí) {keyword}",
-    "quan (va ser|fou) la mort de {keyword}",
-    "{keyword} (dia|data) de la mort"
+    "quan (va morir|morí) {query}",
+    "quan (va ser|fou) la mort de {query}",
+    "{query} (dia|data) de la mort"
   ],
   "resting_place.intent": [
-    "on (està|és) enterrat {keyword}",
-    "on (és|està) la tomba de {keyword}"
+    "on (està|és) enterrat {query}",
+    "on (és|està) la tomba de {query}"
   ],
   "thesis.intent": [
-    "quin és el tema de la tesi de {keyword}"
+    "quin és el tema de la tesi de {query}"
   ],
   "known_for.intent": [
-    "per a què es coneix {keyword}",
-    "per què és famós {keyword}"
+    "per a què es coneix {query}",
+    "per què és famós {query}"
   ],
   "education.intent": [
-    "on (va estudiar|estudià) {keyword}",
-    "on (va estudiar|estudià) {keyword}(?|)"
+    "on (va estudiar|estudià) {query}",
+    "on (va estudiar|estudià) {query}(?|)"
   ],
   "official_website.intent": [
-    "quin és el lloc web oficial de {keyword}"
+    "quin és el lloc web oficial de {query}"
   ],
   "age_at_death.intent": [
-    "quants anys tenia {keyword} el dia que (ell|ella|) (va morir|morí)",
-    "quants anys tenia {keyword} en morir",
-    "quants anys tenia {keyword} quan (ell|ella|) (va morir|morí)"
+    "quants anys tenia {query} el dia que (ell|ella|) (va morir|morí)",
+    "quants anys tenia {query} en morir",
+    "quants anys tenia {query} quan (ell|ella|) (va morir|morí)"
   ],
   "born.intent": [
-    "quan (va néixer|nasqué) {keyword}",
-    "quan és {keyword} (naixement|aniversari|dia de naixement)",
-    "{keyword} (dia|data) de naixement"
+    "quan (va néixer|nasqué) {query}",
+    "quan és {query} (naixement|aniversari|dia de naixement)",
+    "{query} (dia|data) de naixement"
   ],
   "fields.intent": [
-    "quin és l'àmbit d'expertesa de {keyword}"
+    "quin és l'àmbit d'expertesa de {query}"
   ]
 }

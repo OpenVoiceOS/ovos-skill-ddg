@@ -352,7 +352,7 @@ class DuckDuckGoSkill(OVOSSkill):
     @intent_handler("search_duck.intent",
                     voc_blacklist=["Weather", "Help"])
     def handle_search(self, message):
-        query = message.data["keyword"]
+        query = message.data["query"]
 
         sess = SessionManager.get(message)
         self.session_results[sess.session_id] = {
