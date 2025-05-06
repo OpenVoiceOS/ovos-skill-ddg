@@ -1,4 +1,13 @@
 {
+  "MiscBlacklist.voc": [
+    "sobre el que fa",
+    "skills",
+    "aquesta tarda",
+    "ara mateix",
+    "quin dia",
+    "passat al món",
+    "que hi ha de nou"
+  ],
   "More.voc": [
     "(dona|dóna)'m més informació",
     "(dona|dóna|vull) més informació",

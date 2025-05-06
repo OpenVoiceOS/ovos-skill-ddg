@@ -1,3 +1,3 @@
-hvornår døde {keyword}
-hvornår var {keyword} død
-{keyword} (dag|dato) for død
+hvornår døde {query}
+hvornår var {query} død
+{query} (dag|dato) for død

@@ -1,13 +1,13 @@
 {
     "search_duck.intent": [
-        "cherche sur duck au sujet de {keyword}",
-        "cherche sur duck duck au sujet de {keyword}",
-        "cherche sur duck duck go au sujet de {keyword}",
-        "demande à duck duck go à propos de {keyword}",
-        "demande à duck duck à propos de {keyword}",
-        "que dit duck duck go à propos de {keyword}",
-        "que dit duck duck à propos de {keyword}",
-        "que dit duck à propos de {keyword}"
+        "cherche sur duck au sujet de {query}",
+        "cherche sur duck duck au sujet de {query}",
+        "cherche sur duck duck go au sujet de {query}",
+        "demande à duck duck go à propos de {query}",
+        "demande à duck duck à propos de {query}",
+        "que dit duck duck go à propos de {query}",
+        "que dit duck duck à propos de {query}",
+        "que dit duck à propos de {query}"
     ],
     "alma_mater.intent": [
         "c'est quoi alma mater"
@@ -47,7 +47,7 @@
         "où l'a fait étude"
     ],
     "official_website.intent": [
-        "quel est le site officiel {keyword}"
+        "quel est le site officiel {query}"
     ],
     "age_at_death.intent": [
         "le jour où elle est morte",
@@ -65,6 +65,6 @@
         "quand était né"
     ],
     "fields.intent": [
-        "ce qui est {keyword} domaine d'expertise"
+        "ce qui est {query} domaine d'expertise"
     ]
 }

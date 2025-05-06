@@ -1,11 +1,11 @@
 {
     "search_duck.intent": [
-        "Pregúntale al pato sobre {keyword}",
-        "Qué dice el pato del pato sobre {keyword}",
-        "Qué dice el pato sobre {keyword}",
-        "buscar el pato para {keyword}",
-        "buscar pato de pato ir por {keyword}",
-        "búsqueda de pato para {keyword}"
+        "Pregúntale al pato sobre {query}",
+        "Qué dice el pato del pato sobre {query}",
+        "Qué dice el pato sobre {query}",
+        "buscar el pato para {query}",
+        "buscar pato de pato ir por {query}",
+        "búsqueda de pato para {query}"
     ],
     "alma_mater.intent": [
         "qué es alma mater"
@@ -31,7 +31,7 @@
     ],
     "resting_place.intent": [
         "donde está descansando enterrado",
-        "donde está {keyword} lugar de descanso"
+        "donde está {query} lugar de descanso"
     ],
     "thesis.intent": [
         "qué es tema de la tesis"
@@ -45,7 +45,7 @@
         "dónde lo hizo estudio"
     ],
     "official_website.intent": [
-        "lo que es {keyword} sitio oficial"
+        "lo que es {query} sitio oficial"
     ],
     "age_at_death.intent": [
         "cuando murió",
@@ -55,12 +55,12 @@
     "born.intent": [
         "cuando es el día de nacimiento",
         "cuando es el nacimiento",
-        "cuando es {keyword} cumpleaños",
+        "cuando es {query} cumpleaños",
         "cuando nació",
         "día de nacimiento",
         "fecha de nacimiento"
     ],
     "fields.intent": [
-        "lo que es {keyword} campo de experiencia"
+        "lo que es {query} campo de experiencia"
     ]
 }

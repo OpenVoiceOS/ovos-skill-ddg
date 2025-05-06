@@ -1,16 +1,16 @@
 {
     "search_duck.intent": [
-        "ask the duck duck about {keyword}",
-        "ask the duck duck go about {keyword}",
-        "search duck duck for {keyword}",
-        "search duck duck go for {keyword}",
-        "search the duck for {keyword}",
-        "what does duck duck go say about {keyword}",
-        "what does duck duck say about {keyword}",
-        "what does the duck say about {keyword}"
+        "ask the duck duck about {query}",
+        "ask the duck duck go about {query}",
+        "search duck duck for {query}",
+        "search duck duck go for {query}",
+        "search the duck for {query}",
+        "what does duck duck go say about {query}",
+        "what does duck duck say about {query}",
+        "what does the duck say about {query}"
     ],
     "alma_mater.intent": [
-        "what is {keyword} alma mater"
+        "what is {query} alma mater"
     ],
     "birthdate.intent": [
         "what is {person} birth date",
@@ -22,42 +22,42 @@
         "who is {person}"
     ],
     "children.intent": [
-        "how many children (did|does) {keyword} have"
+        "how many children (did|does) {query} have"
     ],
     "died.intent": [
-        "when did {keyword} die",
-        "when was {keyword} death",
-        "{keyword} (day|date) of death"
+        "when did {query} die",
+        "when was {query} death",
+        "{query} (day|date) of death"
     ],
     "resting_place.intent": [
-        "where is {keyword} resting buried",
-        "where is {keyword} resting place"
+        "where is {query} resting buried",
+        "where is {query} resting place"
     ],
     "thesis.intent": [
-        "what is {keyword} thesis subject"
+        "what is {query} thesis subject"
     ],
     "known_for.intent": [
-        "what is {keyword} famous for",
-        "what is {keyword} known for"
+        "what is {query} famous for",
+        "what is {query} known for"
     ],
     "education.intent": [
-        "where did {keyword} get (his|her) education",
-        "where did {keyword} study"
+        "where did {query} get (his|her) education",
+        "where did {query} study"
     ],
     "official_website.intent": [
-        "what is {keyword} official website"
+        "what is {query} official website"
     ],
     "age_at_death.intent": [
-        "how old was {keyword} on his death",
-        "how old was {keyword} on the day (he|she) died",
-        "how old was {keyword} when (he|she) died"
+        "how old was {query} on his death",
+        "how old was {query} on the day (he|she) died",
+        "how old was {query} when (he|she) died"
     ],
     "born.intent": [
-        "when is {keyword} (birth|birthday|day of birth)",
-        "when was {keyword} born",
-        "{keyword} (day|date) of birth"
+        "when is {query} (birth|birthday|day of birth)",
+        "when was {query} born",
+        "{query} (day|date) of birth"
     ],
     "fields.intent": [
-        "what is {keyword} field of expertise"
+        "what is {query} field of expertise"
     ]
 }

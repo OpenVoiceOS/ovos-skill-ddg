@@ -1,14 +1,14 @@
 {
     "search_duck.intent": [
-        "bilatu duck duck bilatzailean {keyword}",
-        "bilatu duck duck go bilatzailean {keyword}",
-        "bilatu the duck bilatzailean {keyword}",
-        "zer dio duck duck bilatzaileak honi buruz {keyword}",
-        "zer dio duck duck go bilatzaileak honi buruz {keyword}",
-        "zer dio the duck bilatzaileak honi buruz {keyword}"
+        "bilatu duck duck bilatzailean {query}",
+        "bilatu duck duck go bilatzailean {query}",
+        "bilatu the duck bilatzailean {query}",
+        "zer dio duck duck bilatzaileak honi buruz {query}",
+        "zer dio duck duck go bilatzaileak honi buruz {query}",
+        "zer dio the duck bilatzaileak honi buruz {query}"
     ],
     "alma_mater.intent": [
-        "zer da {keyword} alma mater"
+        "zer da {query} alma mater"
     ],
     "birthdate.intent": [
         "noiz jaio zen {person}",
@@ -20,41 +20,41 @@
         "nor da {person}"
     ],
     "children.intent": [
-        "zenbat haur (izan|) ditu {keyword}"
+        "zenbat haur (izan|) ditu {query}"
     ],
     "died.intent": [
-        "noiz hil zen {keyword}",
-        "noiz zendu zen {keyword}",
-        "{keyword} heriotza-(eguna|data)"
+        "noiz hil zen {query}",
+        "noiz zendu zen {query}",
+        "{query} heriotza-(eguna|data)"
     ],
     "resting_place.intent": [
-        "non dago lurperatuta {keyword}",
-        "non datza {keyword}"
+        "non dago lurperatuta {query}",
+        "non datza {query}"
     ],
     "thesis.intent": [
-        "zein da {keyword} tesiaren gaia"
+        "zein da {query} tesiaren gaia"
     ],
     "known_for.intent": [
-        "zergatik da ezagun {keyword}",
-        "zergatik da ospetsu {keyword}"
+        "zergatik da ezagun {query}",
+        "zergatik da ospetsu {query}"
     ],
     "education.intent": [
-        "non egin zituen {keyword} ikasketak",
-        "non ikasi zuen {keyword}"
+        "non egin zituen {query} ikasketak",
+        "non ikasi zuen {query}"
     ],
     "official_website.intent": [
-        "zein da {keyword} webgune ofiziala"
+        "zein da {query} webgune ofiziala"
     ],
     "age_at_death.intent": [
-        "zenbat urte zituen {keyword} hil zen egunean",
-        "zenbat urte zituen {keyword} hil zenean"
+        "zenbat urte zituen {query} hil zen egunean",
+        "zenbat urte zituen {query} hil zenean"
     ],
     "born.intent": [
-        "noiz da {keyword} (jaiotze-data|jaioteguna)",
-        "noiz jaio zen {keyword}",
-        "{keyword} (jaiotze-data|jaioteguna)"
+        "noiz da {query} (jaiotze-data|jaioteguna)",
+        "noiz jaio zen {query}",
+        "{query} (jaiotze-data|jaioteguna)"
     ],
     "fields.intent": [
-        "zein da {keyword} espezializaio-arloa"
+        "zein da {query} espezializaio-arloa"
     ]
 }

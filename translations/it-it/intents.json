@@ -1,7 +1,7 @@
 {
     "search_duck.intent": [
-        "cerca (su|con) duck duck (go|) {keyword}",
-        "cerca {keyword} (su|con) duck duck (go|)"
+        "cerca (su|con) duck duck (go|) {query}",
+        "cerca {query} (su|con) duck duck (go|)"
     ],
     "alma_mater.intent": [],
     "birthdate.intent": [],
@@ -15,12 +15,12 @@
     "known_for.intent": [],
     "education.intent": [],
     "official_website.intent": [
-        "qual è il sito (ufficiale|) di {keyword}"
+        "qual è il sito (ufficiale|) di {query}"
     ],
     "age_at_death.intent": [],
     "born.intent": [
-        "(quand'è|quando è) il compleanno di {keyword}",
-        "(quando è|quand'è) (nato|nata) {keyword}"
+        "(quand'è|quando è) il compleanno di {query}",
+        "(quando è|quand'è) (nato|nata) {query}"
     ],
     "fields.intent": []
 }

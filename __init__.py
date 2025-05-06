@@ -115,11 +115,11 @@ class DuckDuckGoSolver(QuestionSolver):
             return None, utterance
         matcher: IntentContainer = self.intent_matchers[lang]
         match = matcher.calc_intent(utterance)
-        kw = match.get("entities", {}).get("keyword")
+        kw = match.get("entities", {}).get("query")
         intent = None
         if kw:
             intent = match["name"]
-            LOG.debug(f"DDG Intent: {intent} Keyword: {kw} - Confidence: {match['conf']}")
+            LOG.debug(f"DDG Intent: {intent} Query: {kw} - Confidence: {match['conf']}")
         else:
             LOG.debug(f"Could not match intent for '{lang}' from '{utterance}'")
         return intent, kw or utterance
@@ -352,7 +352,7 @@ class DuckDuckGoSkill(OVOSSkill):
     @intent_handler("search_duck.intent",
                     voc_blacklist=["Weather", "Help"])
     def handle_search(self, message):
-        query = message.data["keyword"]
+        query = message.data["query"]
 
         sess = SessionManager.get(message)
         self.session_results[sess.session_id] = {

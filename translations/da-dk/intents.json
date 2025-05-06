@@ -1,14 +1,14 @@
 {
     "search_duck.intent": [
-        "hvad siger duck duck go om {keyword}",
-        "hvad siger duck duck om {keyword}",
-        "spørg duck duck om {keyword}",
-        "søg duck duck efter {keyword}",
-        "søg duck duck go efter {keyword}",
-        "søg i duck duck efter {keyword}"
+        "hvad siger duck duck go om {query}",
+        "hvad siger duck duck om {query}",
+        "spørg duck duck om {query}",
+        "søg duck duck efter {query}",
+        "søg duck duck go efter {query}",
+        "søg i duck duck efter {query}"
     ],
     "alma_mater.intent": [
-        "hvad er {keyword} alma mater"
+        "hvad er {query} alma mater"
     ],
     "birthdate.intent": [
         "hvad er {person} fødselsdag",
@@ -19,42 +19,42 @@
         "hvem er {person}"
     ],
     "children.intent": [
-        "hvor mange børn (har|har) {keyword} har"
+        "hvor mange børn (har|har) {query} har"
     ],
     "died.intent": [
-        "hvornår døde {keyword}",
-        "hvornår var {keyword} død",
-        "{keyword} (dag|dato) for død"
+        "hvornår døde {query}",
+        "hvornår var {query} død",
+        "{query} (dag|dato) for død"
     ],
     "resting_place.intent": [
-        "hvor er {keyword} hvilested",
-        "hvor ligger {keyword} begravet"
+        "hvor er {query} hvilested",
+        "hvor ligger {query} begravet"
     ],
     "thesis.intent": [
-        "hvad er {keyword} specialeemne"
+        "hvad er {query} specialeemne"
     ],
     "known_for.intent": [
-        "hvad er {keyword} berømt for",
-        "hvad er {keyword} kendt for"
+        "hvad er {query} berømt for",
+        "hvad er {query} kendt for"
     ],
     "education.intent": [
-        "hvor fik {keyword} (sin|hendes) uddannelse",
-        "hvor studerede {keyword}"
+        "hvor fik {query} (sin|hendes) uddannelse",
+        "hvor studerede {query}"
     ],
     "official_website.intent": [
-        "hvad er {keyword} officielle hjemmeside"
+        "hvad er {query} officielle hjemmeside"
     ],
     "age_at_death.intent": [
-        "hvor gammel var {keyword} den dag (han|hun) døde",
-        "hvor gammel var {keyword} ved hans død",
-        "hvor gammel var {keyword} ​​da (han|hun) døde"
+        "hvor gammel var {query} den dag (han|hun) døde",
+        "hvor gammel var {query} ved hans død",
+        "hvor gammel var {query} ​​da (han|hun) døde"
     ],
     "born.intent": [
-        "hvornår blev {keyword} født",
-        "hvornår er {keyword} (fødselsdag|fødselsdag|fødselsdag)",
-        "{keyword} (dag|dato) for fødsel"
+        "hvornår blev {query} født",
+        "hvornår er {query} (fødselsdag|fødselsdag|fødselsdag)",
+        "{query} (dag|dato) for fødsel"
     ],
     "fields.intent": [
-        "hvad er {keyword} ekspertiseområde"
+        "hvad er {query} ekspertiseområde"
     ]
 }

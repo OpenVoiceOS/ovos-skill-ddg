@@ -1,3 +1,3 @@
-noiz hil zen {keyword}
-noiz zendu zen {keyword}
-{keyword} heriotza-(eguna|data)
+noiz hil zen {query}
+noiz zendu zen {query}
+{query} heriotza-(eguna|data)
