@@ -4,9 +4,9 @@ from os import walk, path
 
 from setuptools import setup
 
-URL = "https://github.com/OpenVoiceOS/skill-ovos-ddg"
+URL = "https://github.com/OpenVoiceOS/ovos-skill-ddg"
 SKILL_CLAZZ = "DuckDuckGoSkill"  # needs to match __init__.py class name
-PYPI_NAME = "skill-ddg"  # pip install PYPI_NAME
+PYPI_NAME = "ovos-skill-ddg"  # pip install PYPI_NAME
 
 # below derived from github url to ensure standard skill_id
 SKILL_AUTHOR, SKILL_NAME = URL.split(".com/")[-1].split("/")
