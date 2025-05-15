@@ -1,28 +1,12 @@
 # Changelog
 
-## [0.3.0a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.0a3) (2025-05-15)
+## [0.3.1a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.1a1) (2025-05-15)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.0a2...0.3.0a3)
-
-**Merged pull requests:**
-
-- Update Catalan strings [\#91](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/91) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
-
-## [0.3.0a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.0a2) (2025-05-06)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.0a1...0.3.0a2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.0...0.3.1a1)
 
 **Merged pull requests:**
 
-- fix [\#89](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/89) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.3.0a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.0a1) (2025-05-06)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.2.4...0.3.0a1)
-
-**Merged pull requests:**
-
-- feat: standardize entity slots [\#87](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/87) ([JarbasAl](https://github.com/JarbasAl))
+- Std [\#93](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/93) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
