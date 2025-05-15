@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.0a3) (2025-05-15)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.0a2...0.3.0a3)
+
+**Merged pull requests:**
+
+- Update Catalan strings [\#91](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/91) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
 ## [0.3.0a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.0a2) (2025-05-06)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.0a1...0.3.0a2)
