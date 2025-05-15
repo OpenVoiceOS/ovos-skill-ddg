@@ -1,12 +1,19 @@
 {
+  "Weather.voc": [
+    "(temps|oratge)",
+    "(meteo|meteorologia)"
+  ],
   "MiscBlacklist.voc": [
-    "sobre el que fa",
-    "skills",
-    "aquesta tarda",
-    "ara mateix",
-    "quin dia",
-    "passat al món",
-    "que hi ha de nou"
+    "instal·la",
+    "habilitats",
+    "com",
+    "quant de temps",
+    "quina hora",
+    "és",
+    "has dit",
+    "pots",
+    "fés",
+    "explica"
   ],
   "More.voc": [
     "(dona|dóna)'m més informació",
