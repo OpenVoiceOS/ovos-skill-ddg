@@ -1,2 +1,2 @@
-cerca (su|con) duck duck (go|) {keyword}
-cerca {keyword} (su|con) duck duck (go|)
+cerca (su|con) duck duck (go|) {query}
+cerca {query} (su|con) duck duck (go|)

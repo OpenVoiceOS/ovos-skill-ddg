@@ -1,3 +1,3 @@
-(día|data) da morte de {keyword}
-cando finou {keyword}
-cando morreu {keyword}
+(día|data) da morte de {query}
+cando finou {query}
+cando morreu {query}

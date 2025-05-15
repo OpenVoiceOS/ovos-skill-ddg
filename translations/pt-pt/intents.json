@@ -1,13 +1,13 @@
 {
     "search_duck.intent": [
-        "(procura no|pergunta ao) (duck duck go|pato) sobre {keyword}",
-        "(procura|pesquisa) no duck duck go {keyword}",
-        "Procura no pato {keyword}",
-        "o que diz o (duck duck go|pato) sobre {keyword}",
-        "pergunta ao pato {keyword}"
+        "(procura no|pergunta ao) (duck duck go|pato) sobre {query}",
+        "(procura|pesquisa) no duck duck go {query}",
+        "Procura no pato {query}",
+        "o que diz o (duck duck go|pato) sobre {query}",
+        "pergunta ao pato {query}"
     ],
     "search_wolfie.intent": [
-        "pergunta ao pato {keyword}"
+        "pergunta ao pato {query}"
     ],
     "alma_mater.intent": [],
     "birthdate.intent": [
@@ -19,26 +19,26 @@
         "Quem é (que é|) {person}"
     ],
     "children.intent": [
-        "quantos filhos (tinha|teve|tem) {keyword}"
+        "quantos filhos (tinha|teve|tem) {query}"
     ],
     "died.intent": [
-        "(dia|data) da morte (do|da|de) {keyword}",
-        "quando foi a morte de {keyword}",
-        "quando morreu (o|a|) {keyword}"
+        "(dia|data) da morte (do|da|de) {query}",
+        "quando foi a morte de {query}",
+        "quando morreu (o|a|) {query}"
     ],
     "resting_place.intent": [],
     "thesis.intent": [],
     "known_for.intent": [
-        "pelo que é {keyword} (conhecida|conhecido)"
+        "pelo que é {query} (conhecida|conhecido)"
     ],
     "education.intent": [
-        "onde estudou {keyword}",
-        "onde obteve {keyword} a (sua|) educação"
+        "onde estudou {query}",
+        "onde obteve {query} a (sua|) educação"
     ],
     "official_website.intent": [],
     "age_at_death.intent": [
-        "quantos anos tinha {keyword} (quando morreu|na sua morte|a data da morte)",
-        "quantos anos tinha {keyword} no dia em que morreu"
+        "quantos anos tinha {query} (quando morreu|na sua morte|a data da morte)",
+        "quantos anos tinha {query} no dia em que morreu"
     ],
     "born.intent": [],
     "fields.intent": []

@@ -1,16 +1,16 @@
 {
   "search_duck.intent": [
-    "Frage duck duck go nach {keyword}",
-    "Frage duck duck nach {keyword}",
-    "Suche auf duck duck go nach {keyword}",
-    "Suche die Ente nach {keyword}",
-    "Suche duck duck nach {keyword}",
-    "Was sagt die Ente über {keyword}",
-    "was sagt die Duck Duck Go über {keyword}",
-    "was weiß (D D G| duck duck go) über {keyword}"
+    "Frage duck duck go nach {query}",
+    "Frage duck duck nach {query}",
+    "Suche auf duck duck go nach {query}",
+    "Suche die Ente nach {query}",
+    "Suche duck duck nach {query}",
+    "Was sagt die Ente über {query}",
+    "was sagt die Duck Duck Go über {query}",
+    "was weiß (D D G| duck duck go) über {query}"
   ],
   "alma_mater.intent": [
-    "was ist die Universität von {keyword}"
+    "was ist die Universität von {query}"
   ],
   "birthdate.intent": [
     "was ist (das|der) (Geburtsdatum|Geburtstag) von {person} ",
@@ -22,42 +22,42 @@
     "wer ist {person}"
   ],
   "children.intent": [
-    "wie viele Kinder (hatte|hat) {keyword}"
+    "wie viele Kinder (hatte|hat) {query}"
   ],
   "died.intent": [
-    "wann ist der Todestag von {keyword}",
-    "wann ist {keyword} gestorben",
-    "{keyword}s Todestag"
+    "wann ist der Todestag von {query}",
+    "wann ist {query} gestorben",
+    "{query}s Todestag"
   ],
   "resting_place.intent": [
-    "Wo ist das Grab von {keyword}",
-    "wo ist {keyword} begraben"
+    "Wo ist das Grab von {query}",
+    "wo ist {query} begraben"
   ],
   "thesis.intent": [
-    "was ist {keyword} Diplomarbeitsthema"
+    "was ist {query} Diplomarbeitsthema"
   ],
   "known_for.intent": [
-    "wofür ist {keyword} bekannt",
-    "wofür ist {keyword} berühmt"
+    "wofür ist {query} bekannt",
+    "wofür ist {query} berühmt"
   ],
   "education.intent": [
-    "wo hat {keyword} (seine|ihre) Ausbildung (erhalten|gemacht)",
-    "wo hat {keyword} studiert"
+    "wo hat {query} (seine|ihre) Ausbildung (erhalten|gemacht)",
+    "wo hat {query} studiert"
   ],
   "official_website.intent": [
-    "was ist die offizielle Website von {keyword}"
+    "was ist die offizielle Website von {query}"
   ],
   "age_at_death.intent": [
-    "wie alt war {keyword} als (er|sie) starb",
-    "wie alt war {keyword} an dem Tag als (er|sie) starb",
-    "wie alt war {keyword} bei seinem Tod"
+    "wie alt war {query} als (er|sie) starb",
+    "wie alt war {query} an dem Tag als (er|sie) starb",
+    "wie alt war {query} bei seinem Tod"
   ],
   "born.intent": [
-    "Geburtstag von {keyword}",
-    "wann ist der Geburtstag von {keyword}",
-    "wann wurde {keyword} geboren"
+    "Geburtstag von {query}",
+    "wann ist der Geburtstag von {query}",
+    "wann wurde {query} geboren"
   ],
   "fields.intent": [
-    "was ist das Fachgebiet von {keyword}"
+    "was ist das Fachgebiet von {query}"
   ]
 }
