@@ -1,4 +1,4 @@
-what is {person} birth date
-what is {person} birthday
-when was born {person}
-when was {person} born
+what is {query} birth date
+what is {query} birthday
+when was born {query}
+when was {query} born

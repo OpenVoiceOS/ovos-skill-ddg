@@ -11,12 +11,12 @@
     ],
     "alma_mater.intent": [],
     "birthdate.intent": [
-        "quando nasceu {person}",
-        "quando é o aniversário (da|do|de) {person}",
-        "quando é que {person} faz anos"
+        "quando nasceu {query}",
+        "quando é o aniversário (da|do|de) {query}",
+        "quando é que {query} faz anos"
     ],
     "who.intent": [
-        "Quem é (que é|) {person}"
+        "Quem é (que é|) {query}"
     ],
     "children.intent": [
         "quantos filhos (tinha|teve|tem) {query}"

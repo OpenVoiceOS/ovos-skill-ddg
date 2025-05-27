@@ -13,13 +13,13 @@
     "onde estudou {query}"
   ],
   "birthdate.intent": [
-    "cal é a data de nacemento de {person}",
-    "cando fai anos {person}",
-    "cando naceu {person}",
-    "cando naceu {person}"
+    "cal é a data de nacemento de {query}",
+    "cando fai anos {query}",
+    "cando naceu {query}",
+    "cando naceu {query}"
   ],
   "who.intent": [
-    "quen é {person}"
+    "quen é {query}"
   ],
   "children.intent": [
     "cantos fillos (tivo|ten) {query}"

@@ -1,3 +1,3 @@
-cal é a data de nacemento de {person}
-cando fai anos {person}
-cando naceu {person}
+cal é a data de nacemento de {query}
+cando fai anos {query}
+cando naceu {query}

@@ -6,7 +6,7 @@
     "alma_mater.intent": [],
     "birthdate.intent": [],
     "who.intent": [
-        "chi è {person}"
+        "chi è {query}"
     ],
     "children.intent": [],
     "died.intent": [],
