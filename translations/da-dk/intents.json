@@ -11,12 +11,12 @@
         "hvad er {query} alma mater"
     ],
     "birthdate.intent": [
-        "hvad er {person} fødselsdag",
-        "hvad er {person} fødselsdato",
-        "hvornår blev {person} født"
+        "hvad er {query} fødselsdag",
+        "hvad er {query} fødselsdato",
+        "hvornår blev {query} født"
     ],
     "who.intent": [
-        "hvem er {person}"
+        "hvem er {query}"
     ],
     "children.intent": [
         "hvor mange børn (har|har) {query} har"
