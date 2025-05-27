@@ -11,13 +11,13 @@
         "zer da {query} alma mater"
     ],
     "birthdate.intent": [
-        "noiz jaio zen {person}",
-        "zein da {person} jaioteguna",
-        "zein da {person} jaiotze-data",
-        "{person} noiz jaio zen"
+        "noiz jaio zen {query}",
+        "zein da {query} jaioteguna",
+        "zein da {query} jaiotze-data",
+        "{query} noiz jaio zen"
     ],
     "who.intent": [
-        "nor da {person}"
+        "nor da {query}"
     ],
     "children.intent": [
         "zenbat haur (izan|) ditu {query}"

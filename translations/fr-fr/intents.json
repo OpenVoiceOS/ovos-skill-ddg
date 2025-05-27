@@ -13,12 +13,12 @@
         "c'est quoi alma mater"
     ],
     "birthdate.intent": [
-        "quand est né {person}",
-        "quand {person} est né",
-        "quelle est la date de naissance de {person}"
+        "quand est né {query}",
+        "quand {query} est né",
+        "quelle est la date de naissance de {query}"
     ],
     "who.intent": [
-        "qui est {person}"
+        "qui est {query}"
     ],
     "children.intent": [
         "combien d'enfants ont",

@@ -13,13 +13,13 @@
     "was ist die Universität von {query}"
   ],
   "birthdate.intent": [
-    "was ist (das|der) (Geburtsdatum|Geburtstag) von {person} ",
-    "wann ist der Geburtstag von {person}",
-    "wann wurde {person} geboren",
-    "was ist {person} Geburtsdatum"
+    "was ist (das|der) (Geburtsdatum|Geburtstag) von {query} ",
+    "wann ist der Geburtstag von {query}",
+    "wann wurde {query} geboren",
+    "was ist {query} Geburtsdatum"
   ],
   "who.intent": [
-    "wer ist {person}"
+    "wer ist {query}"
   ],
   "children.intent": [
     "wie viele Kinder (hatte|hat) {query}"

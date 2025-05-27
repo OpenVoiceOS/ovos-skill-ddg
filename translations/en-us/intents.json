@@ -13,13 +13,13 @@
         "what is {query} alma mater"
     ],
     "birthdate.intent": [
-        "what is {person} birth date",
-        "what is {person} birthday",
-        "when was born {person}",
-        "when was {person} born"
+        "what is {query} birth date",
+        "what is {query} birthday",
+        "when was born {query}",
+        "when was {query} born"
     ],
     "who.intent": [
-        "who is {person}"
+        "who is {query}"
     ],
     "children.intent": [
         "how many children (did|does) {query} have"
