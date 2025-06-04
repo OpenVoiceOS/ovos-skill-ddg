@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.3.2a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.2a1) (2025-05-27)
+## [0.3.3a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.3a1) (2025-06-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.1...0.3.2a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.2...0.3.3a1)
 
 **Merged pull requests:**
 
-- Fix keyword name [\#95](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/95) ([JarbasAl](https://github.com/JarbasAl))
+- gl/translate [\#97](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/97) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
 
 
 
