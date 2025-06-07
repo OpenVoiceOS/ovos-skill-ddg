@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.4a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.4a1) (2025-06-07)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.3a1...0.3.4a1)
+
+**Merged pull requests:**
+
+- fix:improve global stop handling [\#99](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/99) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.3a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.3a1) (2025-06-04)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.2...0.3.3a1)
