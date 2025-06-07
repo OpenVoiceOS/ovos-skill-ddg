@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.4a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.4a2) (2025-06-07)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.4a1...0.3.4a2)
+
+**Merged pull requests:**
+
+- fix: galician [\#101](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/101) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.4a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.4a1) (2025-06-07)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.3a1...0.3.4a1)
