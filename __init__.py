@@ -454,7 +454,7 @@ class DuckDuckGoSkill(OVOSSkill):
             title = self.session_results[sess.session_id].get("title") or \
                     "DuckDuckGo"
 
-            if idx + 1 > len(self.results):
+            if idx + 1 > len(results):
                 self.speak_dialog("thats all")
                 self.remove_context("DuckKnows")
                 self.session_results[sess.session_id]["idx"] = 0
