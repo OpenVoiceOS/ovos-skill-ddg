@@ -21,6 +21,7 @@ from ovos_config import Configuration
 from ovos_date_parser import nice_date
 from quebra_frases import sentence_tokenize
 
+from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session, SessionManager
 from ovos_plugin_manager.templates.language import LanguageTranslator, LanguageDetector
 from ovos_plugin_manager.templates.solvers import QuestionSolver
@@ -468,14 +469,13 @@ class DuckDuckGoSkill(OVOSSkill):
     def can_stop(self, message: Message) -> bool:
         return False
 
-    def stop_session(self, session: Session) -> bool:
+    def stop(self):
+        session = SessionManager.get()
         # called during global stop only
         if session.session_id in self.session_results:
             self.session_results.pop(session.session_id)
-            if session.session_id == "default":
-                self.gui.release()
-            return True
-        return False
+        if session.session_id == "default":
+            self.gui.release()
 
 
 if __name__ == "__main__":
