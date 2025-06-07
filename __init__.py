@@ -434,14 +434,16 @@ class DuckDuckGoSkill(OVOSSkill):
             image = self.session_results[sess.session_id].get("image") or self.duck.get_image(query,
                                                                                               lang=sess.lang,
                                                                                               units=sess.system_unit)
-            if not image:
-                self.gui.show_image("logo.png")
-            else:
-                if image.startswith("/"):
-                    image = "https://duckduckgo.com" + image
-                self.gui['summary'] = summary or ""
-                self.gui['imgLink'] = image
-                self.gui.show_page("DuckDelegate", override_idle=60)
+
+            if sess.session_id == "default":
+                if not image:
+                    self.gui.show_image("logo.png")
+                else:
+                    if image.startswith("/"):
+                        image = "https://duckduckgo.com" + image
+                    self.gui['summary'] = summary or ""
+                    self.gui['imgLink'] = image
+                    self.gui.show_page("DuckDelegate", override_idle=60)
 
     def speak_result(self, sess: Session):
 
@@ -463,12 +465,17 @@ class DuckDuckGoSkill(OVOSSkill):
         else:
             self.speak_dialog("thats all")
 
-    def stop(self):
-        self.gui.release()
+    def can_stop(self, message: Message) -> bool:
+        return False
 
-    def stop_session(self, sess):
-        if sess.session_id in self.session_results:
-            self.session_results.pop(sess.session_id)
+    def stop_session(self, session: Session) -> bool:
+        # called during global stop only
+        if session.session_id in self.session_results:
+            self.session_results.pop(session.session_id)
+            if session.session_id == "default":
+                self.gui.release()
+            return True
+        return False
 
 
 if __name__ == "__main__":
