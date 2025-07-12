@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.6a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.6a2) (2025-07-12)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.6a1...0.3.6a2)
+
+**Merged pull requests:**
+
+- adding missing German translations [\#105](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/105) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
 ## [0.3.6a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.6a1) (2025-06-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.5...0.3.6a1)
