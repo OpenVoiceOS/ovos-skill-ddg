@@ -1,4 +1,20 @@
 {
+  "Weather.voc": [
+    "Wetter",
+    "Meteorologie"
+  ],
+  "MiscBlacklist.voc": [
+    "installieren\ninstalliere",
+    "Fähigkeiten\nSkills",
+    "Wie",
+    "Wie lange",
+    "wie viel Uhr",
+    "ist es",
+    "sagst du",
+    "kannst du",
+    "du tust",
+    "erklären\nerkläre"
+  ],
   "More.voc": [
     "erzähle mehr\nerzähle mir mehr",
     "mehr bitte\nbitte mehr",
