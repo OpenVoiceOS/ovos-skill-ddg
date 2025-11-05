@@ -75,7 +75,7 @@ def get_version():
 
 
 setup(
-    name=PYPI_NAME,
+    name=PYPI_NAME.replace("-", "_"),
     version=get_version(),
     description='ovos duck duck go skill plugin',
     long_description=long_description,
