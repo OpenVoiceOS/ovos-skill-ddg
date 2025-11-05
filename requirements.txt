@@ -2,7 +2,7 @@ requests
 langcodes
 ovos_workshop>=3.4.0,<8.0.0
 ovos-translate-server-plugin
-ovos-plugin-manager>=0.0.26,<2.0.0
+ovos-plugin-manager>=0.0.26,<3.0.0
 ovos-date-parser
 crf_query_xtract>=0.1.2,<1.0.0
 brill_postagger>=0.1.2,<1.0.0
