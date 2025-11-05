@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.6a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.6a3) (2025-11-05)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.6a2...0.3.6a3)
+
+**Merged pull requests:**
+
+- Update ovos-plugin-manager version constraint [\#107](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/107) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.6a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.6a2) (2025-07-12)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.6a1...0.3.6a2)
