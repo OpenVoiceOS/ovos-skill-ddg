@@ -26,7 +26,7 @@ from ovos_workshop.skills.ovos import OVOSSkill
 class DuckDuckGoSkill(OVOSSkill):
     def initialize(self):
         self.session_results = {}
-        self.duck = DuckDuckGoSolver(translator=self._translator, detector=self._lang_detector)
+        self.duck = DuckDuckGoSolver()
 
     @classproperty
     def runtime_requirements(self):
