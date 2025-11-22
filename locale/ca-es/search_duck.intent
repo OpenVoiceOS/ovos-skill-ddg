@@ -1,8 +1,0 @@
-(cerca|busca|consulta|demana) (a|al) (duck duck go|ddg|de de ge|l'ànec) {query}
-(cerca|busca|consulta|demana) a (duck duck go|ddg|de de ge|l'ànec) {query}
-(cerca|busca|consulta|demana) {query} (a|al) (duck duck go|ddg|de de ge|l'ànec)
-(cerca|busca|consulta|demana) {query} a (duck duck go|ddg|de de ge|l'ànec)
-cerca a l'ànec {query}
-què diu (el|es|) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {query}
-què diu l'ànec sobre {query}
-què posa (a|al) (duck duck go|ddg|de de ge|l'ànec) (sobre|de) {query}
