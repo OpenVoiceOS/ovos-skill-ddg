@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.7a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a3) (2025-12-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a2...0.3.7a3)
+
+**Merged pull requests:**
+
+- chore: Configure Renovate [\#113](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/113) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [0.3.7a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a2) (2025-11-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a1...0.3.7a2)
