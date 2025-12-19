@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.7a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a4) (2025-12-19)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a3...0.3.7a4)
+
+**Merged pull requests:**
+
+- chore\(deps\): update actions/checkout action to v6 [\#119](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/119) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [0.3.7a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a3) (2025-12-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a2...0.3.7a3)
