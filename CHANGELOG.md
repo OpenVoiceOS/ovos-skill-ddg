@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.7a5](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a5) (2025-12-19)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a4...0.3.7a5)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency python to 3.14 [\#114](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/114) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [0.3.7a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a4) (2025-12-19)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a3...0.3.7a4)
