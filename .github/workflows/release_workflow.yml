@@ -8,31 +8,7 @@ on:
 
 jobs:
 
-  translations:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        with:
-          ref: dev
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Sync translations by gitlocalize-app[bot]
-        run: |
-          python scripts/sync_translations.py
-
-      - name: Commit to dev
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update translations
-          branch: dev
-
   publish_alpha:
-    needs: translations
     uses: TigreGotico/gh-automations/.github/workflows/publish-alpha.yml@master
     secrets: inherit
     with:
@@ -48,7 +24,7 @@ jobs:
     needs: publish_alpha
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Send message to Matrix bots channel
         id: matrix-chat-message
         uses: fadenb/matrix-chat-message@v0.0.6
@@ -65,7 +41,7 @@ jobs:
     if: success()  # Ensure this job only runs if the previous job succeeds
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: dev
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
@@ -93,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout dev branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: dev
 
