@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.7a8](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a8) (2026-04-04)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a6...0.3.7a8)
+
+**Merged pull requests:**
+
+- ci: modernize GitHub workflows [\#126](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/126) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.7a6](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a6) (2025-12-20)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a5...0.3.7a6)
