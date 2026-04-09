@@ -1,2 +1,2 @@
-ovos_workshop>=8.0.0,<8.1.0
+ovos-workshop>=8.0.0,<9.0.0
 ovos-ddg-solver-plugin>=0.0.1,<1.0.0
