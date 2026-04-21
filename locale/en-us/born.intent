@@ -1,3 +1,0 @@
-when is {query} (birth|birthday|day of birth)
-when was {query} born
-{query} (day|date) of birth
