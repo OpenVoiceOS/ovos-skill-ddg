@@ -69,6 +69,14 @@ class DuckDuckGoSkill(FallbackSkill):
             self.log.info(f"DDG answer: {answer}")
             return answer, score
 
+    def can_answer(self, message: Message) -> bool:
+        utterances = message.data.get("utterances") or []
+        utterance = utterances[0] if utterances else ""
+        return not (
+            self.voc_match(utterance, "MiscBlacklist")
+            or self.voc_match(utterance, "Weather")
+        )
+
     @fallback_handler(priority=90)
     def handle_fallback(self, message: Message) -> bool:
         utterance = message.data.get("utterance", "")
