@@ -29,5 +29,11 @@ include = ["ovos_skill_ddg*"]
 [tool.setuptools.dynamic]
 version = {attr = "ovos_skill_ddg.version.__version__"}
 
+[project.optional-dependencies]
+test = [
+    "ovoscope",
+    "ovos-ddg-plugin>=0.1.0a1,<2.0.0",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["test/unittests"]

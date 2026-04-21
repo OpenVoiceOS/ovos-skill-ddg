@@ -45,13 +45,19 @@ class DuckDuckGoSkill(FallbackSkill):
         sess = SessionManager.get(message)
         if sess.session_id == "default":
             self.gui.show_animated_image("duck.gif")
-        results = self.engine.query(query, lang=sess.lang, k=1)
+        try:
+            results = self.engine.query(query, lang=sess.lang, k=1)
+        except Exception as e:
+            self.log.exception(f"DDG query failed: {e}")
+            results = []
         if results:
             answer, _ = results[0]
             self.speak(answer)
             if sess.session_id == "default":
                 self._show_gui(query, sess.lang)
         else:
+            if sess.session_id == "default":
+                self._show_gui(query, sess.lang)
             self.speak_dialog("no_answer")
 
     def cq_callback(self, utterance: str, answer: str, lang: str):
@@ -63,7 +69,11 @@ class DuckDuckGoSkill(FallbackSkill):
     def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
         if self.voc_match(phrase, "MiscBlacklist") or self.voc_match(phrase, "Weather"):
             return None
-        results = self.engine.query(phrase, lang=lang, k=1)
+        try:
+            results = self.engine.query(phrase, lang=lang, k=1)
+        except Exception as e:
+            self.log.exception(f"DDG query failed: {e}")
+            return None
         if results:
             answer, score = results[0]
             self.log.info(f"DDG answer: {answer}")
@@ -83,7 +93,11 @@ class DuckDuckGoSkill(FallbackSkill):
         if self.voc_match(utterance, "MiscBlacklist") or self.voc_match(utterance, "Weather"):
             return False
         sess = SessionManager.get(message)
-        results = self.engine.query(utterance, lang=sess.lang, k=1)
+        try:
+            results = self.engine.query(utterance, lang=sess.lang, k=1)
+        except Exception as e:
+            self.log.exception(f"DDG fallback query failed: {e}")
+            return False
         if results:
             answer, _ = results[0]
             self.speak(answer)
@@ -94,6 +108,6 @@ class DuckDuckGoSkill(FallbackSkill):
 
     def _show_gui(self, query: str, lang: str):
         image = self.engine.get_image(query, lang=lang) or "logo.png"
-        if image.startswith("/"):
+        if isinstance(image, str) and image.startswith("/"):
             image = "https://duckduckgo.com" + image
         self.gui.show_image(image)
