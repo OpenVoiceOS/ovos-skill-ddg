@@ -1,73 +1,41 @@
 # <img src='./gui/all/ddg.png' card_color='#de5833' width='50' height='50' style='vertical-align:bottom'/> DuckDuckGo
-Use DuckDuckGo to answer questions
+
+Answer factual questions using [DuckDuckGo Instant Answers](https://duckduckgo.com/api).
+
+Powered by [ovos-ddg-plugin](https://github.com/OpenVoiceOS/ovos-ddg-plugin).
 
 ![](./gui/all/logo.png)
 
-
-## About
-
-Uses the [DuckDuckGo API](https://duckduckgo.com/api) to provide information. 
-
 ## Examples
 
-* "when was stephen hawking born"
-* "ask the duck about the big bang"
-* "tell me more"
-* "who is elon musk"
-* "continue"
-* "tell me more"
+* "search DuckDuckGo for Stephen Hawking"
+* "who is Marie Curie"
+* "what is the Eiffel Tower"
+* "when was Albert Einstein born"
+* "Isaac Newton"
 
-### Adding more `infobox` intents
+## How it works
 
-internal `.intent` files can be added to allow parsing infoboxes returned by duckduckgo
+The skill participates in three OVOS pipeline stages:
 
-first print the target infobox to inspect the returned results
-```python
-from skill_ovos_ddg import DuckDuckGoSolver
-d = DuckDuckGoSolver()
-info = d.get_infobox("Stephen Hawking")[0]
-print(info)
-# {'age at death': '76 years',
-#  'born': {'after': 0,
-#           'before': 0,
-#           'calendarmodel': 'http://www.wikidata.org/entity/Q1985727',
-#           'precision': 11,
-#           'time': '+1942-01-08T00:00:00Z',
-#           'timezone': 0},
-#  'children': '3, including Lucy',
-#  'died': {'after': 0,
-#           'before': 0,
-#           'calendarmodel': 'http://www.wikidata.org/entity/Q1985727',
-#           'precision': 11,
-#           'time': '+2018-03-14T00:00:00Z',
-#           'timezone': 0},
-#  'education': 'University College, Oxford (BA), Trinity Hall, Cambridge (PhD)',
-#  'facebook profile': 'stephenhawking',
-#  'fields': 'General relativity, quantum gravity',
-#  'imdb id': 'nm0370071',
-#  'instance of': {'entity-type': 'item', 'id': 'Q5', 'numeric-id': 5},
-#  'institutions': 'University of Cambridge, California Institute of Technology, '
-#                  'Perimeter Institute for Theoretical Physics',
-#  'official website': 'https://hawking.org.uk',
-#  'other academic advisors': 'Robert Berman',
-#  'resting place': 'Westminster Abbey',
-#  'rotten tomatoes id': 'celebrity/stephen_hawking',
-#  'thesis': 'Properties of Expanding Universes (1966)',
-#  'wikidata aliases': ['Stephen Hawking',
-#                       'Hawking',
-#                       'Stephen William Hawking',
-#                       'S. W. Hawking',
-#                       'stephen'],
-#  'wikidata description': 'British theoretical physicist, cosmologist and '
-#                          'author (1942–2018)',
-#  'wikidata id': 'Q17714',
-#  'wikidata label': 'Stephen Hawking',
-#  'youtube channel': 'UCPyd4mR0p8zHd8Z0HvHc0fw'}
-```
-under `DuckDuckGoSolver.register_from_file` add your new `xxx.intent` file, where `xxx` needs to be a key present in the infobox, underscores are replaced with whitespaces
+| Pipeline | Trigger | Priority |
+|---|---|---|
+| **Padacioso intent** (`search_duck.intent`) | Explicit "search DuckDuckGo for …" phrases | High |
+| **Common Query** | Open factual questions routed by the common-query pipeline | — |
+| **Fallback** | Any utterance not claimed by another skill | 90 (last resort) |
 
-then that infobox value will be mapped to that intent file
+Queries are forwarded to the DuckDuckGo Instant Answers API via [ovos-ddg-plugin](https://github.com/OpenVoiceOS/ovos-ddg-plugin), which handles:
 
+- **Infobox field extraction** — structured facts (birthdate, nationality, occupation, …) matched via locale-aware Padacioso intents
+- **Abstract text** — encyclopaedic summary sentences
+- **Keyword extraction fallback** — when a conversational phrase returns no result, keywords are extracted and re-queried (requires `ovos-rake-keyword-extractor` or compatible plugin)
+
+Blacklisted domains (weather, reminders, alarms, timers, music, calls) are detected via per-locale vocabulary files and routed to the appropriate skill instead.
+
+## Supported languages
+
+37 locales covering all languages in the DuckDuckGo API locale mapping:
+ar, bg, ca, cs, da, de, el, en, es, et, fi, fil, fr, he, hr, hu, id, it, ja, ko, lt, lv, ms, nb, nl, pl, pt, ro, ru, sk, sl, sv, th, tr, uk, vi, zh.
 
 ## Category
 **Information**
