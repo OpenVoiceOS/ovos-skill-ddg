@@ -21,12 +21,16 @@ from ovos_workshop.skills.fallback import FallbackSkill
 
 
 class DuckDuckGoSkill(FallbackSkill):
+    """OVOS skill for factual Q&A via DuckDuckGo Instant Answers."""
+
     def __init__(self, *args, **kwargs):
+        """Initialise the skill and create the retrieval engine."""
         super().__init__(*args, **kwargs)
         self.engine = DuckDuckGoRetrievalEngine(config=dict(self.settings))
 
     @classproperty
     def runtime_requirements(self):
+        """Declare that this skill requires an active internet connection."""
         return RuntimeRequirements(
             internet_before_load=True,
             network_before_load=True,
@@ -41,6 +45,7 @@ class DuckDuckGoSkill(FallbackSkill):
 
     @intent_handler("search_duck.intent", voc_blacklist=["Weather", "Help"])
     def handle_search(self, message):
+        """Handle an explicit 'search DuckDuckGo for …' intent."""
         query = message.data["query"]
         sess = SessionManager.get(message)
         if sess.session_id == "default":
@@ -61,12 +66,14 @@ class DuckDuckGoSkill(FallbackSkill):
             self.speak_dialog("no_answer")
 
     def cq_callback(self, utterance: str, answer: str, lang: str):
+        """Show the GUI image after a common-query answer is spoken."""
         sess = SessionManager.get()
         if sess.session_id == "default":
             self._show_gui(utterance, sess.lang)
 
     @common_query(callback=cq_callback)
     def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
+        """Return a (answer, confidence) tuple for common-query pipeline requests."""
         if self.voc_match(phrase, "MiscBlacklist") or self.voc_match(phrase, "Weather"):
             return None
         try:
@@ -80,6 +87,7 @@ class DuckDuckGoSkill(FallbackSkill):
             return answer, score
 
     def can_answer(self, message: Message) -> bool:
+        """Return True if this skill should respond to the fallback ping."""
         utterances = message.data.get("utterances") or []
         utterance = utterances[0] if utterances else ""
         return not (
@@ -89,6 +97,7 @@ class DuckDuckGoSkill(FallbackSkill):
 
     @fallback_handler(priority=90)
     def handle_fallback(self, message: Message) -> bool:
+        """Handle utterances not claimed by any other pipeline stage."""
         utterance = message.data.get("utterance", "")
         if self.voc_match(utterance, "MiscBlacklist") or self.voc_match(utterance, "Weather"):
             return False
@@ -107,6 +116,7 @@ class DuckDuckGoSkill(FallbackSkill):
         return False
 
     def _show_gui(self, query: str, lang: str):
+        """Display the DDG result image on the GUI."""
         image = self.engine.get_image(query, lang=lang) or "logo.png"
         if isinstance(image, str) and image.startswith("/"):
             image = "https://duckduckgo.com" + image
