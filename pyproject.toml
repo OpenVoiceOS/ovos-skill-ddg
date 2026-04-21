@@ -13,7 +13,7 @@ dependencies = [
     "ovos-utils>=0.7.0,<1.0.0",
     "ovos-workshop>=8.0.0,<9.0.0",
     "ovos-plugin-manager>=2.3.0a1,<3.0.0",
-    "ovos-ddg-plugin>=0.1.0a1,<1.0.0",
+    "ovos-ddg-plugin>=0.1.0a1,<2.0.0",
 ]
 
 [project.entry-points."ovos.plugin.skill"]
@@ -28,3 +28,6 @@ include = ["ovos_skill_ddg*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "ovos_skill_ddg.version.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["test/unittests"]
