@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.7a10](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a10) (2026-04-21)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a9...0.3.7a10)
+
+**Merged pull requests:**
+
+- docs: rewrite README — remove stale references, link ovos-ddg-plugin [\#131](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/131) ([JarbasAl](https://github.com/JarbasAl))
+- feat: modernize skill — drop pagination, add fallback, multi-lang, ovoscope E2E tests [\#130](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/130) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.7a9](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a9) (2026-04-09)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a8...0.3.7a9)
