@@ -11,15 +11,16 @@
 # limitations under the License.
 from typing import Optional, Tuple
 
+from ovos_bus_client.message import Message
 from ovos_bus_client.session import SessionManager
 from ovos_ddg_plugin import DuckDuckGoRetrievalEngine
 from ovos_utils import classproperty
 from ovos_utils.process_utils import RuntimeRequirements
-from ovos_workshop.decorators import intent_handler, common_query
-from ovos_workshop.skills.ovos import OVOSSkill
+from ovos_workshop.decorators import intent_handler, common_query, fallback_handler
+from ovos_workshop.skills.fallback import FallbackSkill
 
 
-class DuckDuckGoSkill(OVOSSkill):
+class DuckDuckGoSkill(FallbackSkill):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.engine = DuckDuckGoRetrievalEngine(config=dict(self.settings))
@@ -48,13 +49,15 @@ class DuckDuckGoSkill(OVOSSkill):
         if results:
             answer, _ = results[0]
             self.speak(answer)
-            self._show_gui(query, answer, sess.lang)
+            if sess.session_id == "default":
+                self._show_gui(query, sess.lang)
         else:
             self.speak_dialog("no_answer")
 
     def cq_callback(self, utterance: str, answer: str, lang: str):
         sess = SessionManager.get()
-        self._show_gui(utterance, answer, lang)
+        if sess.session_id == "default":
+            self._show_gui(utterance, sess.lang)
 
     @common_query(callback=cq_callback)
     def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
@@ -66,14 +69,23 @@ class DuckDuckGoSkill(OVOSSkill):
             self.log.info(f"DDG answer: {answer}")
             return answer, score
 
-    def _show_gui(self, query: str, summary: str, lang: str):
-        if self.gui.connected:
-            image = self.engine.get_image(query, lang=lang)
-            if image:
-                if image.startswith("/"):
-                    image = "https://duckduckgo.com" + image
-                self.gui["summary"] = summary
-                self.gui["imgLink"] = image
-                self.gui.show_page("DuckDelegate", override_idle=60)
-            else:
-                self.gui.show_image("logo.png")
+    @fallback_handler(priority=90)
+    def handle_fallback(self, message: Message) -> bool:
+        utterance = message.data.get("utterance", "")
+        if self.voc_match(utterance, "MiscBlacklist") or self.voc_match(utterance, "Weather"):
+            return False
+        sess = SessionManager.get(message)
+        results = self.engine.query(utterance, lang=sess.lang, k=1)
+        if results:
+            answer, _ = results[0]
+            self.speak(answer)
+            if sess.session_id == "default":
+                self._show_gui(utterance, sess.lang)
+            return True
+        return False
+
+    def _show_gui(self, query: str, lang: str):
+        image = self.engine.get_image(query, lang=lang) or "logo.png"
+        if image.startswith("/"):
+            image = "https://duckduckgo.com" + image
+        self.gui.show_image(image)
