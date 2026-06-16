@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.9a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a1) (2026-06-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.8a1...0.3.9a1)
+
+**Merged pull requests:**
+
+- fix: require ovos-plugin-manager\>=2.1.0 for opm.\* entry points and cap ovos-\* deps at next major [\#134](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/134) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.8a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.8a1) (2026-06-16)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7...0.3.8a1)
