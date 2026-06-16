@@ -1,77 +1,12 @@
 # Changelog
 
-## [0.3.7a10](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a10) (2026-04-21)
+## [0.3.8a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.8a1) (2026-06-16)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a9...0.3.7a10)
-
-**Merged pull requests:**
-
-- docs: rewrite README — remove stale references, link ovos-ddg-plugin [\#131](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/131) ([JarbasAl](https://github.com/JarbasAl))
-- feat: modernize skill — drop pagination, add fallback, multi-lang, ovoscope E2E tests [\#130](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/130) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.3.7a9](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a9) (2026-04-09)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a8...0.3.7a9)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7...0.3.8a1)
 
 **Merged pull requests:**
 
-- chore\(ovos-skill-ddg\): allow ovos-workshop\<9.0.0 [\#128](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/128) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.3.7a8](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a8) (2026-04-04)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a6...0.3.7a8)
-
-**Merged pull requests:**
-
-- ci: modernize GitHub workflows [\#126](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/126) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.3.7a6](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a6) (2025-12-20)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a5...0.3.7a6)
-
-**Merged pull requests:**
-
-- chore\(deps\): update dependency ovos\_workshop to v8 [\#123](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/123) ([renovate[bot]](https://github.com/apps/renovate))
-
-## [0.3.7a5](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a5) (2025-12-19)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a4...0.3.7a5)
-
-**Merged pull requests:**
-
-- chore\(deps\): update dependency python to 3.14 [\#114](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/114) ([renovate[bot]](https://github.com/apps/renovate))
-
-## [0.3.7a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a4) (2025-12-19)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a3...0.3.7a4)
-
-**Merged pull requests:**
-
-- chore\(deps\): update actions/checkout action to v6 [\#119](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/119) ([renovate[bot]](https://github.com/apps/renovate))
-
-## [0.3.7a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a3) (2025-12-18)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a2...0.3.7a3)
-
-**Merged pull requests:**
-
-- chore: Configure Renovate [\#113](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/113) ([renovate[bot]](https://github.com/apps/renovate))
-
-## [0.3.7a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a2) (2025-11-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.7a1...0.3.7a2)
-
-**Merged pull requests:**
-
-- Update \_\_init\_\_.py [\#111](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/111) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.3.7a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.7a1) (2025-11-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.6...0.3.7a1)
-
-**Merged pull requests:**
-
-- refactor: ovos-ddg-solver-plugin [\#109](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/109) ([JarbasAl](https://github.com/JarbasAl))
+- fix: use canonical opm.\* entry-point group [\#133](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/133) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
