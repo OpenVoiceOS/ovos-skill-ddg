@@ -16,7 +16,7 @@ dependencies = [
     "ovos-ddg-plugin>=0.1.0a1,<2.0.0",
 ]
 
-[project.entry-points."ovos.plugin.skill"]
+[project.entry-points."opm.skill"]
 "ovos-skill-ddg.openvoiceos" = "ovos_skill_ddg:DuckDuckGoSkill"
 
 [tool.setuptools.packages.find]
