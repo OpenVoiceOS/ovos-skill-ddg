@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.9a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a4) (2026-08-10)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a3...0.3.9a4)
+
+**Merged pull requests:**
+
+- Update dependency ovoscope to v1 [\#137](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/137) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [0.3.9a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a3) (2026-08-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a2...0.3.9a3)
