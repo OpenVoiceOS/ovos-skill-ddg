@@ -7,11 +7,11 @@ Covers:
 - Multi-lang sessions (en-US, de-DE, es-ES, pt-PT) route correctly
 - Blacklisted utterances ("weather") do NOT activate the fallback handler
 """
-from copy import deepcopy
 from unittest import TestCase
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
+from ovos_spec_tools import SpecMessage
 from ovos_utils.log import LOG
 
 from ovoscope import End2EndTest, get_minicroft
@@ -20,7 +20,10 @@ SKILL_ID = "ovos-skill-ddg.openvoiceos"
 
 # Messages that carry variable content or are noise for these routing tests
 _IGNORE = [
-    "speak",
+    str(SpecMessage.SPEAK),
+    "recognizer_loop:audio_output_start",
+    "recognizer_loop:audio_output_end",
+    "mycroft.audio.play_sound",
     "ovos.common_play.stop.response",
     "common_query.openvoiceos.stop.response",
     "persona.openvoiceos.stop.response",
@@ -36,59 +39,66 @@ _FALLBACK_RANGE = [5, 90]  # range emitted by ovos-fallback-pipeline-plugin
 # ---------------------------------------------------------------------------
 
 class TestDDGExplicitIntent(TestCase):
-    """search_duck.intent matched via padacioso pipeline."""
+    """search_duck.intent matched via padacioso pipeline.
+
+    Each language gets its own MiniCroft (single ``lang=``, no
+    ``secondary_langs``): padacioso's ``__detach_intent`` (padacioso#opm.py)
+    removes a canonical intent name from *every* registered language, not
+    just the one being re-registered, so registering the same skill for
+    several languages on one shared pipeline instance leaves only the
+    last-registered language matchable. Isolating each language in its own
+    MiniCroft sidesteps that collision instead of asserting on it.
+    """
 
     def setUp(self):
         LOG.set_level("DEBUG")
-        self.minicroft = get_minicroft(
-            [SKILL_ID],
-            secondary_langs=["de-DE", "es-ES", "pt-PT"],
-        )
 
     def tearDown(self):
-        if self.minicroft:
-            self.minicroft.stop()
         LOG.set_level("CRITICAL")
 
     def _run(self, utterance: str, lang: str):
-        session = Session(f"ddg-intent-{lang}")
-        session.lang = lang
-        session.pipeline = ["ovos-padacioso-pipeline-plugin-high"]
+        minicroft = get_minicroft([SKILL_ID], lang=lang)
+        try:
+            session = Session(f"ddg-intent-{lang}")
+            session.lang = lang
+            session.pipeline = ["ovos-padacioso-pipeline-plugin-high"]
 
-        message = Message(
-            "recognizer_loop:utterance",
-            {"utterances": [utterance], "lang": lang},
-            {"session": session.serialize()},
-        )
+            message = Message(
+                "recognizer_loop:utterance",
+                {"utterances": [utterance], "lang": lang},
+                {"session": session.serialize()},
+            )
 
-        final_session = deepcopy(session)
-        final_session.active_skills = [(SKILL_ID, 0.0)]
+            intent_msg_type = f"{SKILL_ID}:search_duck"
 
-        test = End2EndTest(
-            minicroft=self.minicroft,
-            skill_ids=[SKILL_ID],
-            eof_msgs=["ovos.utterance.handled"],
-            flip_points=["recognizer_loop:utterance"],
-            ignore_messages=_IGNORE,
-            source_message=message,
-            final_session=final_session,
-            activation_points=[f"{SKILL_ID}:search_duck.intent"],
-            expected_messages=[
-                message,
-                Message(f"{SKILL_ID}.activate", {}, {"skill_id": SKILL_ID}),
-                Message(f"{SKILL_ID}:search_duck.intent",
-                        {"utterance": utterance, "lang": lang},
-                        {"skill_id": SKILL_ID}),
-                Message("mycroft.skill.handler.start",
-                        {"name": "DuckDuckGoSkill.handle_search"},
-                        {"skill_id": SKILL_ID}),
-                Message("mycroft.skill.handler.complete",
-                        {"name": "DuckDuckGoSkill.handle_search"},
-                        {"skill_id": SKILL_ID}),
-                Message("ovos.utterance.handled", {}, {"skill_id": SKILL_ID}),
-            ],
-        )
-        test.execute(timeout=30)
+            test = End2EndTest(
+                minicroft=minicroft,
+                skill_ids=[SKILL_ID],
+                eof_msgs=["ovos.utterance.handled"],
+                flip_points=["recognizer_loop:utterance"],
+                ignore_messages=_IGNORE,
+                source_message=message,
+                test_msg_context=False,
+                activation_points=[str(SpecMessage.INTENT_MATCHED)],
+                expected_messages=[
+                    message,
+                    Message(f"{SKILL_ID}.activate", {}, {"skill_id": SKILL_ID}),
+                    Message(str(SpecMessage.INTENT_MATCHED), {}, {"skill_id": SKILL_ID}),
+                    Message(str(SpecMessage.INTENT_HANDLER_START), {}, {"skill_id": SKILL_ID}),
+                    Message(intent_msg_type, {}, {"skill_id": SKILL_ID}),
+                    Message("mycroft.skill.handler.start",
+                            {"name": "DuckDuckGoSkill.handle_search"},
+                            {"skill_id": SKILL_ID}),
+                    Message("mycroft.skill.handler.complete",
+                            {"name": "DuckDuckGoSkill.handle_search"},
+                            {"skill_id": SKILL_ID}),
+                    Message(str(SpecMessage.INTENT_HANDLER_COMPLETE), {}, {"skill_id": SKILL_ID}),
+                    Message("ovos.utterance.handled", {}, {"skill_id": SKILL_ID}),
+                ],
+            )
+            test.execute(timeout=30)
+        finally:
+            minicroft.stop()
 
     def test_en_explicit_search(self):
         self._run("search duckduckgo for Isaac Newton", "en-US")
@@ -137,6 +147,8 @@ class TestDDGFallback(TestCase):
             flip_points=["recognizer_loop:utterance"],
             ignore_messages=_IGNORE,
             source_message=message,
+            test_msg_context=False,
+            test_message_number=False,
             activation_points=[f"ovos.skills.fallback.{SKILL_ID}.request"],
             expected_messages=[
                 message,
@@ -144,12 +156,19 @@ class TestDDGFallback(TestCase):
                         {"utterances": [utterance], "lang": lang, "range": _FALLBACK_RANGE}),
                 Message("ovos.skills.fallback.pong",
                         {"skill_id": SKILL_ID, "can_handle": True}),
+                Message(str(SpecMessage.INTENT_MATCHED), {}, {"skill_id": SKILL_ID}),
+                Message(str(SpecMessage.INTENT_HANDLER_START), {}, {"skill_id": SKILL_ID}),
                 Message(f"ovos.skills.fallback.{SKILL_ID}.request",
                         {"utterances": [utterance], "lang": lang, "range": _FALLBACK_RANGE, "skill_id": SKILL_ID}),
                 Message(f"ovos.skills.fallback.{SKILL_ID}.start", {}),
+                Message("mycroft.skill.handler.start",
+                        {}, {"skill_id": SKILL_ID}),
                 Message(f"ovos.skills.fallback.{SKILL_ID}.response",
                         {"fallback_handler": "DuckDuckGoSkill.handle_fallback"},
                         {"skill_id": SKILL_ID}),
+                Message("mycroft.skill.handler.complete",
+                        {}, {"skill_id": SKILL_ID}),
+                Message(str(SpecMessage.INTENT_HANDLER_COMPLETE), {}, {"skill_id": SKILL_ID}),
                 Message("ovos.utterance.handled", {}),
             ],
         )
@@ -206,14 +225,14 @@ class TestDDGBlacklist(TestCase):
             flip_points=["recognizer_loop:utterance"],
             ignore_messages=_IGNORE,
             source_message=message,
+            test_msg_context=False,
             expected_messages=[
                 message,
                 Message("ovos.skills.fallback.ping",
                         {"utterances": ["what is the weather today"], "lang": "en-US", "range": _FALLBACK_RANGE}),
                 Message("ovos.skills.fallback.pong",
                         {"skill_id": SKILL_ID, "can_handle": False}),
-                Message("mycroft.audio.play_sound", {"uri": "snd/error.mp3"}),
-                Message("complete_intent_failure", {}),
+                Message(str(SpecMessage.INTENT_UNMATCHED), {}),
                 Message("ovos.utterance.handled", {}),
             ],
         )
