@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.9a5](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a5) (2026-08-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a4...0.3.9a5)
+
+**Merged pull requests:**
+
+- test: golden-utterance e2e suite for ovos-skill-ddg [\#143](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/143) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.3.9a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a4) (2026-08-10)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a3...0.3.9a4)
