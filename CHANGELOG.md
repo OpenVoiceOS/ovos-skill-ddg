@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.10a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.10a1) (2026-08-26)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a6...0.3.10a1)
+
+**Merged pull requests:**
+
+- fix: rename bare lang code locale directories [\#148](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/148) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+
 ## [0.3.9a6](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a6) (2026-08-26)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a5...0.3.9a6)
