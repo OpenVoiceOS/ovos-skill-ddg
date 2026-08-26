@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.9a6](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a6) (2026-08-26)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a5...0.3.9a6)
+
+**Merged pull requests:**
+
+- translate\(kab-DZ\): update search\_duck.intent [\#146](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/146) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+- translate\(kab-DZ\): update no\_answer.dialog [\#145](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/145) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+
 ## [0.3.9a5](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.9a5) (2026-08-13)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.9a4...0.3.9a5)
