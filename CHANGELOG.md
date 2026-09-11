@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.11a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.11a1) (2026-09-11)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.10a2...0.3.11a1)
+
+**Merged pull requests:**
+
+- fix\(test\): stop pinning fallback lifecycle order in TestDDGFallback e2e [\#153](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/153) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.10a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.10a2) (2026-09-10)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.10a1...0.3.10a2)
