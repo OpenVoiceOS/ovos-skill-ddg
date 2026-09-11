@@ -8,13 +8,14 @@ Covers:
 - Blacklisted utterances ("weather") do NOT activate the fallback handler
 """
 from unittest import TestCase
+from unittest.mock import patch
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
 from ovos_spec_tools import SpecMessage
 from ovos_utils.log import LOG
 
-from ovoscope import End2EndTest, get_minicroft
+from ovoscope import CaptureSession, End2EndTest, get_minicroft
 
 SKILL_ID = "ovos-skill-ddg.openvoiceos"
 
@@ -130,6 +131,19 @@ class TestDDGFallback(TestCase):
         LOG.set_level("CRITICAL")
 
     def _run(self, utterance: str, lang: str):
+        """Drive one utterance through the fallback pipeline against a stubbed
+        DDG engine and check what the fallback contract actually promises:
+        the query reaches this skill's fallback handler, and the spoken
+        answer carries the value the (stubbed, network-free) search returned.
+
+        This does not pin the full lifecycle message sequence. ovos-core
+        inserts a ``<skill_id>.activate`` message for fallback dispatch that
+        an earlier version of this test predated; asserting its exact
+        position pins core lifecycle ordering the skill never promised and
+        does not control. What the skill IS responsible for — the request
+        reaching its handler before the handler's response, and the response
+        carrying the stubbed answer — is asserted directly below.
+        """
         session = Session(f"ddg-fallback-{lang}")
         session.lang = lang
         session.pipeline = ["ovos-fallback-pipeline-plugin"]
@@ -140,39 +154,51 @@ class TestDDGFallback(TestCase):
             {"session": session.serialize()},
         )
 
-        test = End2EndTest(
-            minicroft=self.minicroft,
-            skill_ids=[SKILL_ID],
-            eof_msgs=["ovos.utterance.handled"],
-            flip_points=["recognizer_loop:utterance"],
-            ignore_messages=_IGNORE,
-            source_message=message,
-            test_msg_context=False,
-            test_message_number=False,
-            activation_points=[f"ovos.skills.fallback.{SKILL_ID}.request"],
-            expected_messages=[
-                message,
-                Message("ovos.skills.fallback.ping",
-                        {"utterances": [utterance], "lang": lang, "range": _FALLBACK_RANGE}),
-                Message("ovos.skills.fallback.pong",
-                        {"skill_id": SKILL_ID, "can_handle": True}),
-                Message(str(SpecMessage.INTENT_MATCHED), {}, {"skill_id": SKILL_ID}),
-                Message(str(SpecMessage.INTENT_HANDLER_START), {}, {"skill_id": SKILL_ID}),
-                Message(f"ovos.skills.fallback.{SKILL_ID}.request",
-                        {"utterances": [utterance], "lang": lang, "range": _FALLBACK_RANGE, "skill_id": SKILL_ID}),
-                Message(f"ovos.skills.fallback.{SKILL_ID}.start", {}),
-                Message("mycroft.skill.handler.start",
-                        {}, {"skill_id": SKILL_ID}),
-                Message(f"ovos.skills.fallback.{SKILL_ID}.response",
-                        {"fallback_handler": "DuckDuckGoSkill.handle_fallback"},
-                        {"skill_id": SKILL_ID}),
-                Message("mycroft.skill.handler.complete",
-                        {}, {"skill_id": SKILL_ID}),
-                Message(str(SpecMessage.INTENT_HANDLER_COMPLETE), {}, {"skill_id": SKILL_ID}),
-                Message("ovos.utterance.handled", {}),
-            ],
-        )
-        test.execute(timeout=30)
+        # obviously synthetic and unique per call: the expected spoken value
+        # is independent of anything the real DDG API would ever return.
+        synthetic_answer = f"synthetic-ddg-answer::{lang}::{utterance}"
+        speak_topic = str(SpecMessage.SPEAK)
+        request_topic = f"ovos.skills.fallback.{SKILL_ID}.request"
+        response_topic = f"ovos.skills.fallback.{SKILL_ID}.response"
+
+        with patch(
+            "ovos_ddg_plugin.DuckDuckGoRetrievalEngine.query",
+            return_value=[(synthetic_answer, 1.0)],
+        ) as mock_query:
+            capture = CaptureSession(
+                self.minicroft,
+                eof_msgs=["ovos.utterance.handled"],
+                # SPEAK carries the answer under test; every other topic in
+                # _IGNORE is still noise here.
+                ignore_messages=[m for m in _IGNORE if m != speak_topic],
+            )
+            capture.capture(message, 30)
+            messages = capture.finish()
+
+        mock_query.assert_called_with(utterance, lang=lang, k=1)
+
+        msg_types = [m.msg_type for m in messages]
+        for topic in (
+            request_topic,
+            response_topic,
+            str(SpecMessage.INTENT_MATCHED),
+            str(SpecMessage.INTENT_HANDLER_COMPLETE),
+            "ovos.utterance.handled",
+        ):
+            self.assertIn(topic, msg_types, f"missing '{topic}' among: {msg_types}")
+
+        # the request must reach the handler before the handler answers —
+        # that ordering is the skill's own contract, unlike the surrounding
+        # core lifecycle messages.
+        self.assertLess(msg_types.index(request_topic), msg_types.index(response_topic))
+
+        response = next(m for m in messages if m.msg_type == response_topic)
+        self.assertEqual(response.data.get("fallback_handler"), "DuckDuckGoSkill.handle_fallback")
+        self.assertEqual(response.context.get("skill_id"), SKILL_ID)
+
+        speak_msgs = [m for m in messages if m.msg_type == speak_topic]
+        self.assertTrue(speak_msgs, "fallback handler must speak the answer")
+        self.assertIn(synthetic_answer, speak_msgs[0].data.get("utterance", ""))
 
     def test_en_who_question(self):
         self._run("who is Marie Curie", "en-US")
