@@ -111,7 +111,15 @@ def test_golden_utterance(minicroft, row):
         m.data.get("utterance", "") for m in messages
         if m.msg_type in ("speak", "ovos.utterance.speak")
     ]
-    assert any(spoken), f"{row['utterance']!r}: expected a spoken response, got none"
+    # A bare "something was spoken" check is satisfied by the handler
+    # crashing and ovos-workshop's generic exception handler speaking the
+    # "skill.error" dialog. Assert the actual stubbed answer text was
+    # spoken, so a handler that ignores the engine's result, speaks a
+    # hardcoded string, or falls back to the error dialog fails here.
+    assert _STUB_ANSWER[0] in spoken, (
+        f"{row['utterance']!r}: expected the stubbed answer {_STUB_ANSWER[0]!r} "
+        f"to be spoken, got {spoken!r}"
+    )
 
 
 @pytest.mark.timeout(60)
@@ -147,8 +155,26 @@ def test_query_failure_is_graceful():
     assert expected_intent in types, (
         f"expected the intent to still route despite backend failure, got {types!r}"
     )
-    spoken = [
-        m.data.get("utterance", "") for m in messages
-        if m.msg_type in ("speak", "ovos.utterance.speak")
-    ]
+    speak_msgs = [m for m in messages if m.msg_type in ("speak", "ovos.utterance.speak")]
+    spoken = [m.data.get("utterance", "") for m in speak_msgs]
     assert any(spoken), f"expected a graceful spoken fallback response, got {types!r}"
+    # A bare "something was spoken" check is also satisfied by the generic
+    # ovos-workshop exception handler, which catches the crash and speaks
+    # its own opaque "skill.error" dialog -- indistinguishable from a
+    # graceful no_answer response by message type alone. Pin the specific
+    # dialog file: read it directly from locale/en-US/ so the expected
+    # value is independent of the handler under test.
+    no_answer_lines = {
+        line.strip()
+        for line in (Path(__file__).parents[2] / "ovos_skill_ddg" / "locale"
+                     / "en-US" / "no_answer.dialog").read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    }
+    assert any(s in no_answer_lines for s in spoken), (
+        f"expected one of the skill's own no_answer.dialog lines "
+        f"{no_answer_lines!r} to be spoken, got {spoken!r}"
+    )
+    assert "skill.error" not in spoken, (
+        f"spoke the generic skill.error fallback dialog instead of a graceful "
+        f"no_answer response: {spoken!r}"
+    )
