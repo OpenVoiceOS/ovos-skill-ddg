@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.0a1) (2026-09-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.11a1...0.4.0a1)
+
+**Merged pull requests:**
+
+- feat: add missing kab locale resources for parity with en-US [\#155](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/155) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.11a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.3.11a1) (2026-09-11)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.10a2...0.3.11a1)
