@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a1) (2026-09-17)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.0a1...0.4.1a1)
+
+**Merged pull requests:**
+
+- fix: locale resource names per OVOS-INTENT-2 [\#157](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/157) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.0a1) (2026-09-16)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.3.11a1...0.4.0a1)
