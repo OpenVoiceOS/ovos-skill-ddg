@@ -1,0 +1,3 @@
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pesquisa no duckduckgo por wikipedia", "lang": "pt-PT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pergunta ao duckduckgo wikipedia", "lang": "pt-PT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck duck go wikipedia", "lang": "pt-PT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}

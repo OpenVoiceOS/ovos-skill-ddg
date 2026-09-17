@@ -1,0 +1,8 @@
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "search duckduckgo for isaac newton", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "lang": "en-US", "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck duck go isaac newton", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "lang": "en-US", "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ask duck duck go isaac newton", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "lang": "en-US", "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "look up isaac newton on duck duck go", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "lang": "en-US", "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck isaac newton", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "lang": "en-US", "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "search duck duck go for wikipedia", "lang": "en-US", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "search duckduckgo for wikipedia", "lang": "en-US", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": false}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck wikipedia", "lang": "en-US", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": false}
