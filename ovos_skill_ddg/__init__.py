@@ -43,7 +43,7 @@ class DuckDuckGoSkill(FallbackSkill):
             no_gui_fallback=True,
         )
 
-    @intent_handler("search_duck.intent", voc_blacklist=["Weather", "Help"])
+    @intent_handler("search_duck.intent", voc_blacklist=["weather", "Help"])
     def handle_search(self, message):
         """Handle an explicit 'search DuckDuckGo for …' intent."""
         query = message.data["query"]
@@ -74,7 +74,7 @@ class DuckDuckGoSkill(FallbackSkill):
     @common_query(callback=cq_callback)
     def match_common_query(self, phrase: str, lang: str) -> Optional[Tuple[str, float]]:
         """Return a (answer, confidence) tuple for common-query pipeline requests."""
-        if self.voc_match(phrase, "MiscBlacklist") or self.voc_match(phrase, "Weather"):
+        if self.voc_match(phrase, "misc_blacklist") or self.voc_match(phrase, "weather"):
             return None
         try:
             results = self.engine.query(phrase, lang=lang, k=1)
@@ -91,15 +91,15 @@ class DuckDuckGoSkill(FallbackSkill):
         utterances = message.data.get("utterances") or []
         utterance = utterances[0] if utterances else ""
         return not (
-            self.voc_match(utterance, "MiscBlacklist")
-            or self.voc_match(utterance, "Weather")
+            self.voc_match(utterance, "misc_blacklist")
+            or self.voc_match(utterance, "weather")
         )
 
     @fallback_handler(priority=90)
     def handle_fallback(self, message: Message) -> bool:
         """Handle utterances not claimed by any other pipeline stage."""
         utterance = message.data.get("utterance", "")
-        if self.voc_match(utterance, "MiscBlacklist") or self.voc_match(utterance, "Weather"):
+        if self.voc_match(utterance, "misc_blacklist") or self.voc_match(utterance, "weather"):
             return False
         sess = SessionManager.get(message)
         try:

@@ -135,13 +135,13 @@ class TestMatchCommonQuery(unittest.TestCase):
         self.assertIsNone(result)
 
     def test_returns_none_for_misc_blacklist(self):
-        self.skill.voc_match.side_effect = lambda phrase, voc: voc == "MiscBlacklist"
+        self.skill.voc_match.side_effect = lambda phrase, voc: voc == "misc_blacklist"
         result = self.skill.match_common_query("play music", "en-US")
         self.assertIsNone(result)
         self.skill.engine.query.assert_not_called()
 
     def test_returns_none_for_weather_query(self):
-        self.skill.voc_match.side_effect = lambda phrase, voc: voc == "Weather"
+        self.skill.voc_match.side_effect = lambda phrase, voc: voc == "weather"
         result = self.skill.match_common_query("what is the weather", "en-US")
         self.assertIsNone(result)
         self.skill.engine.query.assert_not_called()
@@ -186,13 +186,13 @@ class TestFallback(unittest.TestCase):
         self.skill.speak.assert_not_called()
 
     def test_returns_false_for_misc_blacklist(self):
-        self.skill.voc_match.side_effect = lambda u, voc: voc == "MiscBlacklist"
+        self.skill.voc_match.side_effect = lambda u, voc: voc == "misc_blacklist"
         result = self.skill.handle_fallback(self._msg("play music"))
         self.assertFalse(result)
         self.skill.engine.query.assert_not_called()
 
     def test_returns_false_for_weather(self):
-        self.skill.voc_match.side_effect = lambda u, voc: voc == "Weather"
+        self.skill.voc_match.side_effect = lambda u, voc: voc == "weather"
         result = self.skill.handle_fallback(self._msg("will it rain"))
         self.assertFalse(result)
         self.skill.engine.query.assert_not_called()
