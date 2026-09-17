@@ -19,3 +19,6 @@ dist
 # Created by unit tests
 .pytest_cache/
 /.gtm/
+install.log
+pytest_after.log
+.venv/
