@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a2) (2026-09-17)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a1...0.4.1a2)
+
+**Merged pull requests:**
+
+- test: golden utterances for every locale [\#159](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/159) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.1a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a1) (2026-09-17)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.0a1...0.4.1a1)
