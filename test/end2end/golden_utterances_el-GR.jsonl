@@ -1,0 +1,3 @@
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "el-GR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "el-GR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "βρες wikipedia στο DuckDuckGo", "lang": "el-GR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
