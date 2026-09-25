@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a3) (2026-09-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a2...0.4.1a3)
+
+**Merged pull requests:**
+
+- locale: machine translation for parity in eu-ES, gl-ES, pt-BR \(unvouched\) [\#161](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/161) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.1a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a2) (2026-09-17)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a1...0.4.1a2)
