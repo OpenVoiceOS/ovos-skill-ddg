@@ -1,0 +1,5 @@
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "bilatu wikipedia duck duck gon", "lang": "eu-ES", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck duck go albert einstein", "lang": "eu-ES", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "galdetu duck duck gori wikipedia", "lang": "eu-ES", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo isaac newton", "lang": "eu-ES", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "begiratu wikipedia duck duck gon", "lang": "eu-ES", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}

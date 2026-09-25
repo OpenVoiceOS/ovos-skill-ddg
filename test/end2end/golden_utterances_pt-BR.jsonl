@@ -1,0 +1,5 @@
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pesquise no duck duck go por wikipedia", "lang": "pt-BR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duck duck go albert einstein", "lang": "pt-BR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pergunte ao duck duck go wikipedia", "lang": "pt-BR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pesquise no duckduckgo por isaac newton", "lang": "pt-BR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "procure wikipedia no duck duck go", "lang": "pt-BR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
