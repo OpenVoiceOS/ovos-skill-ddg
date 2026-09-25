@@ -37,6 +37,7 @@ LANGS = [
     "id-ID", "it-IT", "ja-JP", "kab", "ko-KR", "lt-LT", "lv-LV", "ms-MY",
     "nb-NO", "nl-NL", "pl-PL", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sl-SI",
     "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-CN",
+    "eu-ES", "gl-ES", "pt-BR",
 ]
 
 
