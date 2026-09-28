@@ -1,0 +1,17 @@
+{
+  "skill_id": "ovos-skill-ddg.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/ovos-skill-ddg",
+  "name": "DuckDuckGo",
+  "description": "Answer factual questions with DuckDuckGo Instant Answers.",
+  "examples": [
+    "search duck duck go for Marie Curie",
+    "ask duck duck go when was Albert Einstein born",
+    "look up the Eiffel Tower on duck duck go"
+  ],
+  "tags": [
+    "duckduckgo",
+    "search",
+    "question-answering",
+    "information"
+  ]
+}
