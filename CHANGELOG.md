@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0a1](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.5.0a1) (2026-09-28)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a5...0.5.0a1)
+
+**Merged pull requests:**
+
+- feat\(locale\): machine draft of fa-IR, unvouched [\#166](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/166) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.1a5](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a5) (2026-09-28)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a4...0.4.1a5)
