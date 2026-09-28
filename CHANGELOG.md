@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a4) (2026-09-28)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a3...0.4.1a4)
+
+**Merged pull requests:**
+
+- test: assert spoken effect, not just routing, in ddg e2e suites [\#152](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/152) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.1a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.4.1a3) (2026-09-25)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.4.1a2...0.4.1a3)
