@@ -24,7 +24,10 @@ where = ["."]
 include = ["ovos_skill_ddg*"]
 
 [tool.setuptools.package-data]
-"ovos_skill_ddg" = ["locale/**/*", "*.json"]
+# gui/ moved inside the package: ovos-workshop resolves a qml resource under
+# <skill root>/gui, and the skill root of an installed skill is the package
+# directory. At the repository root the tree reached no wheel at all.
+"ovos_skill_ddg" = ["locale/**/*", "gui/**/*", "*.json"]
 
 [tool.setuptools.dynamic]
 version = {attr = "ovos_skill_ddg.version.__version__"}
