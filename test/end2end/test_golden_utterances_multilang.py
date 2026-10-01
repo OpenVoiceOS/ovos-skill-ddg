@@ -31,14 +31,9 @@ _STUB_ANSWER = ("Isaac Newton was an English mathematician and physicist.", 0.9)
 
 END2END_DIR = Path(__file__).parent
 
-LANGS = [
-    "en-US", "ar-XA", "bg-BG", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR",
-    "es-ES", "et-EE", "fi-FI", "fil-PH", "fr-FR", "he-IL", "hr-HR", "hu-HU",
-    "id-ID", "it-IT", "ja-JP", "kab", "ko-KR", "lt-LT", "lv-LV", "ms-MY",
-    "nb-NO", "nl-NL", "pl-PL", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sl-SI",
-    "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-CN",
-    "eu-ES", "gl-ES", "pt-BR",
-]
+LANGS = sorted(p.stem.split("golden_utterances_", 1)[1]
+               for p in END2END_DIR.glob("golden_utterances_*.jsonl"))
+assert LANGS, "no golden_utterances_<lang>.jsonl files found"
 
 
 def _load_rows(lang):
@@ -49,10 +44,8 @@ def _load_rows(lang):
             line = line.strip()
             if not line:
                 continue
-            row = json.loads(line)
-            if row.get("needs_manual"):
-                continue
-            rows.append(row)
+            rows.append(json.loads(line))
+    assert rows, f"{lang}: no golden rows"
     return rows
 
 
