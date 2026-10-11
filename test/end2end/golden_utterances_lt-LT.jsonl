@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "lt-LT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "lt-LT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "rask wikipedia DuckDuckGo", "lang": "lt-LT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ką DuckDuckGo sako apie wikipediją", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "pažiūrėk DuckDuckGo, kas yra wikipedia", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ar gali man rasti wikipediją DuckDuckGo", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "rask wikipedia DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "sužinok per DuckDuckGo, koks aukštas yra Gedimino bokštas", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ką DuckDuckGo žino apie juodąsias skyles", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "panaudok DuckDuckGo ir išsiaiškink, kas parašė Metus", "lang": "lt-LT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

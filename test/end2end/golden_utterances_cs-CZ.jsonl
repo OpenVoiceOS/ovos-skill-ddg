@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "cs-CZ", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "cs-CZ", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "najdi wikipedia na DuckDuckGo", "lang": "cs-CZ", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "co říká DuckDuckGo o wikipedii", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "podívej se na DuckDuckGo, co je wikipedia", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "můžeš mi najít wikipedii na DuckDuckGo", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "najdi wikipedia na DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "zjisti přes DuckDuckGo, jak vysoká je Sněžka", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "co ví DuckDuckGo o černých dírách", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "použij DuckDuckGo a zjisti, kdo napsal Babičku", "lang": "cs-CZ", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

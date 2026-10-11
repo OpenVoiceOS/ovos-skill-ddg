@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "it-IT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "it-IT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "trova wikipedia su DuckDuckGo", "lang": "it-IT", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "cosa dice DuckDuckGo su wikipedia", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "guarda su DuckDuckGo che cos'è wikipedia", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "riesci a trovarmi wikipedia su DuckDuckGo", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "trova wikipedia su DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "usa DuckDuckGo per scoprire quanto è alto il Monte Bianco", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "che cosa sa DuckDuckGo dei buchi neri", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "controlla su DuckDuckGo chi ha scritto I promessi sposi", "lang": "it-IT", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

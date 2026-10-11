@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "ko-KR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "ko-KR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "wikipedia을 DuckDuckGo에서 알아봐", "lang": "ko-KR", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "wikipedia에 대해 DuckDuckGo는 뭐라고 해", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "wikipedia가 뭔지 DuckDuckGo에서 확인해 줘", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "wikipedia를 DuckDuckGo에서 좀 찾아 줄래", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "wikipedia을 DuckDuckGo에서 알아봐"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "한라산 높이가 얼마인지 DuckDuckGo로 알아봐 줘", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "블랙홀에 대해 DuckDuckGo가 뭘 알고 있어", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "훈민정음을 누가 만들었는지 DuckDuckGo 써서 알려 줘", "lang": "ko-KR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "th-TH", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "th-TH", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "หา wikipedia บน DuckDuckGo", "lang": "th-TH", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "อยากรู้ว่า DuckDuckGo บอกอะไรเกี่ยวกับ wikipedia บ้าง", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ช่วยดูใน DuckDuckGo หน่อยว่า wikipedia คืออะไร", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ช่วยหา wikipedia บน DuckDuckGo ให้หน่อย", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "หา wikipedia บน DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ใช้ DuckDuckGo หาว่าดอยอินทนนท์สูงเท่าไร", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ลองถาม DuckDuckGo ว่ารู้อะไรเกี่ยวกับหลุมดำบ้าง", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ลองเช็คใน DuckDuckGo ว่าใครแต่งขุนช้างขุนแผน", "lang": "th-TH", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "ro-RO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "ro-RO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "găsește wikipedia pe DuckDuckGo", "lang": "ro-RO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ce spune DuckDuckGo despre wikipedia", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "uită-te pe DuckDuckGo ce este wikipedia", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "poți să-mi găsești wikipedia pe DuckDuckGo", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "găsește wikipedia pe DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "folosește DuckDuckGo ca să afli cât de înalt e Moldoveanu", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ce știe DuckDuckGo despre găurile negre", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "verifică pe DuckDuckGo cine a scris Luceafărul", "lang": "ro-RO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "nb-NO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "nb-NO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "finn wikipedia på DuckDuckGo", "lang": "nb-NO", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "hva sier DuckDuckGo om wikipedia", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "slå opp wikipedia på DuckDuckGo", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "kan du finne wikipedia på DuckDuckGo for meg", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "finn wikipedia på DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "bruk DuckDuckGo til å finne ut hvor høy Galdhøpiggen er", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "hva vet DuckDuckGo om sorte hull", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "sjekk på DuckDuckGo hvem som skrev Et dukkehjem", "lang": "nb-NO", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "ru-RU", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "ru-RU", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "поищи wikipedia в DuckDuckGo", "lang": "ru-RU", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "что DuckDuckGo говорит о wikipedia", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "посмотри в DuckDuckGo, что такое wikipedia", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "можешь поискать wikipedia в DuckDuckGo", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "поищи wikipedia в DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "узнай через DuckDuckGo, какой высоты Эльбрус", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "что DuckDuckGo знает о чёрных дырах", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "воспользуйся DuckDuckGo и выясни, кто написал Войну и мир", "lang": "ru-RU", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

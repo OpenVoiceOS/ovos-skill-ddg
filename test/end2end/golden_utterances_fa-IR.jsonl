@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "دوک دوک برو wikipedia", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": true, "lang": "fa-IR", "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "جستجو برای Duckduckgo wikipedia", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": true, "lang": "fa-IR", "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "دوک wikipedia", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": true, "lang": "fa-IR", "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ببین DuckDuckGo درباره wikipedia چه می‌گوید", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "دوک دوک برو wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "لطفاً wikipedia را در Duckduckgo جستجو کن", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "جستجو برای Duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "می‌خواهم بدانم wikipedia چیست، در DuckDuckGo نگاه کن", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "دوک wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "با DuckDuckGo پیدا کن ارتفاع دماوند چقدر است", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "از DuckDuckGo بپرس درباره سیاه‌چاله‌ها چه می‌داند", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "از Duckduckgo بپرس شاهنامه را چه کسی نوشته است", "lang": "fa-IR", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "bg-BG", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "bg-BG", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "намери wikipedia в DuckDuckGo", "lang": "bg-BG", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "какво казва DuckDuckGo за wikipedia", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "провери в DuckDuckGo какво е wikipedia", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "можеш ли да намериш wikipedia в DuckDuckGo", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "намери wikipedia в DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "потърси ми в DuckDuckGo колко е висок Мусала", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "какво знае DuckDuckGo за черните дупки", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "използвай DuckDuckGo, за да разбереш кой е написал Под игото", "lang": "bg-BG", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
