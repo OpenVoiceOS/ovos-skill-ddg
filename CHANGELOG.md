@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.6.0a3) (2026-10-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.6.0a2...0.6.0a3)
+
+**Merged pull requests:**
+
+- test: natural golden rows and an m2v gate for every locale [\#178](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/178) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.6.0a2](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.6.0a2) (2026-10-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.6.0a1...0.6.0a2)
