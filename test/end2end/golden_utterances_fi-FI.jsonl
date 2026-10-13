@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "fi-FI", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "fi-FI", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "etsi wikipedia DuckDuckGosta", "lang": "fi-FI", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "mitä DuckDuckGo sanoo wikipediasta", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "katso DuckDuckGosta, mikä on wikipedia", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "voisitko etsiä wikipedian DuckDuckGosta", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "etsi wikipedia DuckDuckGosta"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "selvitä DuckDuckGon avulla, kuinka korkea Halti on", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "mitä DuckDuckGo tietää mustista aukoista", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "käytä DuckDuckGoa ja ota selvää, kuka kirjoitti Seitsemän veljestä", "lang": "fi-FI", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

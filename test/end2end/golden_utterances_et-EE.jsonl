@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "et-EE", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "et-EE", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "leia wikipedia DuckDuckGo-st", "lang": "et-EE", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "mida DuckDuckGo wikipedia kohta ütleb", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "vaata DuckDuckGo-st, mis on wikipedia", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "kas sa leiaksid mulle wikipedia DuckDuckGo-st", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "leia wikipedia DuckDuckGo-st"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "uuri DuckDuckGo abil, kui kõrge on Suur Munamägi", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "mida DuckDuckGo mustade aukude kohta teab", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "kasuta DuckDuckGo-d, et teada saada, kes kirjutas Kalevipoja", "lang": "et-EE", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

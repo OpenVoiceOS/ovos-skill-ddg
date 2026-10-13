@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "da-DK", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "DuckDuckGo wikipedia", "lang": "da-DK", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "find wikipedia på DuckDuckGo", "lang": "da-DK", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "hvad siger DuckDuckGo om wikipedia", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "slå wikipedia op på DuckDuckGo", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "DuckDuckGo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "kan du finde wikipedia på DuckDuckGo for mig", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "find wikipedia på DuckDuckGo"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "brug DuckDuckGo til at finde ud af hvor høj Rundetårn er", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "hvad ved DuckDuckGo om sorte huller", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "tjek på DuckDuckGo hvem der skrev Den grimme ælling", "lang": "da-DK", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

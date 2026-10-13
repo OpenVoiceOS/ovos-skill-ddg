@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "zh-CN", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "用DuckDuckGo查询wikipedia", "lang": "zh-CN", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "帮我在DuckDuckGo上查找wikipedia", "lang": "zh-CN", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "看看DuckDuckGo上关于wikipedia是怎么说的", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "你能用DuckDuckGo查一下wikipedia吗", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "用DuckDuckGo查询wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "麻烦在DuckDuckGo上帮我找找wikipedia", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "帮我在DuckDuckGo上查找wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "用DuckDuckGo查查珠穆朗玛峰有多高", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "去DuckDuckGo看看黑洞是什么", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "通过DuckDuckGo了解一下红楼梦的作者是谁", "lang": "zh-CN", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

@@ -1,3 +1,6 @@
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "duckduckgo wikipedia", "lang": "ar-XA", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "دك دك جو wikipedia", "lang": "ar-XA", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
-{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ابحث عن wikipedia على دك دك جو", "lang": "ar-XA", "intent_label": "search_duck", "intent_type": "padacioso", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ماذا يقول duckduckgo عن wikipedia", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "duckduckgo wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "أريد أن أعرف شيئا عن wikipedia من دك دك جو", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "دك دك جو wikipedia"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "هل يمكنك البحث عن wikipedia في دك دك جو من فضلك", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true, "rewritten_from": "ابحث عن wikipedia على دك دك جو"}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "استخدم دك دك جو لتعرف كم يبلغ طول برج إيفل", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "ماذا يعرف دك دك جو عن الثقوب السوداء", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ddg.openvoiceos", "utterance": "من فضلك اسأل دك دك جو متى ولد أينشتاين", "lang": "ar-XA", "intent_label": "search_duck", "needs_manual": true, "machine_generated": true}

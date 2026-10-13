@@ -34,7 +34,8 @@ version = {attr = "ovos_skill_ddg.version.__version__"}
 
 [project.optional-dependencies]
 test = [
-    "ovoscope<1.5.1",
+    "ovoscope>=1.11.2a1",
+    "ovos-m2v-pipeline>=0.32.0a1",
     "ovos-ddg-plugin>=0.1.0a1,<2.0.0",
 ]
 
