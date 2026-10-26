@@ -44,9 +44,9 @@ MIN_MATCHED_ROWS_PER_INTENT = 1
 # when an intent falls below the per-intent floor, or when its rate drops more
 # than GAP_TOLERANCE below the measured rate stored here.
 GOLDEN_LOCALE_GAPS = {
-    "he-IL": (0.667, "measured 4 of 6 rows in two boots; the he-IL lines are "
-                     "unvouched machine drafts and need machine-translated or "
-                     "native lines (rule 7a)"),
+    "ar-XA": (0.167, "measured 1 of 6 rows in each of three boots with the shipped "
+                     "lines only; the missed rows score 0.33 to 0.54 against the "
+                     "0.56 low tier"),
 }
 GAP_TOLERANCE = 0.10
 END2END_DIR = Path(__file__).parent
