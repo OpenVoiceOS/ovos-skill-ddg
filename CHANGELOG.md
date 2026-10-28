@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0a4](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.6.0a4) (2026-10-28)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.6.0a3...0.6.0a4)
+
+**Merged pull requests:**
+
+- test: run the end2end suite on the m2v prototype pipeline [\#181](https://github.com/OpenVoiceOS/ovos-skill-ddg/pull/181) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.6.0a3](https://github.com/OpenVoiceOS/ovos-skill-ddg/tree/0.6.0a3) (2026-10-13)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ddg/compare/0.6.0a2...0.6.0a3)
