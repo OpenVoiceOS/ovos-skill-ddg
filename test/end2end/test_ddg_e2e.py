@@ -2,9 +2,9 @@
 End-to-end tests for DuckDuckGoSkill via ovoscope.
 
 Covers:
-- Explicit padacioso intent (search_duck.intent) fires, the handler completes,
-  and the spoken response carries the answer text the retrieval engine
-  returned (not merely that some speak event fired).
+- Explicit intent (search_duck.intent) fires, the handler completes, and the
+  spoken response carries the answer text the retrieval engine returned (not
+  merely that some speak event fired).
 - Fallback handler fires for open questions with no other pipeline match, and
   speaks the same stubbed answer.
 - Multi-lang sessions (en-US, de-DE, es-ES, pt-PT) route correctly.
@@ -23,6 +23,7 @@ from ovos_spec_tools import SpecMessage
 from ovos_utils.log import LOG
 
 from ovoscope import CaptureSession, End2EndTest, get_minicroft
+from ovoscope.routing import PIPELINE, TALLY, get_prototype_minicroft
 
 SKILL_ID = "ovos-skill-ddg.openvoiceos"
 
@@ -44,20 +45,11 @@ _FALLBACK_RANGE = [5, 90]  # range emitted by ovos-fallback-pipeline-plugin
 
 
 # ---------------------------------------------------------------------------
-# Explicit padacioso intent
+# Explicit intent
 # ---------------------------------------------------------------------------
 
 class TestDDGExplicitIntent(TestCase):
-    """search_duck.intent matched via padacioso pipeline.
-
-    Each language gets its own MiniCroft (single ``lang=``, no
-    ``secondary_langs``): padacioso's ``__detach_intent`` (padacioso#opm.py)
-    removes a canonical intent name from *every* registered language, not
-    just the one being re-registered, so registering the same skill for
-    several languages on one shared pipeline instance leaves only the
-    last-registered language matchable. Isolating each language in its own
-    MiniCroft sidesteps that collision instead of asserting on it.
-    """
+    """search_duck.intent matched in each language, one MiniCroft per language."""
 
     def setUp(self):
         LOG.set_level("DEBUG")
@@ -76,11 +68,11 @@ class TestDDGExplicitIntent(TestCase):
             "ovos_ddg_plugin.DuckDuckGoRetrievalEngine.query",
             return_value=[(synthetic_answer, 1.0)],
         ):
-            minicroft = get_minicroft([SKILL_ID], lang=lang)
+            minicroft = get_prototype_minicroft([SKILL_ID], lang=lang)
             try:
                 session = Session(f"ddg-intent-{lang}")
                 session.lang = lang
-                session.pipeline = ["ovos-padacioso-pipeline-plugin-high"]
+                session.pipeline = PIPELINE
 
                 message = Message(
                     "recognizer_loop:utterance",
@@ -90,39 +82,36 @@ class TestDDGExplicitIntent(TestCase):
 
                 intent_msg_type = f"{SKILL_ID}:search_duck"
 
-                test = End2EndTest(
-                    minicroft=minicroft,
-                    skill_ids=[SKILL_ID],
-                    eof_msgs=["ovos.utterance.handled"],
-                    flip_points=["recognizer_loop:utterance"],
-                    ignore_messages=_IGNORE,
-                    source_message=message,
-                    test_msg_context=False,
-                    activation_points=[str(SpecMessage.INTENT_MATCHED)],
-                    expected_messages=[
-                        message,
-                        Message(f"{SKILL_ID}.activate", {}, {"skill_id": SKILL_ID}),
-                        Message(str(SpecMessage.INTENT_MATCHED), {}, {"skill_id": SKILL_ID}),
-                        Message(str(SpecMessage.INTENT_HANDLER_START), {}, {"skill_id": SKILL_ID}),
-                        Message(intent_msg_type, {}, {"skill_id": SKILL_ID}),
-                        Message("mycroft.skill.handler.start",
-                                {"name": "DuckDuckGoSkill.handle_search"},
-                                {"skill_id": SKILL_ID}),
-                        # the effect under test: the handler must speak the
-                        # exact, per-call synthetic answer the stubbed
-                        # retrieval engine returned.
-                        Message(str(SpecMessage.SPEAK), {"utterance": synthetic_answer},
-                                {"skill_id": SKILL_ID}),
-                        Message("mycroft.skill.handler.complete",
-                                {"name": "DuckDuckGoSkill.handle_search"},
-                                {"skill_id": SKILL_ID}),
-                        Message(str(SpecMessage.INTENT_HANDLER_COMPLETE), {}, {"skill_id": SKILL_ID}),
-                        Message("ovos.utterance.handled", {}, {"skill_id": SKILL_ID}),
-                    ],
-                )
-                test.execute(timeout=30)
+                capture = CaptureSession(minicroft, eof_msgs=["ovos.utterance.handled"],
+                                         ignore_messages=_IGNORE)
+                capture.capture(message, 30)
+                messages = capture.finish()
             finally:
                 minicroft.stop()
+
+        types = [m.msg_type for m in messages]
+        TALLY.assert_routed(utterance, intent_msg_type, types)
+        lifecycle = [
+            f"{SKILL_ID}.activate",
+            str(SpecMessage.INTENT_MATCHED),
+            str(SpecMessage.INTENT_HANDLER_START),
+            intent_msg_type,
+            "mycroft.skill.handler.start",
+            str(SpecMessage.SPEAK),
+            "mycroft.skill.handler.complete",
+            str(SpecMessage.INTENT_HANDLER_COMPLETE),
+            "ovos.utterance.handled",
+        ]
+        self.assertEqual([t for t in types if t in lifecycle], lifecycle,
+                         f"{utterance!r}: handler lifecycle out of order: {types}")
+        handler = [m.data.get("name") for m in messages
+                   if m.msg_type.startswith("mycroft.skill.handler.")]
+        self.assertEqual(handler, ["DuckDuckGoSkill.handle_search"] * 2)
+        # the effect under test: the handler must speak the exact, per-call
+        # synthetic answer the stubbed retrieval engine returned.
+        spoken = [m.data.get("utterance") for m in messages
+                  if m.msg_type == str(SpecMessage.SPEAK)]
+        self.assertEqual(spoken, [synthetic_answer])
 
     def test_en_explicit_search(self):
         self._run("search duckduckgo for Isaac Newton", "en-US")
